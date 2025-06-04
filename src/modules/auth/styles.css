@@ -1,0 +1,61 @@
+/* Evita el scroll en la página principal */
+body {
+  overflow: hidden;
+}
+
+/* Barras superior e inferior fijas */
+body::before,
+body::after {
+  content: "";
+  display: block;
+  position: fixed;
+  width: 100vw;
+  height: 20px;
+  background: #0a2342; /* Azul marino */
+}
+
+body::before {
+  top: 0;
+}
+
+body::after {
+  bottom: 0;
+}
+
+/* Contenedor principal del login: centra y distribuye los elementos */
+.main-container {
+  display: flex;
+  flex-direction: row; /* Elementos en fila */
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+  min-height: 100vh; /* Altura mínima pantalla completa */
+  height: 100vh; /* Altura pantalla completa */
+  overflow: hidden;
+  flex-wrap: wrap; /* Permite que los elementos bajen si no caben */
+  gap: 2rem; /* Espacio entre elementos (sobrescribe gap anterior) */
+  margin-top: 40px; /* Ajuste para no quedar tapado por las barras */
+  margin-bottom: 40px; /* Ajuste para no quedar tapado por las barras */
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 900px) {
+  /* Cambia la disposición del contenedor a columna y ajusta espacios */
+  .main-container {
+    flex-direction: column-reverse; /* Imagen debajo del formulario */
+    gap: 0.5rem;
+    min-height: unset;
+    padding: 2rem 0;
+  }
+
+  /* Ajusta el título del formulario en móviles */
+  .login-form-container h1 {
+    margin: 0.4rem;
+    max-width: 100%;
+    max-height: none;
+  }
+
+  /* Reduce el margen superior del botón en móviles */
+  .submit-btn {
+    margin-top: 0.5rem !important;
+  }
+}

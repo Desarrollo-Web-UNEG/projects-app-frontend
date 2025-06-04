@@ -1,0 +1,25 @@
+/* Botón de envío del formulario de login */
+.submit-btn {
+  background-color: #841d37 !important; /* Color de fondo personalizado */
+  color: #f9f6ee !important; /* Color de texto */
+  margin-top: 1rem !important; /* Espaciado superior */
+}
+
+/* Contenedor del formulario de login */
+.login-form-container {
+  flex: 1; /* Ocupa el mismo espacio que la imagen */
+  display: flex;
+  flex-direction: column; /* Elementos en columna */
+  justify-content: center; /* Centra verticalmente */
+  min-width: 300px; /* Ancho mínimo */
+  max-width: 400px; /* Ancho máximo */
+  max-height: 70vh; /* Altura máxima relativa a la ventana */
+  overflow: auto; /* Scroll si el contenido excede */
+}
+
+/* Campos de email y contraseña con sombra */
+.email-field,
+.password-field {
+  box-shadow: 0 4px 8px -6px rgba(0, 0, 0, 0.7); /* Sombra sutil */
+  background-color: #fff; /* Fondo blanco para los inputs */
+}

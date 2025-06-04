@@ -1,0 +1,14 @@
+/* Contenedor de la imagen del login */
+.login-img-container {
+  flex: 1; /* Ocupa el mismo espacio que el formulario */
+  display: flex;
+  justify-content: center; /* Centra la imagen horizontalmente */
+  align-items: center; /* Centra la imagen verticalmente */
+}
+
+/* Imagen del login: tamaño máximo y ajuste */
+.login-img {
+  max-width: 100%; /* No sobrepasa el ancho del contenedor */
+  height: auto; /* Mantiene la proporción */
+  max-height: 50vh; /* Altura máxima relativa a la ventana */
+}
