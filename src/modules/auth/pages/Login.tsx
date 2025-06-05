@@ -1,6 +1,5 @@
-import "../styles.css";
-import LoginForm from "../components/LoginForm";
-import LoginImg from "../components/LoginImg";
+import "@auth/styles/index.css";
+import { LoginForm, LoginImg } from "@auth/components";
 
 const Login = () => {
   return (
