@@ -9,6 +9,15 @@
 /* Imagen del login: tamaño máximo y ajuste */
 .login-img {
   max-width: 100%; /* No sobrepasa el ancho del contenedor */
-  height: auto; /* Mantiene la proporción */
-  max-height: 50vh; /* Altura máxima relativa a la ventana */
+  max-height: 119vh; /* Aumenta la altura máxima */
+}
+
+@media (max-width: 900px) {
+  .login-img {
+    max-width: 70vw;
+    max-height: 70vh;
+  }
+  .login-img-container {
+    margin-top: 6vh;
+  }
 }

@@ -1,8 +1,11 @@
-/* Botón de envío del formulario de login */
-.submit-btn {
-  background-color: #841d37 !important; /* Color de fondo personalizado */
-  color: #f9f6ee !important; /* Color de texto */
-  margin-top: 1rem !important; /* Espaciado superior */
+/* Título de bienvenida */
+.title {
+  margin-bottom: 0.5rem;
+}
+
+/* Subtítulo */
+.subtitle {
+  margin-top: 0.4rem;
 }
 
 /* Contenedor del formulario de login */
@@ -11,10 +14,37 @@
   display: flex;
   flex-direction: column; /* Elementos en columna */
   justify-content: center; /* Centra verticalmente */
-  min-width: 300px; /* Ancho mínimo */
-  max-width: 400px; /* Ancho máximo */
-  max-height: 70vh; /* Altura máxima relativa a la ventana */
-  overflow: auto; /* Scroll si el contenido excede */
+  min-width: 30vw; /* Ancho mínimo */
+  max-width: 100vw; /* Ancho máximo */
+  max-height: 250vh; /* Altura máxima relativa a la ventana */
+}
+
+/* Botón de envío del formulario de login */
+.submit-btn {
+  background-color: #841d37 !important; /* Color de fondo personalizado */
+  color: #f9f6ee !important; /* Color de texto */
+  font-family: "Poppins" !important; /* Fuente personalizada */
+  font-size: 1.2rem !important; /* Tamaño de fuente */
+  text-transform: none !important;
+  margin-top: 1rem !important; /* Espaciado superior */
+  width: 100%;
+  height: 2.5rem; /* Altura del botón */
+}
+
+/* Contenedor del link de registro */
+.register-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem; /* Espacio superior */
+}
+
+/* Link de registro */
+.register-btn {
+  color: #f5b326 !important;
+  font-style: italic;
+  text-decoration: underline;
+  align-self: flex-end;
+  font-weight: bold;
 }
 
 /* Campos de email y contraseña con sombra */
@@ -22,4 +52,28 @@
 .password-field {
   box-shadow: 0 4px 8px -6px rgba(0, 0, 0, 0.7); /* Sombra sutil */
   background-color: #fff; /* Fondo blanco para los inputs */
+}
+
+/* Cambia el tipo de fuente del placeholder de los TextField */
+.email-field input::placeholder,
+.password-field input::placeholder {
+  font-family: "Poppins";
+}
+
+@media (max-width: 900px) {
+  /* Reduce el margen superior del botón en móviles */
+  .submit-btn {
+    margin-top: 0.5rem !important;
+  }
+
+  /* Ajusta el título del formulario en móviles */
+  .title {
+    margin: 0.4rem;
+    max-width: 100%;
+  }
+
+  .login-form-container {
+    min-width: 80vw;
+    max-width: 98vw;
+  }
 }
