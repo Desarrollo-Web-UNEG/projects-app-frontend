@@ -39,10 +39,11 @@ body::after {
 /* Estilos responsivos para pantallas pequeñas */
 @media (max-width: 900px) {
   .main-container {
-    flex-direction: column-reverse; /* Imagen debajo del formulario */
-    gap: 0.5rem;
-    min-height: unset;
-    padding: 2rem 0;
-    margin-bottom: 1rem;
+    margin: 0 1.5rem 0 1.5rem; /* top right bottom left */
+  }
+
+  body::before,
+  body::after {
+    display: none !important;
   }
 }
