@@ -1,0 +1,55 @@
+
+@import url("./login-form.css");
+@import url("./login-img-bottom.css");
+@import url("./login-img-top.css");
+@import url("./login-img.css");
+
+/* Evita el scroll en la página principal */
+body {
+  overflow: auto;
+}
+
+/* Barras superior e inferior fijas */
+body::before,
+body::after {
+  content: "";
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 3vh;
+  background: #0a2342; /* Azul marino */
+  z-index: 1000; /* Asegura que las barras estén por encima */
+}
+
+body::before {
+  top: 0;
+}
+
+body::after {
+  bottom: 0;
+}
+
+/* Contenedor principal del login: centra y distribuye los elementos */
+.main-container {
+  display: flex;
+  flex-direction: row; /* Elementos en fila */
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+  min-height: 90vh; /* Altura mínima pantalla completa */
+  overflow: hidden;
+  flex-wrap: wrap; /* Permite que los elementos bajen si no caben */
+  gap: 2rem; /* Espacio entre elementos (sobrescribe gap anterior) */
+  margin: 2rem 1.5rem 1.2rem 1.5rem; /* top right bottom left */
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 900px) {
+  .main-container {
+    margin: 0 1.5rem 0 1.5rem; /* top right bottom left */
+  }
+
+  body::before,
+  body::after {
+    display: none !important;
+  }
+}
