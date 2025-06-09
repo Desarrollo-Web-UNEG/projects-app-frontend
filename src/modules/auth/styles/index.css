@@ -1,3 +1,9 @@
+
+@import url("./login-form.css");
+@import url("./login-img-bottom.css");
+@import url("./login-img-top.css");
+@import url("./login-img.css");
+
 /* Evita el scroll en la página principal */
 body {
   overflow: auto;
