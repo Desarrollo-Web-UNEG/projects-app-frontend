@@ -6,18 +6,18 @@ import { imgBottom, imgTop, twoStudentsImg } from "@auth/assets";
 
 const Login = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return isMobile ? (
     <>
       <div className="login-img-top-container">
-        <img src={imgTop} className="login-img-top"/>
+        <img src={imgTop} className="login-img-top" />
       </div>
       <div className="main-container">
         <LoginForm />
       </div>
       <div>
-        <img src={imgBottom} className="login-img-bottom"/>
+        <img src={imgBottom} className="login-img-bottom" />
       </div>
     </>
   ) : (
