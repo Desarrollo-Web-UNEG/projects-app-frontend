@@ -4,6 +4,11 @@ import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import "../styles/login-form.css";
 
+const adornemet = {
+  email: ( <InputAdornment position="start"><EmailIcon /></InputAdornment>),
+  password: ( <InputAdornment position="start"><LockIcon /></InputAdornment>),
+}
+
 const LoginForm = () => {
   return (
     <div className="login-form-container">
@@ -18,13 +23,7 @@ const LoginForm = () => {
           type="email"
           required
           className="email-field"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <EmailIcon />
-              </InputAdornment>
-            ),
-          }}
+          slotProps={{ input: { startAdornment: adornemet.email }}}
         />
         <TextField
           placeholder="Contraseña"
@@ -34,13 +33,7 @@ const LoginForm = () => {
           type="password"
           className="password-field"
           required
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <LockIcon />
-              </InputAdornment>
-            ),
-          }}
+          slotProps={{ input: { startAdornment: adornemet.password }}}
         />
         <div className="register-btn-container">
           <Link to="/register" className="register-btn">

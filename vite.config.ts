@@ -11,4 +11,14 @@ export default defineConfig({
       '@auth': path.resolve(__dirname, './src/modules/auth'),
     },
   },
+  base: '/',
+  server: {
+    port: 3000,
+    host: true
+  },
+  preview: {
+    port: 3000,
+    host: true,
+    allowedHosts: ['projects-app-frontend.onrender.com']
+  }
 })
