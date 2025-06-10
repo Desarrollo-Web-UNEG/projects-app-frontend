@@ -1,10 +1,10 @@
 /* Evita el scroll en la página principal */
 body {
-  overflow: auto;
+  overflow: hidden;
 }
 
 /* Barras superior e inferior fijas */
-body::before,
+/* body::before,
 body::after {
   content: "";
   display: block;
@@ -12,16 +12,16 @@ body::after {
   width: 100%;
   height: 3vh;
   background: #0a2342; /* Azul marino */
-  z-index: 1000; /* Asegura que las barras estén por encima */
-}
+  /* z-index: 1000; Asegura que las barras estén por encima */
+/* } */ 
 
-body::before {
+/* body::before {
   top: 0;
 }
 
 body::after {
   bottom: 0;
-}
+} */
 
 /* Contenedor principal del login: centra y distribuye los elementos */
 .main-container {

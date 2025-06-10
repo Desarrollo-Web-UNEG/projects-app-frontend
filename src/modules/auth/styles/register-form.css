@@ -1,0 +1,108 @@
+.register-container{
+  display: flex; 
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  gap:20px;
+
+}
+
+.register-title{
+  font-size:35px;
+}
+
+.block-img{
+  width: 50%;
+}
+
+.block-form{
+  width: 50%;
+}
+
+.field{
+  box-shadow: 0 4px 8px -6px rgba(0, 0, 0, 0.7); /* Sombra sutil */
+  background-color: #fff; /* Fondo blanco para los inputs */
+}
+
+.two_fields{
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+
+.register-form{
+  margin:0 20px;
+}
+
+img.register-img{
+  width: 100%;
+}
+
+.submit-btn{
+  background-color: #841d37 !important; /* Color de fondo personalizado */
+  color: #f9f6ee !important; /* Color de texto */
+  font-family: "Poppins" !important; /* Fuente personalizada */
+  font-size: 1.2rem !important; /* Tamaño de fuente */
+  text-transform: none !important;
+  margin-top: 1rem !important; /* Espaciado superior */
+  width: 75%;
+  height: 2.5rem; /* Altura del botón */
+}
+
+.icon-return{
+  margin-left: 20px;
+  color:#002248;
+  text-align: start;
+}
+
+.register-btn2{
+  color: #002248; 
+  font-style: italic;
+  text-decoration: underline;
+  align-self: flex-end;
+  font-weight: bold;
+}
+
+
+@media (max-width: 900px) {
+  /* Reduce el margen superior del botón en móviles */
+  .submit-btn {
+    margin-top: 0.5rem !important;
+  }
+
+  /* Ajusta el título del formulario en móviles */
+  .title {
+    margin: 0.4rem;
+    max-width: 100%;
+  }
+
+  .register-container{
+    min-width: 80vw;
+    max-width: 98vw;
+  }
+
+  div.block-img{
+    display: none;
+    width: 0;
+  }
+
+  div.block-form{
+    width: 100%;
+  }
+
+  .two_fields{
+    flex-direction: column;
+    gap:0;
+  }
+
+  
+}
+
+
+@media (max-width: 520px){
+  
+  .register-title{
+    font-size: 30px;
+  }
+}
