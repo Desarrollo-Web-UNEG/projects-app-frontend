@@ -1,6 +1,7 @@
 import "./App.css";
 import { Login, Register } from "@auth/pages";
 import { Routes, Route } from "react-router-dom";
+import Prueba from "./modules/auth/pages/Prueba";
 
 const App = () => {
   return (
@@ -8,9 +9,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="register" element={<Register />} />
+        <Route path="prueba" element={<Prueba />} />
       </Routes>
     </>
   );
-}
+};
 
 export default App;
