@@ -1,34 +1,12 @@
 .letterhead-container {
-  background-color: #002248;
-  text-align: start;
-  color: white;
-  display: flex;
-  padding: 10px 10px 0px;
-  margin-bottom: 70px;
   width: 100vw;
+  max-width: 100vw;
   overflow-x: hidden;
-  overflow-y: hidden;
 }
 
-.letterhead-text {
-  font-size: 16px;
-}
-
-.white-logo-uneg {
-  width: 80px;
-  /* height: auto; */
-  /* margin-bottom: 20px; */
-}
-
-@media (max-width: 900px) {
-  .letterhead-container {
-    margin-bottom: 30px;
-  }
-
-  .letterhead-text {
-    font-size: 14px;
-  }
-  .white-logo-uneg {
-    width: 60px;
-  }
+.letterhead {
+  width: 100vw;
+  max-width: 100vw;
+  height: auto;
+  display: block;
 }

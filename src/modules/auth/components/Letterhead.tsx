@@ -1,19 +1,14 @@
 import "../styles/letterhead.css";
-import logo_blanco from '../../../assets/LOGO_UNEG_BLANCO.png';
+import { letterHead } from "@auth/assets";
 
 const Letterhead = () => {
-  return(
+  return (
     <div className="letterhead-container">
-      
       <div>
-        <img src={ logo_blanco } alt="logo uneg" className="white-logo-uneg" />
-      </div>
-
-      <div className="letterhead-text"> 
-        <h2>PORTAL UNIVERSITARIO</h2>
+        <img src={letterHead} alt="Letterhead" className="letterhead" />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Letterhead;
