@@ -165,12 +165,12 @@ const RegisterForm = () =>{
           />
         </div>
           
-        <Button variant="contained" type="submit" className="submit-btn" style={{ marginTop: "24px" }}>
+        <Button variant="contained" type="submit" className="sub-btn" style={{ marginTop: "24px" }}>
           Finalizar registro
         </Button>
 
       </form>
-
+         
       </div>
 
     {/* Bloque de la imagen */}

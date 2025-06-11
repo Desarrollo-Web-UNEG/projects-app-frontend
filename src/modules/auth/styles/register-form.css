@@ -17,6 +17,7 @@
 
 .block-form{
   width: 50%;
+  padding: 10px;
 }
 
 .field{
@@ -39,14 +40,14 @@ img.register-img{
   width: 100%;
 }
 
-.submit-btn{
+.sub-btn{
   background-color: #841d37 !important; /* Color de fondo personalizado */
   color: #f9f6ee !important; /* Color de texto */
   font-family: "Poppins" !important; /* Fuente personalizada */
   font-size: 1.2rem !important; /* Tamaño de fuente */
   text-transform: none !important;
   margin-top: 1rem !important; /* Espaciado superior */
-  width: 75%;
+  width: 70%;
   height: 2.5rem; /* Altura del botón */
 }
 
@@ -66,6 +67,8 @@ img.register-img{
 
 
 @media (max-width: 900px) {
+
+
   /* Reduce el margen superior del botón en móviles */
   .submit-btn {
     margin-top: 0.5rem !important;
@@ -96,6 +99,10 @@ img.register-img{
     gap:0;
   }
 
+    .sub-btn{
+    width: 100%;
+  }
+
   
 }
 
@@ -105,4 +112,6 @@ img.register-img{
   .register-title{
     font-size: 30px;
   }
+
+
 }

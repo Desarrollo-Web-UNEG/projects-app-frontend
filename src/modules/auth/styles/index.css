@@ -5,8 +5,10 @@
 @import url("./login-img.css");
 
 /* Evita el scroll en la página principal */
+
+
 body {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* Barras superior e inferior fijas */
