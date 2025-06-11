@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 // Props: solo la URL a consultar
 interface ApiProps {
@@ -17,30 +18,21 @@ const Api = ({ url }: ApiProps) => {
 
   useEffect(() => {
     // Realiza la petición GET al backend cada vez que cambia la URL
-    fetch(url)
-      .then(async (res) => {
-        // Si la respuesta no es exitosa, lanza un error
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
-        }
-        // Detecta si la respuesta es JSON o texto plano
-        const contentType = res.headers.get("content-type");
-        if (contentType && contentType.includes("application/json")) {
-          const data = await res.json();
-          // Si el JSON es un string, lo retorna, si no, lo convierte a string
-          return typeof data === "string" ? data : JSON.stringify(data);
-        } else {
-          // Si no es JSON, retorna el texto plano
-          return await res.text();
-        }
-      })
-      .then((data) => {
-        // Guarda la respuesta en el estado
-        setMensaje(data);
+    axios
+      .get(url)
+      .then((res) => {
+        // Si la respuesta es un string, la muestra; si es objeto, la convierte a string
+        setMensaje(
+          typeof res.data === "string" ? res.data : JSON.stringify(res.data)
+        );
       })
       .catch((error) => {
         // Guarda el error en el estado si ocurre algún problema
-        setError(`Error: ${error.message}`);
+        setError(
+          error.response
+            ? `Error: ${error.response.status} ${error.response.statusText}`
+            : `Error: ${error.message}`
+        );
       });
   }, [url]);
 
