@@ -1,42 +1,45 @@
-.register-container{
-  display: flex; 
+.register-container {
+  display: flex;
   width: 100vw;
   justify-content: center;
   align-items: center;
-  gap:20px;
-
+  gap: 20px;
+  overflow-x:hidden;
 }
 
-.register-title{
-  font-size:35px;
+body{
+  overflow-x: hidden;
 }
 
-.block-img{
+.register-title {
+  font-size: 35px;
+}
+
+.block-img {
   width: 50%;
 }
 
-.block-form{
+.block-form {
   width: 50%;
   padding: 10px;
 }
 
-.field{
+.field {
   box-shadow: 0 4px 8px -6px rgba(0, 0, 0, 0.7); /* Sombra sutil */
   background-color: #fff; /* Fondo blanco para los inputs */
 }
 
-.two_fields{
+.two_fields {
   display: flex;
   flex-direction: row;
   gap: 16px;
 }
 
-
-.register-form{
-  margin:0 20px;
+.register-form {
+  margin: 0 20px;
 }
 
-img.register-img{
+img.register-img {
   width: 100%;
 }
 
@@ -51,20 +54,19 @@ img.register-img{
   height: 2.5rem; /* Altura del botón */
 }
 
-.icon-return{
+.icon-return {
   margin-left: 20px;
-  color:#002248;
+  color: #002248;
   text-align: start;
 }
 
-.register-btn2{
-  color: #002248; 
+.register-btn2 {
+  color: #002248;
   font-style: italic;
   text-decoration: underline;
   align-self: flex-end;
   font-weight: bold;
 }
-
 
 @media (max-width: 900px) {
 
@@ -80,23 +82,26 @@ img.register-img{
     max-width: 100%;
   }
 
-  .register-container{
-    min-width: 80vw;
-    max-width: 98vw;
+  .register-container {
+    min-width: 100vw;
+    background-image: url("../assets/Group_136.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
   }
 
-  div.block-img{
+  div.block-img {
     display: none;
     width: 0;
   }
 
-  div.block-form{
+  div.block-form {
     width: 100%;
   }
 
-  .two_fields{
+  .two_fields {
     flex-direction: column;
-    gap:0;
+    gap: 0;
   }
 
     .sub-btn{
@@ -106,10 +111,8 @@ img.register-img{
   
 }
 
-
-@media (max-width: 520px){
-  
-  .register-title{
+@media (max-width: 520px) {
+  .register-title {
     font-size: 30px;
   }
 
