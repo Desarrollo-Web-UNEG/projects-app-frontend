@@ -68,6 +68,13 @@ img.register-img {
   font-weight: bold;
 }
 
+/* Aplica fuente y tamaño a los placeholders de todos los inputs del formulario */
+.register-form input::placeholder {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+}
+
 @media (max-width: 900px) {
   /* Reduce el margen superior del botón en móviles */
   .submit-btn {
