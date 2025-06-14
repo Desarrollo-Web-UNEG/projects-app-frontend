@@ -12,6 +12,8 @@ export default defineConfig({
     },
   },
   server: {
+    host: true,
+    allowedHosts: ["projects-app-frontend.onrender.com"],
     proxy: {
       "/api": {
         target: "https://projects-app-backend.onrender.com",
