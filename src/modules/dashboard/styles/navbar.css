@@ -1,3 +1,4 @@
+/* Estilos para pantallas grandes */
 .navbar {
   position: relative;
   width: 100%;
@@ -24,4 +25,34 @@ nav button {
   padding: 0;
   margin: 0 7.1vw;
   cursor: pointer;
+}
+
+/* Estilos para pantallas pequeñas */
+.menu-button {
+  position: absolute !important;
+  top: 1rem;
+  bottom: 1rem;
+  right: 1.5rem;
+  z-index: 3;
+  color: #fff !important;
+}
+
+.drawer-content {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  min-width: 180px;
+  gap: 1.5rem;
+}
+
+.drawer-content button {
+  /* Botones del menú desplegable */
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.menu-button svg {
+  font-size: 5rem; /* Ajusta este valor para cambiar el tamaño del dehaze */
 }
