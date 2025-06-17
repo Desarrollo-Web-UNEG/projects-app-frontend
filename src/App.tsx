@@ -1,5 +1,5 @@
 import "./App.css";
-import { Login, Register } from "@auth/pages";
+import { Dashboard, Login, Register } from "@auth/pages";
 import { Routes, Route } from "react-router-dom";
 import Comunicacion from "./modules/auth/pages/Prueba";
 
@@ -10,6 +10,7 @@ const App = () => {
         <Route path="/" element={<Login />} />,
         <Route path="register" element={<Register />} />
         <Route path="prueba" element={<Comunicacion />} />
+        <Route path="dashboard" element={<Dashboard />} />
       </Routes>
     </>
   );

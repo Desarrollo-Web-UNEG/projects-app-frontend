@@ -1,0 +1,17 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* para que ocupe todo el ancho disponible */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Línea roja justo debajo del Letterhead */
+.red-line {
+  width: 100%;
+  height: 10px;
+  background-color: #841d37; /* Color rojo institucional */
+  margin: 0; /* Elimina cualquier espacio extra */
+  padding: 0;
+}

@@ -1,0 +1,70 @@
+/* Contenedor principal del banner */
+.welcome-banner {
+  width: 90vw;                 /* Ancho 90% de la ventana, para aprovechar espacio */
+  max-width: 1600px;           /* Máximo ancho para no crecer demasiado */
+  height: auto;
+  margin: 3rem auto 4rem auto; /* Margen arriba 3rem, abajo 4rem, y auto a los lados para centrar */
+  padding-left: 2rem;          /* Padding lateral */
+  padding-right: 2rem;
+  background-color: #ffbf00;   /* Amarillo */
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  /* Puedes añadir sombra si quieres */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Responsive: en pantallas chicas cambiar flex a columna */
+@media (max-width: 768px) {
+  .welcome-banner {
+    flex-direction: column;
+    width: 90%;                /* Un poco más ancho en móvil */
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Texto */
+.banner-text {
+  flex: 1;
+  text-align: left;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+.banner-text h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.banner-text h1 span {
+  display: block;
+}
+
+.banner-text p {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #222;
+}
+
+/* Imagen */
+.banner-image {
+  width: 180px;
+  margin-left: 1.5rem;
+  position: relative;
+  top: -10px;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .banner-image {
+    width: 140px;
+    margin-left: 0;
+    margin-top: 1rem;
+    top: 0;
+  }
+}
