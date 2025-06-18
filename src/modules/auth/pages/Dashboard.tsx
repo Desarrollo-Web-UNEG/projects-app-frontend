@@ -1,5 +1,5 @@
 import "@auth/styles/dashboard.css";
-import { Letterhead, WelcomeBanner, ResumeCard } from "@auth/components";
+import { Letterhead, Banner, ResumeCard } from "@auth/components";
 import studentsImage from "@auth/assets/Group_135.png";
 
 const Dashboard = () => {
@@ -8,7 +8,7 @@ const Dashboard = () => {
       <Letterhead />
       <div className="red-line" />
 
-      <WelcomeBanner
+      <Banner
         line1="¡QUE BUENO VERTE,"
         line2="RINARDO!"
         subtitle="Revisa tus tareas, evalúa o entrega proyectos"

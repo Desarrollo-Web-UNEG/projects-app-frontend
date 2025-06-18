@@ -1,5 +1,5 @@
 /* Contenedor principal del banner */
-.welcome-banner {
+.banner {
   width: 90vw;                 /* Ancho 90% de la ventana, para aprovechar espacio */
   max-width: 1600px;           /* Máximo ancho para no crecer demasiado */
   height: auto;
@@ -20,7 +20,7 @@
 
 /* Responsive: en pantallas chicas cambiar flex a columna */
 @media (max-width: 768px) {
-  .welcome-banner {
+  .banner {
     flex-direction: column;
     width: 90%;                /* Un poco más ancho en móvil */
     padding-left: 1.5rem;

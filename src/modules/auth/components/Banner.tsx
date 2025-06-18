@@ -1,6 +1,6 @@
-import "../styles/welcomebanner.css";
+import "../styles/banner.css";
 
-interface WelcomeBannerProps {
+interface BannerProps {
   line1: string;         // Línea superior del título
   line2: string;         // Línea inferior del título
   subtitle: string;      // Subtítulo bajo el título
@@ -8,9 +8,9 @@ interface WelcomeBannerProps {
   altText?: string;      // Texto alternativo (opcional)
 }
 
-const WelcomeBanner = ({ line1, line2, subtitle, image, altText = "Imagen del banner" }: WelcomeBannerProps) => {
+const Banner = ({ line1, line2, subtitle, image, altText = "Imagen del banner" }: BannerProps) => {
   return (
-    <section className="welcome-banner">
+    <section className="banner">
       <div className="banner-text">
         <h1>
           <span>{line1}</span>
@@ -23,4 +23,4 @@ const WelcomeBanner = ({ line1, line2, subtitle, image, altText = "Imagen del ba
   );
 };
 
-export default WelcomeBanner;
+export default Banner;
