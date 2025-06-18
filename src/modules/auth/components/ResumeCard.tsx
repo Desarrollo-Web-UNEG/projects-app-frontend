@@ -1,25 +1,45 @@
 import "../styles/resumecard.css";
 
-const ResumeCard = () => {
+interface ResumeCardProps {
+  name: string;
+  career: string;
+  semester: string;
+  deliveredProjects: number;
+  pendingProjects: number;
+  lastGrade: string;
+  currentSubjects: number;
+  ranking: string;
+}
+
+const ResumeCard = ({
+  name,
+  career,
+  semester,
+  deliveredProjects,
+  pendingProjects,
+  lastGrade,
+  currentSubjects,
+  ranking,
+}: ResumeCardProps) => {
   return (
     <section className="resume-section">
-      {/* Información personal (negrita antes de los dos puntos) */}
+      {/* Información personal */}
       <div className="resume-info">
         <ul>
-          <li><strong>Nombre</strong>: Rinardo José Salazar Miranda</li>
-          <li><strong>Carrera</strong>: Ingeniería en Informática</li>
-          <li><strong>Semestre</strong>: 6to</li>
+          <li><strong>Nombre</strong>: {name}</li>
+          <li><strong>Carrera</strong>: {career}</li>
+          <li><strong>Semestre</strong>: {semester}</li>
         </ul>
       </div>
 
-      {/* Estadísticas académicas (negrita después de los dos puntos) */}
+      {/* Estadísticas académicas */}
       <div className="resume-stats">
         <ul>
-          <li>Proyectos entregados: <strong>4</strong></li>
-          <li>Proyectos pendientes: <strong>2</strong></li>
-          <li>Última calificación: <strong>19/25 (Proyecto CRUD)</strong></li>
-          <li>Materias en curso: <strong>7</strong></li>
-          <li>Ranking actual: <strong>#5 en la carrera</strong></li>
+          <li>Proyectos entregados: <strong>{deliveredProjects}</strong></li>
+          <li>Proyectos pendientes: <strong>{pendingProjects}</strong></li>
+          <li>Última calificación: <strong>{lastGrade}</strong></li>
+          <li>Materias en curso: <strong>{currentSubjects}</strong></li>
+          <li>Ranking actual: <strong>{ranking}</strong></li>
         </ul>
       </div>
     </section>

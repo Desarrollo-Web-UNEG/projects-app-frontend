@@ -1,17 +1,24 @@
-import studentsImage from "../assets/Group_135.png";
 import "../styles/welcomebanner.css";
 
-const WelcomeBanner = () => {
+interface WelcomeBannerProps {
+  line1: string;         // Línea superior del título
+  line2: string;         // Línea inferior del título
+  subtitle: string;      // Subtítulo bajo el título
+  image: string;         // Ruta de la imagen a mostrar
+  altText?: string;      // Texto alternativo (opcional)
+}
+
+const WelcomeBanner = ({ line1, line2, subtitle, image, altText = "Imagen del banner" }: WelcomeBannerProps) => {
   return (
     <section className="welcome-banner">
       <div className="banner-text">
         <h1>
-          <span>¡QUE BUENO VERTE,</span>
-          <span>RINARDO!</span>
+          <span>{line1}</span>
+          <span>{line2}</span>
         </h1>
-        <p>Revisa tus tareas, evalúa o entrega proyectos</p>
+        <p>{subtitle}</p>
       </div>
-      <img src={studentsImage} alt="Estudiantes" className="banner-image" />
+      <img src={image} alt={altText} className="banner-image" />
     </section>
   );
 };
