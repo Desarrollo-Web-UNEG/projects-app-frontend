@@ -1,5 +1,5 @@
 import "@auth/styles/dashboard.css";
-import { Letterhead, WelcomeBanner } from "@auth/components";
+import { Letterhead, Banner } from "@auth/components";
 import studentsImage from "@auth/assets/Group_135.png";
 
 
@@ -9,7 +9,7 @@ const Projects = () => {
       <Letterhead />
       <div className="red-line" />
 
-      <WelcomeBanner
+      <Banner
         line1="TUS ENTREGAS SON EL REFLEJO DE TU ESFUERZO Y"
         line2="DEFINEN TU AVANCE ACADÉMICO"
         subtitle="No olvides revisar el feedback de tus profesores y mejorar tus publicaciones."
