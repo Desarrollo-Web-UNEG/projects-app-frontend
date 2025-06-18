@@ -1,10 +1,10 @@
 import "@auth/styles/dashboard.css";
 import { Letterhead, WelcomeBanner, ResumeCard } from "@auth/components";
-import studentsImage from "@auth/assets/Group_135.png"; // Asegúrate de que esta ruta sea correcta
+import studentsImage from "@auth/assets/Group_135.png";
 
 const Dashboard = () => {
   return (
-    <div className="dashboard-container">
+    <div className="container">
       <Letterhead />
       <div className="red-line" />
 
@@ -15,8 +15,8 @@ const Dashboard = () => {
         image={studentsImage}
       />
 
-      <div className="resume-wrapper">
-        <h2 className="resume-title">Resumen</h2>
+      <div className="wrapper">
+        <h2 className="title">Resumen</h2>
       </div>
 
       <ResumeCard

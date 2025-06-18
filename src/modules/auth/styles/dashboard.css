@@ -1,4 +1,4 @@
-.dashboard-container {
+.container {
   display: flex;
   flex-direction: column;
   align-items: stretch; /* para que ocupe todo el ancho disponible */
@@ -16,14 +16,14 @@
   padding: 0;
 }
 
-.resume-wrapper {
+.wrapper {
   width: 90vw;
   max-width: 1200px;
   margin: 0 auto 0rem auto; /* menos margen inferior */
   padding: 0 1.5rem; /* coincide con ResumeCard horizontalmente */
 }
 
-.resume-title {
+.title {
   font-family: 'Poppins', sans-serif;
   font-size: 2.3rem;
   font-weight: 450;         /* más liviano */

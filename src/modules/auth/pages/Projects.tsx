@@ -1,11 +1,11 @@
-import "@auth/styles/projects.css";
+import "@auth/styles/dashboard.css";
 import { Letterhead, WelcomeBanner } from "@auth/components";
-import studentsImage from "@auth/assets/Group_135.png"; // Asegúrate de que la ruta sea correcta
+import studentsImage from "@auth/assets/Group_135.png";
 
 
 const Projects = () => {
   return (
-    <div className="projects-container">
+    <div className="container">
       <Letterhead />
       <div className="red-line" />
 
@@ -15,6 +15,11 @@ const Projects = () => {
         subtitle="No olvides revisar el feedback de tus profesores y mejorar tus publicaciones."
         image={studentsImage}
       />
+
+      <div className="wrapper">
+        <h2 className="title">Proyectos</h2>
+      </div>
+
     </div>
   );
 };
