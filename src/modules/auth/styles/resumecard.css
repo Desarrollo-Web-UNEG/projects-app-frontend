@@ -1,0 +1,56 @@
+/* Sección principal del resumen */
+.resume-section {
+  width: 90vw;
+  max-width: 1200px;
+  margin: 0.4rem auto;
+  padding: 0 1rem;
+  font-family: 'Poppins', sans-serif;
+  color: #0a2342;
+  text-align: left;
+}
+
+/* Tarjetas contenedoras */
+.resume-info,
+.resume-stats {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+/* Listas con viñetas */
+.resume-info ul,
+.resume-stats ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+/* Márgenes internos */
+.resume-info li,
+.resume-stats li {
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+}
+
+/* Negritas antes de los dos puntos */
+.resume-info li strong {
+  font-weight: 700;
+  color: #0a2342;
+}
+
+/* Negritas después de los dos puntos */
+.resume-stats li strong {
+  font-weight: 700;
+  color: #0a2342;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .resume-info,
+  .resume-stats {
+    padding: 1.2rem;
+    font-size: 1rem;
+  }
+}

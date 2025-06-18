@@ -1,5 +1,5 @@
 import "@auth/styles/dashboard.css";
-import { Letterhead, WelcomeBanner } from "@auth/components";
+import { Letterhead, WelcomeBanner, ResumeCard } from "@auth/components";
 
 const Dashboard = () => {
   return (
@@ -8,6 +8,11 @@ const Dashboard = () => {
       <div className="red-line" />
 
       <WelcomeBanner />
+
+      <div className="resume-wrapper">
+        <h2 className="resume-title">Resumen</h2>
+      </div>
+      <ResumeCard />
     </div>
   );
 };
