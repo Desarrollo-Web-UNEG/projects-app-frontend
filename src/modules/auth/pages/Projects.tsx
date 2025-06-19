@@ -1,5 +1,5 @@
 import "@auth/styles/dashboard.css";
-import { Letterhead, Banner } from "@auth/components";
+import { Letterhead, Banner, SearchFilter } from "@auth/components";
 import studentsImage from "@auth/assets/Group_135.png";
 
 
@@ -16,8 +16,9 @@ const Projects = () => {
         image={studentsImage}
       />
 
-      <div className="wrapper">
-        <h2 className="title">Proyectos</h2>
+      <div className="projects-header">
+        <h2 className="projects-title">Proyectos</h2>
+        <SearchFilter />
       </div>
 
     </div>
