@@ -15,6 +15,8 @@ nav {
   padding: 0 1vw 0 1vw; /* top right bottom left */
   z-index: 2;
   background: transparent;
+  color:white;
+  align-items: center;
 }
 
 nav button {
@@ -23,7 +25,8 @@ nav button {
   color: #fff;
   font: inherit;
   padding: 0;
-  margin: 0 7.1vw;
+  margin-right: 35px;
+  /* margin: 0 7.1vw; */
   cursor: pointer;
 }
 
@@ -53,6 +56,7 @@ nav button {
   cursor: pointer;
 }
 
+ /* Ajusta este valor para cambiar el tamaño del dehaze */
 .menu-button svg {
-  font-size: 5rem; /* Ajusta este valor para cambiar el tamaño del dehaze */
+  font-size: 3rem;
 }
