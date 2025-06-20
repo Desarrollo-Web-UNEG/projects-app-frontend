@@ -1,6 +1,7 @@
 import "@auth/styles/dashboard.css";
 import { Letterhead, Banner, SearchFilter } from "@auth/components";
-import studentsImage from "@auth/assets/Group_135.png";
+import { BannerStudents } from "@auth/assets";
+
 
 
 const Projects = () => {
@@ -13,7 +14,7 @@ const Projects = () => {
         line1="TUS ENTREGAS SON EL REFLEJO DE TU ESFUERZO Y"
         line2="DEFINEN TU AVANCE ACADÉMICO"
         subtitle="No olvides revisar el feedback de tus profesores y mejorar tus publicaciones."
-        image={studentsImage}
+        image={BannerStudents}
       />
 
       <div className="projects-header">
