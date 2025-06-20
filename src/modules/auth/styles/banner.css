@@ -3,7 +3,7 @@
   width: 90vw;                 /* Ancho 90% de la ventana, para aprovechar espacio */
   max-width: 1600px;           /* Máximo ancho para no crecer demasiado */
   height: auto;
-  margin: 1.5rem auto 2.5rem auto; /* Margen arriba 3rem, abajo 4rem, y auto a los lados para centrar */
+  margin: 2rem auto 2.5rem auto; /* Margen arriba 3rem, abajo 4rem, y auto a los lados para centrar */
   padding-top: 0.3rem;
   padding-left: 1rem;          /* Padding lateral */
   padding-right: 2rem;
@@ -32,7 +32,7 @@
 .banner-text {
   flex: 1;
   text-align: left;
-  color: #0a2342;
+  color: #002349;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -56,10 +56,9 @@
 
 /* Imagen */
 .banner-image {
-  width: 180px;
+  width: 230px;
   margin-left: 1.5rem;
   position: relative;
-  top: -10px;
   user-select: none;
 }
 

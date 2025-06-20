@@ -5,14 +5,14 @@
   margin: 0.4rem auto;
   padding: 0 1rem;
   font-family: 'Poppins', sans-serif;
-  color: #0a2342;
+  color: #002349;
   text-align: left;
 }
 
 /* Tarjetas contenedoras */
 .resume-info,
 .resume-stats {
-  background-color: #fff;
+  background-color: #FFFEFA;
   border-radius: 10px;
   padding: 1.5rem 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -36,14 +36,14 @@
 
 /* Negritas antes de los dos puntos */
 .resume-info li strong {
-  font-weight: 700;
-  color: #0a2342;
+  font-weight: 600;
+  color: #002349;
 }
 
 /* Negritas después de los dos puntos */
 .resume-stats li strong {
-  font-weight: 700;
-  color: #0a2342;
+  font-weight: 600;
+  color: #002349;
 }
 
 /* Responsive */

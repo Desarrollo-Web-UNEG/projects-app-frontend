@@ -1,6 +1,6 @@
 import "@auth/styles/dashboard.css";
 import { Letterhead, Banner, ResumeCard } from "@auth/components";
-import studentsImage from "@auth/assets/Group_135.png";
+import { BannerStudents } from "@auth/assets";
 
 const Dashboard = () => {
   return (
@@ -12,7 +12,7 @@ const Dashboard = () => {
         line1="¡QUE BUENO VERTE,"
         line2="RINARDO!"
         subtitle="Revisa tus tareas, evalúa o entrega proyectos"
-        image={studentsImage}
+        image={BannerStudents}
       />
 
       <div className="wrapper">
