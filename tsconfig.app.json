@@ -26,7 +26,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@auth/*": ["src/modules/auth/*"]
+      "@auth/*": ["src/modules/auth/*"],
+      "@dashboard/*": ["src/modules/dashboard/*"]
     }
   },
   "include": ["src"]
