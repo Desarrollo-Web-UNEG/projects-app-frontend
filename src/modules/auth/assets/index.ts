@@ -6,5 +6,4 @@ import letterHeadResponsive from "./letterhead-responsive.png";
 import BannerStudents from "./banner-dashboard-students.png"
 import BannerProjects from "./bannerprojects.png"
 
-export { imgTop, imgBottom, twoStudentsImg, letterHead, letterHeadResponsive };
-export { imgTop, imgBottom, twoStudentsImg, letterHead, BannerStudents, BannerProjects };
+export { imgTop, imgBottom, twoStudentsImg, letterHead, letterHeadResponsive, BannerStudents, BannerProjects};
