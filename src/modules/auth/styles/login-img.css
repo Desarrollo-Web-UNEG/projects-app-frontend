@@ -11,13 +11,3 @@
   max-width: 100%; /* No sobrepasa el ancho del contenedor */
   max-height: 119vh; /* Aumenta la altura máxima */
 }
-
-@media (max-width: 900px) {
-  .login-img {
-    max-width: 70vw;
-    max-height: 70vh;
-  }
-  .login-img-container {
-    margin-top: 6vh;
-  }
-}
