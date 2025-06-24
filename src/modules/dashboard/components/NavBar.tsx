@@ -6,13 +6,28 @@ import Drawer from "@mui/material/Drawer";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import "@dashboard/styles/navbar.css";
+import { Link } from "react-router-dom";
+
 
 // Botones del menú
 const menuButtons = (
   <>
+  <Link to="/dashboard">
     <button>Inicio</button>
+  </Link>
+
+  <Link to ="/projects">
     <button>Proyectos</button>
-    <button>Perfil</button>
+  </Link>
+
+  <Link to="/evaluations">
+    <button>Evaluaciones</button>
+  </Link>
+
+  <Link to="/perfil">
+     <button>Perfil</button>
+  </Link>
+   
     <button>Cerrar Sesión</button>
   </>
 );

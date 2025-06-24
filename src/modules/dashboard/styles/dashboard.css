@@ -23,12 +23,13 @@
   padding: 0 1.5rem; /* coincide con ResumeCard horizontalmente */
 }
 
-.title {
+
+.title-dashboard {
   font-family: 'Poppins', sans-serif;
   font-size: 2.3rem;
-  font-weight: 500;         /* más liviano */
+  font-weight: 500;        
   color: #002349;
-  margin: 0;                /* quita márgenes por completo */
+  margin: 0;               
   text-align: left;
 }
 

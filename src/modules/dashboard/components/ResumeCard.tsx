@@ -6,9 +6,9 @@ interface ResumeCardProps {
   semester: string;
   deliveredProjects: number;
   pendingProjects: number;
-  lastGrade: string;
+  // lastGrade: string;
   currentSubjects: number;
-  ranking: string;
+  // ranking: string;
 }
 
 const ResumeCard = ({
@@ -17,9 +17,9 @@ const ResumeCard = ({
   semester,
   deliveredProjects,
   pendingProjects,
-  lastGrade,
+  // lastGrade,
   currentSubjects,
-  ranking,
+  // ranking,
 }: ResumeCardProps) => {
   return (
     <section className="resume-section">
@@ -37,9 +37,9 @@ const ResumeCard = ({
         <ul>
           <li>Proyectos entregados: <strong>{deliveredProjects}</strong></li>
           <li>Proyectos pendientes: <strong>{pendingProjects}</strong></li>
-          <li>Última calificación: <strong>{lastGrade}</strong></li>
+          {/* <li>Última calificación: <strong>{lastGrade}</strong></li> */}
           <li>Materias en curso: <strong>{currentSubjects}</strong></li>
-          <li>Ranking actual: <strong>{ranking}</strong></li>
+          {/* <li>Ranking actual: <strong>{ranking}</strong></li> */}
         </ul>
       </div>
     </section>

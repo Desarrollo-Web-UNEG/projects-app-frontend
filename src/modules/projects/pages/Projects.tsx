@@ -1,20 +1,24 @@
-import "@auth/styles/dashboard.css";
-import { Letterhead, Banner, SearchFilter } from "@auth/components";
-import { BannerStudents } from "@auth/assets";
+import "@dashboard/styles/dashboard.css";
+import { NavBar } from "@dashboard/components";
+import { Letterhead } from "@auth/components";
+import {  Banner } from "@dashboard/components"
+import {  SearchFilter  } from "@/modules/projects/components"
+import { BannerProjects } from "@/modules/projects/assets";
 
 
 
 const Projects = () => {
   return (
     <div className="container">
-      <Letterhead />
+      <NavBar/>
+      {/* <Letterhead /> */}
       <div className="red-line" />
 
       <Banner
         line1="TUS ENTREGAS SON EL REFLEJO DE TU ESFUERZO Y"
         line2="DEFINEN TU AVANCE ACADÉMICO"
         subtitle="No olvides revisar el feedback de tus profesores y mejorar tus publicaciones."
-        image={BannerStudents}
+        image={BannerProjects}
       />
 
       <div className="projects-header">
