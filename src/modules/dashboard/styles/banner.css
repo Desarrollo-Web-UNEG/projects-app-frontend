@@ -1,0 +1,79 @@
+/* Contenedor principal del banner */
+.banner {
+  width: 90vw;                 /* Ancho 90% de la ventana, para aprovechar espacio */
+  max-width: 1600px;           /* Máximo ancho para no crecer demasiado */
+  height: auto;
+  margin: 2rem auto 2.5rem auto; /* Margen arriba 3rem, abajo 4rem, y auto a los lados para centrar */
+  padding-top: 0.3rem;
+  padding-left: 1rem;          /* Padding lateral */
+  padding-right: 2rem;
+  background-color: #f5b326;   /* Amarillo */
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  /* Puedes añadir sombra si quieres */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  justify-content: space-between
+}
+
+/* Responsive: en pantallas chicas cambiar flex a columna */
+@media (max-width: 768px) {
+  .banner {
+    flex-direction: column;
+    width: 90%;                /* Un poco más ancho en móvil */
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Texto */
+.banner-text {
+  flex: 1;
+  text-align: left;
+  color: #002349;
+  font-family: 'Poppins', sans-serif;
+}
+
+.banner-text h1 {
+  margin: 0;
+  font-size: 2.3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.banner-text h1 span {
+  display: block;
+}
+
+.banner-text p {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #0a2342;
+}
+
+/* Imagen */
+.banner-image {
+  width: 230px;
+  margin-left: 1.5rem;
+  position: relative;
+  user-select: none;
+  
+  /* Sobresale hacia arriba sin afectar el layout */
+  margin-top: -18px; /* ajusta este valor a tu gusto */
+  flex-shrink: 0;    /* evita que la imagen se reduzca en flex */
+  object-fit: contain; /* mantiene proporción sin recortar */
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .banner-image {
+    width: 140px;
+    margin-left: 0;
+    margin-top: 0;    /* en móvil que no sobresalga */
+    top: 0;
+    flex-shrink: 0;
+  }
+}

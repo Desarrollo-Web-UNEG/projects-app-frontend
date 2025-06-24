@@ -7,6 +7,7 @@ import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import "@dashboard/styles/navbar.css";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const theme = useTheme();
@@ -23,10 +24,22 @@ const NavBar = () => {
   // Botones del menú con logout funcional
   const menuButtons = (
     <>
-      <button>Inicio</button>
-      <button>Proyectos</button>
-      <button>Evaluaciones</button>
-      <button>Perfil</button>
+  <Link to="/dashboard">
+    <button>Inicio</button>
+  </Link>
+
+  <Link to ="/projects">
+    <button>Proyectos</button>
+  </Link>
+
+  <Link to="/evaluations">
+    <button>Evaluaciones</button>
+  </Link>
+
+  <Link to="/perfil">
+     <button>Perfil</button>
+  </Link>
+      
       <button onClick={handleLogout}>Cerrar Sesión</button>
     </>
   );

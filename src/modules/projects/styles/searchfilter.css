@@ -1,0 +1,102 @@
+/* Contenedor principal del filtro */
+.search-filter-container {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+  box-sizing: border-box;
+  margin: 0;                /* Quitamos márgenes que separan del título */
+  padding: 0;               /* Quitamos padding innecesario */
+  flex-wrap: wrap;          /* Para que se apilen en móvil */
+  justify-content: flex-end; /* Alinea el filtro a la derecha */
+}
+
+/* Input de búsqueda */
+.search-input-wrapper {
+  position: relative;
+  flex: 2 1 250px;          /* Más espacio para barra de búsqueda */
+  max-width: 500px;         /* Un poco más ancho */
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.6rem 2.2rem 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  color: #333;
+  background-color: #fdfdfd;
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;              /* Más pegado a la derecha */
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+}
+
+/* Envoltorio del selector de materias */
+.subject-select-wrapper {
+  position: relative;
+  border-radius: 999px;
+  padding: 0.4rem 2rem 0.4rem 1rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  color: white;            /* Texto blanco por defecto */
+  display: flex;
+  align-items: center;
+  flex: 0 1 auto;
+  min-width: 120px;        /* Tamaño mínimo para que no quede demasiado pequeño */
+  width: auto;             /* Se adapta al contenido */
+  background-color: #827f7f9e;  /* Fondo oscuro para que el texto blanco contraste */
+}
+
+/* Select limpio */
+.subject-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
+  width: auto;             /* Adaptable al texto */
+  outline: none;
+  z-index: 1;
+}
+
+/* Flecha personalizada del select */
+.custom-arrow {
+  position: absolute;
+  right: 1rem;
+  font-size: 0.8rem;
+  pointer-events: none;
+  color: white;            /* Flecha blanca */
+}
+
+/* Opciones del select */
+.subject-select option {
+  background-color: #222;  /* Fondo oscuro */
+  color: white;            /* Texto blanco */
+  padding: 0.2rem 1rem;
+}
+
+/* Al pasar el cursor sobre opciones */
+.subject-select option:hover,
+.subject-select option:focus {
+  background-color: #555;  /* Fondo un poco más claro en hover */
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .search-filter-container {
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+}
