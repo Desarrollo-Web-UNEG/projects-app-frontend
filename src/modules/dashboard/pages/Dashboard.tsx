@@ -1,10 +1,8 @@
 import { NavBar } from "@dashboard/components";
 import { useEffect } from "react";
 import "@dashboard/styles/dashboard.css";
-import { Letterhead } from "@auth/components";
 import { Banner, ResumeCard } from "@dashboard/components";
 import { BannerStudents } from "@dashboard/assets";
-
 
 const Dashboard = () => {
   useEffect(() => {
@@ -15,8 +13,8 @@ const Dashboard = () => {
   }, []);
 
   return (
-  <div className="container">
-     <NavBar />
+    <div className="container">
+      <NavBar />
       {/* <Letterhead /> */}
       <div className="red-line" />
 
@@ -42,7 +40,7 @@ const Dashboard = () => {
         // ranking="#5 en la carrera"
       />
     </div>
-  )
+  );
 };
 
 export default Dashboard;
