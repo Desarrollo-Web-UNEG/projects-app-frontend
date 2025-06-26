@@ -1,16 +1,13 @@
 import "@dashboard/styles/dashboard.css";
 import { NavBar } from "@dashboard/components";
-import { Letterhead } from "@auth/components";
-import {  Banner } from "@dashboard/components"
-import {  SearchFilter  } from "@/modules/projects/components"
+import { Banner } from "@dashboard/components";
+import { SearchFilter } from "@/modules/projects/components";
 import { BannerProjects } from "@/modules/projects/assets";
-
-
 
 const Projects = () => {
   return (
     <div className="container">
-      <NavBar/>
+      <NavBar />
       {/* <Letterhead /> */}
       <div className="red-line" />
 
@@ -25,7 +22,6 @@ const Projects = () => {
         <h2 className="projects-title">Proyectos</h2>
         <SearchFilter />
       </div>
-
     </div>
   );
 };
