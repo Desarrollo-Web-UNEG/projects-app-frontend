@@ -7,6 +7,8 @@ import { Dashboard } from "@dashboard/pages";
 import { Projects } from "@/modules/projects/pages";
 
 import ProtectedRoute from "@auth/components/ProtectedRoute"
+import { PanelControl } from "./modules/users/admin/pages";
+import Template from "./modules/users/admin/pages/Template";
 
 
 const App = () => {
@@ -23,8 +25,11 @@ const App = () => {
         </ProtectedRoute>
         } />
 
+        <Route path="panel-control" element={<PanelControl/>}></Route>
+
         <Route path="prueba" element={<Comunicacion />} />
         <Route path="projects" element={<Projects />} />
+        <Route path="template/:name" element={<Template />} />
       </Routes>
     </>
   );

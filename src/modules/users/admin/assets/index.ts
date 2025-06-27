@@ -1,0 +1,13 @@
+import BannerAdmin from "./imagen-admin-inicio.png";
+import Grade from "./calificacion.svg";
+import Category from "./categoria.svg";
+import Subject from "./materia.svg";
+import Technology from "./tecnologia.svg";
+import Criterion from "./criterio.svg";
+import Approval from "./aprobacion.svg";
+import Light from "./bombilla.svg";
+import Book from "./libro-abierto.svg";
+import Language from "./lenguaje-de-codificacion.svg";
+import Categ2 from "./categ.svg";
+
+export { BannerAdmin, Approval, Grade, Category, Subject, Technology, Criterion, Light, Book, Language, Categ2 };

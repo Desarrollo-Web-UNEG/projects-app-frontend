@@ -28,6 +28,10 @@ const NavBar = () => {
     <button>Inicio</button>
   </Link>
 
+  <button>Crear</button>
+
+  <button>Usuarios</button>
+
   <Link to ="/projects">
     <button>Proyectos</button>
   </Link>

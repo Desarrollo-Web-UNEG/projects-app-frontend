@@ -1,0 +1,28 @@
+.card-info{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 10px;
+    max-width: 100%;
+   margin: 30px auto;
+}
+
+.card-info div.card-info__item{
+    display: flex;
+    text-align: start;
+    padding: 8px;
+    width: 90%;
+    background-color: white;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+h3{
+    margin: 0
+}
+
+.card-info__item__text{
+    margin-left: 20px;
+}
+
