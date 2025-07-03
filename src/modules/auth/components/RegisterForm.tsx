@@ -6,6 +6,7 @@ import CallIcon from "@mui/icons-material/Call";
 import ContactEmergencyIcon from "@mui/icons-material/ContactEmergency";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
+import KeyIcon from '@mui/icons-material/Key';
 import "../styles/register-form.css";
 
 const RegisterForm = () => {
@@ -64,6 +65,25 @@ const RegisterForm = () => {
                 startAdornment: (
                   <InputAdornment position="start">
                     <EmailIcon />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </div>
+
+          <div>
+            <TextField
+              placeholder="Contraseña"
+              variant="outlined"
+              fullWidth
+              margin="dense"
+              type="text"
+              required
+              className="field"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <KeyIcon />
                   </InputAdornment>
                 ),
               }}
