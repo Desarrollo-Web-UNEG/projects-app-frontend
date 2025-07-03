@@ -51,6 +51,7 @@ nav button {
   border: none;
   font: inherit;
   cursor: pointer;
+  color: #002248;
 }
 
 .menu-button svg {
