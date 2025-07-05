@@ -36,6 +36,10 @@ const NavBar = () => {
     <button>Proyectos</button>
   </Link>
 
+  <Link to="/chatbot">
+    <button>Chatbot IA</button>
+  </Link>
+
   <Link to="/evaluations">
     <button>Evaluaciones</button>
   </Link>

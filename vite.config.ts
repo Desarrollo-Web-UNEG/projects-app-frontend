@@ -10,6 +10,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
       "@auth": path.resolve(__dirname, "./src/modules/auth"),
       "@dashboard": path.resolve(__dirname, "./src/modules/dashboard"),
+      "@chatbot": path.resolve(__dirname, "./src/modules/chatbot"),
     },
   },
   server: {
