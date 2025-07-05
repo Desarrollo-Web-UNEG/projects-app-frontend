@@ -11,9 +11,14 @@ const CardControl = ({ logo, name, altText = "logo descriptivo"}: CardControlPro
     
     const navigate = useNavigate();
 
+    const menu = ['Materias','Criterios','Tecnologias','Categorias', 'Aprobrar Usuarios']
+    
+
      const handleClick = () => {
-        // Redirige a la ruta deseada, puedes personalizar la ruta usando name
-        navigate(`/template/${name}`);
+        if(menu.includes(name)){
+
+            navigate(`/template/${name}`);
+        }
     };
 
     return (

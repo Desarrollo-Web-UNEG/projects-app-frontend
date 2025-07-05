@@ -9,6 +9,7 @@ import { Projects } from "@/modules/projects/pages";
 import ProtectedRoute from "@auth/components/ProtectedRoute"
 import { PanelControl } from "./modules/users/admin/pages";
 import Template from "./modules/users/admin/pages/Template";
+import { PanelControlTeacher } from "./modules/users/professor";
 
 
 const App = () => {
@@ -25,7 +26,9 @@ const App = () => {
         </ProtectedRoute>
         } />
 
-        <Route path="panel-control" element={<PanelControl/>}></Route>
+        <Route path="panel-control/:user_type" element={<PanelControl/>}></Route>
+        <Route path="panel-control-professor/:user_type" element={<PanelControlTeacher/>}></Route>
+        
 
         <Route path="prueba" element={<Comunicacion />} />
         <Route path="projects" element={<Projects />} />
