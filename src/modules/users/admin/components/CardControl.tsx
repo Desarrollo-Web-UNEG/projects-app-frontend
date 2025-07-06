@@ -30,7 +30,7 @@ const CardControl = ({
 
   return (
     <button className="button-control" onClick={handleClick}>
-      <img className="img-control" src={logo} alt={altText} />
+      <img className="img-control" src={logo} alt={altText} draggable="false" />
       <span className="text-control">{name}</span>
     </button>
   );
