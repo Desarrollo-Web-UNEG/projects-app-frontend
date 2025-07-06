@@ -27,7 +27,8 @@
     "paths": {
       "@/*": ["src/*"],
       "@auth/*": ["src/modules/auth/*"],
-      "@dashboard/*": ["src/modules/dashboard/*"]
+      "@dashboard/*": ["src/modules/dashboard/*"],
+      "@chatbot/*": ["src/modules/chatbot/*"]
     }
   },
   "include": ["src"]

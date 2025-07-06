@@ -1,0 +1,85 @@
+.suggestions-container {
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.suggestions-title {
+  margin-bottom: 16px !important;
+  color: #333 !important;
+  font-weight: 600 !important;
+  text-align: center;
+}
+
+.suggestions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  max-width: 100%;
+}
+
+.suggestion-chip {
+  height: auto !important;
+  padding: 12px 16px !important;
+  border-radius: 20px !important;
+  font-size: 0.9rem !important;
+  line-height: 1.4 !important;
+  white-space: normal !important;
+  text-align: left !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  border: none !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.suggestion-chip:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.suggestion-chip .MuiChip-icon {
+  margin-right: 8px !important;
+  font-size: 1.2rem !important;
+}
+
+.suggestion-chip .MuiChip-label {
+  padding: 0 !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .suggestions-container {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .suggestions-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .suggestion-chip {
+    padding: 10px 14px !important;
+    font-size: 0.85rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .suggestions-container {
+    padding: 12px;
+  }
+  
+  .suggestions-title {
+    font-size: 1.1rem !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .suggestion-chip {
+    padding: 8px 12px !important;
+    font-size: 0.8rem !important;
+  }
+} 

@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Comunicacion from "./modules/auth/pages/Prueba";
 import { Login, Register } from "@auth/pages";
 import { Dashboard } from "@dashboard/pages";
+import { ChatPage } from "./modules/chatbot/pages";
 
 import { Projects } from "@/modules/projects/pages";
 
@@ -32,6 +33,7 @@ const App = () => {
 
         <Route path="prueba" element={<Comunicacion />} />
         <Route path="projects" element={<Projects />} />
+        <Route path="chatbot" element={<ChatPage />} />
         <Route path="template/:name" element={<Template />} />
       </Routes>
     </>
