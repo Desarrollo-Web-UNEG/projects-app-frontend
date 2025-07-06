@@ -1,5 +1,5 @@
 import { Banner, NavBar } from "@/modules/dashboard/components";
-import { Approval, BannerAdmin, Category, Criterion, Grade, Subject, Technology } from "../assets";
+import { Approval, BannerAdmin, Category, Criterion, Grade, professordash, projects, students, Subject, Technology } from "../assets";
 import { CardControl } from "../components";
 import "../styles/card-control.css"
 import { useParams } from "react-router-dom";
@@ -7,6 +7,10 @@ import { useParams } from "react-router-dom";
 const PanelControl = () => {
 
     const { user_type } = useParams ();
+    
+    const name = localStorage.getItem('user_name') + " " + localStorage.getItem('user_lastname');
+
+
 
     return (
         <>
@@ -16,7 +20,7 @@ const PanelControl = () => {
             <>
             <Banner
              line1="¡QUE BUENO VERTE,"
-             line2="RINARDO!"
+             line2= {name ?? ""}
              subtitle="Tu panel está listo. Comienza a gestionar usuarios y supervisar el portal académico."
              image={BannerAdmin}
              />
@@ -63,28 +67,34 @@ const PanelControl = () => {
             </>
         ) : (
             <>
+   
+            <Banner
+             line1="¡QUE BUENO VERTE,"
+             line2= {name ?? ""}
+             subtitle="Tu panel está listo. Comienza a gestionar evaluaciones e interactuar con el portal académico."
+             image={professordash}
+             />
             
-            <h1>Vista profesor</h1>
             
             <div className="card-control">
             
             
             <CardControl
-             logo={Approval}
-             altText="Gestionar de usuarios"
-             name="Aprobrar Usuarios"
+             logo={students}
+             altText="Cargar alumnos"
+             name="Alumnos"
              />
 
              <CardControl
-             logo={Subject}
-             altText="Gestionar materias"
-             name="Materias"
+             logo={projects}
+             altText="Proyectos"
+             name="Proyectos"
              />
 
              <CardControl
-             logo={Criterion}
-             altText="Gestionar Criterios"
-             name="Criterios"
+             logo={Grade}
+             altText="Calificaciones"
+             name="Calificaciones"
              />
 
 

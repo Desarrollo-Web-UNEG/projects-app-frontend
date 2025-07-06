@@ -5,12 +5,15 @@ import Button from "./Button";
 interface CardInfoProps {
     title?: string;
     description?: string;
+    rol_type?: string;
     icon?: string;
-    isApprobated?:boolean;
+    isApprobated?: boolean;
+    userId?: string;
+    onActionSuccess?: (userId: string) => void;
 }
 
 
-const CardInfo = ({ icon=Light,title="Item x", description="Descripcion", isApprobated=false }: CardInfoProps) => {
+const CardInfo = ({ icon=Light, title="Item x", description="Descripcion", isApprobated=false, rol_type="", userId, onActionSuccess }: CardInfoProps) => {
     return (
         <>
 
@@ -24,12 +27,12 @@ const CardInfo = ({ icon=Light,title="Item x", description="Descripcion", isAppr
                     <div className="card-info__item__text">
                         <h3>{title}</h3>
                         <li>{description}</li>
+                        <li>{rol_type == 'professor' ? 'Profesor' : 'Estudiante'}</li>
                     </div>
                 
                 <div className="btn-align">
-                    <Button name='Aprobar' classComp='approbated'/>
-                    <Button name='Rechazar' classComp='denied'/>
-
+                    <Button name='Aprobar' classComp='approbated' userId={userId} onActionSuccess={onActionSuccess} />
+                    <Button name='Rechazar' classComp='denied' userId={userId} onActionSuccess={onActionSuccess} />
                 </div>
                   
                 </div>

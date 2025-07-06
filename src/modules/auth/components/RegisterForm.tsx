@@ -60,7 +60,7 @@ const RegisterForm = () => {
         last_name: lastName,
         address,
         user_type: userType,
-        birthdate, // <-- ¡Agrega esto!
+        birthdate, 
         email,
         phone_number: phoneNumber,
         id_number: idNumber,

@@ -1,4 +1,4 @@
-import { PanelControl } from "../admin/pages/";
+import { PanelControl } from "../../admin/pages";
 
 const PanelControlTeacher = ()=>{
 

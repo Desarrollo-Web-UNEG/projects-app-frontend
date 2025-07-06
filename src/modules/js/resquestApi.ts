@@ -20,7 +20,6 @@ export const requestApi = async ({
       data,
       ...(headers && { headers }),
     };
-    console.log(config)
 
     const response = await axios(config);
     return response.data;

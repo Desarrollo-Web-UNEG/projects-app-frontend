@@ -41,8 +41,11 @@ const LoginForm = () => {
       headers: { 'Content-Type': 'application/json' }
       });
       
-    // Guarda el token en localStorage
+    // Guarda el token,nombre,apellido y rol en localStorage
    localStorage.setItem('access_token', response.access_token);
+   localStorage.setItem('user_name', response.user.name)
+   localStorage.setItem('user_lastname', response.user.last_name)
+   localStorage.setItem('user_usertype', response.user.user_type)
     console.log(response);
 
       if(response.user.user_type == 'student'){
@@ -52,7 +55,7 @@ const LoginForm = () => {
       }else{
         navigate(`/panel-control-professor/:${response.user.user_type}`)
       }
-     
+
     } catch (err: any) {
       setError(err.response?.data?.message || "Error de autenticación");
     } finally {
