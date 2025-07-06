@@ -8,7 +8,7 @@ import {
   CircularProgress,
   Alert
 } from '@mui/material';
-import { Info as InfoIcon, CheckCircle as CheckIcon, Error as ErrorIcon } from '@mui/icons-material';
+import { CheckCircle as CheckIcon, Error as ErrorIcon } from '@mui/icons-material';
 import { chatService, type AIServiceInfo } from '../services/chatService';
 import './ServiceInfo.css';
 

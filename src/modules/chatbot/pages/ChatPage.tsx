@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
 import { Box, Container, Typography, Paper } from '@mui/material';
 import { SmartToy as BotIcon } from '@mui/icons-material';
-import { ChatInterface, ChatSuggestions, ServiceInfo } from '../components';
+import { ChatInterface, ChatSuggestions } from '../components';
 import { NavBar } from '@dashboard/components';
 import { useChat } from '../hooks/useChat';
 import './ChatPage.css';
 
 const ChatPage: React.FC = () => {
   const [showSuggestions, setShowSuggestions] = useState(true);
-  const { messages, isLoading, sendMessage, clearChat } = useChat();
+  const { messages, isLoading, sendMessage } = useChat();
 
   const handleSuggestionClick = async (suggestion: string) => {
     setShowSuggestions(false);
     await sendMessage(suggestion);
-  };
-
-  const handleFirstMessage = () => {
-    setShowSuggestions(false);
   };
 
   return (
@@ -41,8 +37,6 @@ const ChatPage: React.FC = () => {
         </Box>
 
         <Box className="chat-content">
-          {/* <ServiceInfo /> */}
-          
           {showSuggestions && (
             <ChatSuggestions onSuggestionClick={handleSuggestionClick} isLoading={isLoading} />
           )}
