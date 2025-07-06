@@ -51,7 +51,7 @@ const RegisterForm = () => {
 
     try {
       // Solicitud a la api
-      const response = await requestApi({
+      await requestApi({
         url: backendUrl,
         method: "POST",
         data: {
