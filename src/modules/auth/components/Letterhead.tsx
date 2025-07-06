@@ -19,12 +19,18 @@ const Letterhead = (props: Props) => {
         src={letterHeadResponsive}
         alt="Letterhead Responsive"
         className="letterhead"
+        draggable="false"
       />
       {children}
     </div>
   ) : (
     <div className="letterhead-container">
-      <img src={letterHead} alt="Letterhead" className="letterhead" />
+      <img
+        src={letterHead}
+        alt="Letterhead"
+        className="letterhead"
+        draggable="false"
+      />
       {children}
     </div>
   );

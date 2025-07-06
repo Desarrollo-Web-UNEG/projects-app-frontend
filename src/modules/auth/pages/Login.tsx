@@ -19,19 +19,19 @@ const Login = () => {
   return isMobile ? (
     <>
       <div className="login-img-top-container">
-        <img src={imgTop} className="login-img-top" />
+        <img src={imgTop} className="login-img-top" draggable="false" />
       </div>
       <div className="main-container">
         <LoginForm />
       </div>
       <div>
-        <img src={imgBottom} className="login-img-bottom" />
+        <img src={imgBottom} className="login-img-bottom" draggable="false" />
       </div>
     </>
   ) : (
     <div className="main-container">
       <div className="login-img-container">
-        <img src={twoStudentsImg} className="login-img" />
+        <img src={twoStudentsImg} className="login-img" draggable="false" />
       </div>
       <LoginForm />
     </div>
