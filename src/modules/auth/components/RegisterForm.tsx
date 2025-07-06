@@ -308,7 +308,7 @@ const RegisterForm = () => {
               variant="outlined"
               fullWidth
               margin="dense"
-              type="password"
+              type="text"
               required
               className="field"
               InputProps={{
