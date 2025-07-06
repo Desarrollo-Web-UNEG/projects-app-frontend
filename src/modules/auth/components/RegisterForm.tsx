@@ -10,6 +10,74 @@ import KeyIcon from "@mui/icons-material/Key";
 import "../styles/register-form.css";
 
 const RegisterForm = () => {
+
+  // Estados para cada campo del formulario
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [address, setAddress] = useState("");
+  const [userType, setUserType] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [idNumber, setIdNumber] = useState("");
+  const [securityQuestion, setSecurityQuestion] = useState("");
+  const [securityAnswer, setSecurityAnswer] = useState("");
+  // yearOfCreation se obtiene automáticamente antes de enviar
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [birthdate, setBirthdate] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    setSuccess("");
+    setLoading(true);
+
+    if (!userType) {
+      setError("Debes seleccionar un tipo de usuario.");
+      return;
+    }
+
+    const backendUrl = import.meta.env.PROD
+      ? "https://projects-app-backend.onrender.com/people/auth/register"
+      : "/api/people/auth/register";
+
+    // Obtener fecha actual del equipo en formato YYYY-MM-DD
+    const now = new Date();
+    const yearOfCreation = now.toISOString().split("T")[0];
+
+    try {
+      // Solicitud a la api
+      await requestApi({
+        url: backendUrl,
+        method: "POST",
+        data: {
+          name,
+          last_name: lastName,
+          address,
+          user_type: userType,
+          birthdate,
+          email,
+          phone_number: phoneNumber,
+          id_number: idNumber,
+          security_question: securityQuestion,
+          security_answer: securityAnswer,
+          yearOfCreation,
+          password,
+        },
+        headers: { "Content-Type": "application/json" },
+      });
+      setSuccess(
+        "Su solicitud fue enviada, debe esperar la aprobación del administrador."
+      );
+    } catch (err: any) {
+      setError(err.response?.data?.message || "Error al registrar usuario");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="register-container">
       {/* Bloque del formulario */}
