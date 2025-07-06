@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { requestApi } from "@/modules/js/resquestApi";
 import estudiantes from "../assets/Group_135.png";
 import { Button, TextField, InputAdornment } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
@@ -7,6 +9,7 @@ import ContactEmergencyIcon from "@mui/icons-material/ContactEmergency";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
 import KeyIcon from "@mui/icons-material/Key";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import "../styles/register-form.css";
 
 const RegisterForm = () => {
@@ -84,10 +87,12 @@ const RegisterForm = () => {
       <div className="block-form">
         <h1 className="register-title">Registro de Usuario</h1>
 
-        <form className="register-form">
+        <form className="register-form" onSubmit={handleSubmit}>
           <div className="two_fields">
             <TextField
               placeholder="Nombres"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               variant="outlined"
               fullWidth
               margin="dense"
@@ -104,6 +109,8 @@ const RegisterForm = () => {
             />
             <TextField
               placeholder="Apellidos"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
               variant="outlined"
               fullWidth
               margin="dense"
@@ -120,9 +127,64 @@ const RegisterForm = () => {
             />
           </div>
 
+          <div className="two_fields">
+            <TextField
+              placeholder="Dirección"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              variant="outlined"
+              fullWidth
+              margin="dense"
+              type="text"
+              required
+              className="field"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <LocationOnIcon />
+                  </InputAdornment>
+                ),
+              }}
+            />
+
+            <TextField
+              select
+              label=""
+              value={userType}
+              onChange={(e) => setUserType(e.target.value)}
+              variant="outlined"
+              fullWidth
+              margin="dense"
+              required
+              className="field"
+              SelectProps={{ native: true }}
+            >
+              <option value="" disabled>
+                Selecciona tipo de usuario
+              </option>
+              <option value="student">Estudiante</option>
+              <option value="professor">Profesor</option>
+            </TextField>
+          </div>
+          <div>
+            <TextField
+              label="Fecha de nacimiento"
+              value={birthdate}
+              onChange={(e) => setBirthdate(e.target.value)}
+              variant="outlined"
+              fullWidth
+              margin="dense"
+              type="date"
+              required
+              className="field"
+              InputLabelProps={{ shrink: true }}
+            />
+          </div>
           <div>
             <TextField
               placeholder="Correo Electrónico"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               variant="outlined"
               fullWidth
               margin="dense"
@@ -142,10 +204,12 @@ const RegisterForm = () => {
           <div>
             <TextField
               placeholder="Contraseña"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               variant="outlined"
               fullWidth
               margin="dense"
-              type="text"
+              type="password"
               required
               className="field"
               InputProps={{
@@ -161,12 +225,24 @@ const RegisterForm = () => {
           <div className="two_fields">
             <TextField
               placeholder="Teléfono"
+              value={phoneNumber}
+              onChange={(e) => {
+                // Solo permite números
+                const value = e.target.value.replace(/\D/g, "");
+                setPhoneNumber(value);
+              }}
               variant="outlined"
               fullWidth
               margin="dense"
               type="text"
               required
               className="field"
+              inputProps={{
+                inputMode: "numeric",
+                pattern: "[0-9]*",
+                maxLength: 11,
+                minLength: 11,
+              }}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -176,13 +252,25 @@ const RegisterForm = () => {
               }}
             />
             <TextField
-              placeholder="Nro de Cédula"
+              placeholder="Cédula"
+              value={idNumber}
+              onChange={(e) => {
+                // Solo permite números
+                const value = e.target.value.replace(/\D/g, "");
+                setIdNumber(value);
+              }}
               variant="outlined"
               fullWidth
               margin="dense"
               type="text"
               required
               className="field"
+              inputProps={{
+                inputMode: "numeric",
+                pattern: "[0-9]*",
+                maxLength: 8,
+                minLength: 8,
+              }}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -192,10 +280,11 @@ const RegisterForm = () => {
               }}
             />
           </div>
-
           <div>
             <TextField
-              placeholder="Pregunta de Seguridad"
+              placeholder="Pregunta de seguridad"
+              value={securityQuestion}
+              onChange={(e) => setSecurityQuestion(e.target.value)}
               variant="outlined"
               fullWidth
               margin="dense"
@@ -211,10 +300,11 @@ const RegisterForm = () => {
               }}
             />
           </div>
-
           <div>
             <TextField
-              placeholder="Respuesta"
+              placeholder="Respuesta de seguridad"
+              value={securityAnswer}
+              onChange={(e) => setSecurityAnswer(e.target.value)}
               variant="outlined"
               fullWidth
               margin="dense"
@@ -232,14 +322,19 @@ const RegisterForm = () => {
           </div>
 
           <Button
-            variant="contained"
             type="submit"
+            variant="contained"
+            color="primary"
             className="sub-btn"
             style={{ marginTop: "24px" }}
+            disabled={loading}
           >
-            Finalizar registro
+            {loading ? "Cargando..." : "Finalizar registro"}
           </Button>
         </form>
+
+        {error && <div className="login-error">{error}</div>}
+        {success && <div className="login-success">{success}</div>}
       </div>
 
       {/* Bloque de la imagen */}
