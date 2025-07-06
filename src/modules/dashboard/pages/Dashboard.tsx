@@ -5,6 +5,11 @@ import { Banner, ResumeCard } from "@dashboard/components";
 import { BannerStudents } from "@dashboard/assets";
 
 const Dashboard = () => {
+
+
+  const name = localStorage.getItem('user_name') + " " + localStorage.getItem('user_lastname');
+
+
   useEffect(() => {
     document.body.classList.add("dashboard-view");
     return () => {
@@ -20,7 +25,7 @@ const Dashboard = () => {
 
       <Banner
         line1="¡QUE BUENO VERTE,"
-        line2="RINARDO!"
+        line2= {name ?? ""}
         subtitle="Revisa tus tareas, evalúa o entrega proyectos"
         image={BannerStudents}
       />
@@ -30,9 +35,9 @@ const Dashboard = () => {
       </div>
 
       <ResumeCard
-        name="Rinardo José Salazar Miranda"
+        name= {name ?? ""}
         career="Ingeniería en Informática"
-        semester="6to"
+        // semester="6to"
         deliveredProjects={4}
         pendingProjects={2}
         // lastGrade="19/25 (Proyecto CRUD)"

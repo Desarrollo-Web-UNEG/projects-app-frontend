@@ -3,8 +3,10 @@ import { Button, TextField, InputAdornment } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import { useState } from "react";
-import axios from "axios";
 import "../styles/login-form.css";
+import {requestApi} from "@/modules/js/resquestApi"
+
+
 
 const adornemet = {
   email: ( <InputAdornment position="start"><EmailIcon /></InputAdornment>),
@@ -24,20 +26,36 @@ const LoginForm = () => {
     e.preventDefault();
     setError("");
     setLoading(true);
-    try {
-      const backendUrl = import.meta.env.PROD
+
+    const backendUrl = import.meta.env.PROD
         ? "https://projects-app-backend.onrender.com/auth/login"
         : "/api/auth/login";
-      const response = await axios.post(backendUrl, {
-        email,
-        password,
-      }, {
-        headers: { 'Content-Type': 'application/json' }
+
+    try {
+
+    // Solicitud a la api
+     const response = await requestApi({
+      url: backendUrl,
+      method: "POST",
+      data: { email, password },
+      headers: { 'Content-Type': 'application/json' }
       });
-      // Guarda el token en localStorage
-      localStorage.setItem('access_token', response.data.access_token);
-      // Redirige al dashboard
-      navigate("/dashboard");
+      
+    // Guarda el token,nombre,apellido y rol en localStorage
+   localStorage.setItem('access_token', response.access_token);
+   localStorage.setItem('user_name', response.user.name)
+   localStorage.setItem('user_lastname', response.user.last_name)
+   localStorage.setItem('user_usertype', response.user.user_type)
+    console.log(response);
+
+      if(response.user.user_type == 'student'){
+        navigate("/dashboard");
+      }else if(response.user.user_type =='admin'){
+        navigate(`/panel-control/${response.user.user_type}`);
+      }else{
+        navigate(`/panel-control-professor/:${response.user.user_type}`)
+      }
+
     } catch (err: any) {
       setError(err.response?.data?.message || "Error de autenticación");
     } finally {

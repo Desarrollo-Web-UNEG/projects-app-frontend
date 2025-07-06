@@ -3,7 +3,7 @@ import "../styles/resumecard.css";
 interface ResumeCardProps {
   name: string;
   career: string;
-  semester: string;
+  // semester: string;
   deliveredProjects: number;
   pendingProjects: number;
   // lastGrade: string;
@@ -14,7 +14,7 @@ interface ResumeCardProps {
 const ResumeCard = ({
   name,
   career,
-  semester,
+  // semester,
   deliveredProjects,
   pendingProjects,
   // lastGrade,
@@ -28,7 +28,7 @@ const ResumeCard = ({
         <ul>
           <li><strong>Nombre</strong>: {name}</li>
           <li><strong>Carrera</strong>: {career}</li>
-          <li><strong>Semestre</strong>: {semester}</li>
+          {/* <li><strong>Semestre</strong>: {semester}</li> */}
         </ul>
       </div>
 
