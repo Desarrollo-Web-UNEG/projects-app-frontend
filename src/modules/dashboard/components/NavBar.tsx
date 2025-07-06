@@ -24,26 +24,26 @@ const NavBar = () => {
   // Botones del menú con logout funcional
   const menuButtons = (
     <>
-  <Link to="/dashboard">
-    <button>Inicio</button>
-  </Link>
+      <Link to="/dashboard">
+        <button>Inicio</button>
+      </Link>
 
-  <button>Crear</button>
+      <button>Crear</button>
 
-  <button>Usuarios</button>
+      <button>Usuarios</button>
 
-  <Link to ="/projects">
-    <button>Proyectos</button>
-  </Link>
+      <Link to="/projects">
+        <button>Proyectos</button>
+      </Link>
 
-  <Link to="/evaluations">
-    <button>Evaluaciones</button>
-  </Link>
+      <Link to="/evaluations">
+        <button>Evaluaciones</button>
+      </Link>
 
-  <Link to="/perfil">
-     <button>Perfil</button>
-  </Link>
-      
+      <Link to="/perfil">
+        <button>Perfil</button>
+      </Link>
+
       <button onClick={handleLogout}>Cerrar Sesión</button>
     </>
   );
