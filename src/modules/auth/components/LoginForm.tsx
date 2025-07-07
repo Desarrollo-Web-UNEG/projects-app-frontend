@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button, TextField, InputAdornment } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useState } from "react";
 import "../styles/login-form.css";
 import {requestApi} from "@/modules/js/resquestApi"
@@ -19,6 +21,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   // Maneja el submit del formulario
@@ -85,12 +88,26 @@ const LoginForm = () => {
           variant="outlined"
           fullWidth
           margin="dense"
-          type="password"
+          type={showPassword ? "text" : "password"}
           className="password-field"
           required
           value={password}
           onChange={e => setPassword(e.target.value)}
-          slotProps={{ input: { startAdornment: adornemet.password }}}
+          InputProps={{
+            startAdornment: adornemet.password,
+            endAdornment: (
+              <InputAdornment position="end">
+                <button
+                  type="button"
+                  style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
+                  onClick={() => setShowPassword((show) => !show)}
+                  tabIndex={-1}
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </button>
+              </InputAdornment>
+            ),
+          }}
         />
         {error && <div className="login-error">{error}</div>}
         <div className="register-btn-container">

@@ -21,36 +21,76 @@ const NavBar = () => {
     navigate("/");
   };
 
-  // Botones del menú con logout funcional
-  const menuButtons = (
-    <>
-      <Link to="/dashboard">
-        <button>Inicio</button>
-      </Link>
+  const userType = localStorage.getItem("user_usertype");
 
-      <button>Crear</button>
+  let menuButtons;
+  if (userType === "professor") {
+    menuButtons = (
+      <>
+        <Link to="/dashboard">
+          <button>Inicio</button>
+        </Link>
+        <Link to="/projects">
+          <button>Proyectos</button>
+        </Link>
+        <Link to="/evaluations">
+          <button>Evaluaciones</button>
+        </Link>
+        <Link to="/chatbot">
+          <button>Chatbot IA</button>
+        </Link>
+        <button onClick={handleLogout}>Cerrar Sesión</button>
+      </>
+    );
+  } else if (userType === "student") {
 
-      <button>Usuarios</button>
+    menuButtons = (
+      <>
+        <Link to="/dashboard">
+          <button>Inicio</button>
+        </Link>
+        <Link to="/projects">
+          <button>Proyectos</button>
+        </Link>
+        <Link to="/evaluations">
+          <button>Evaluaciones</button>
+        </Link>
+        <Link to="/chatbot">
+          <button>Chatbot IA</button>
+        </Link>
+        <button onClick={handleLogout}>Cerrar Sesión</button>
+      </>
+    );
+  } else if (userType === "admin") {
 
-      <Link to="/projects">
-        <button>Proyectos</button>
-      </Link>
+    menuButtons = (
+      <>
+        <Link to="/dashboard">
+          <button>Inicio</button>
+        </Link>
 
+        <button>Crear</button>
 
-  <Link to="/chatbot">
-    <button>Chatbot IA</button>
-  </Link>
+        <button>Usuarios</button>
 
-  <Link to="/evaluations">
-    <button>Evaluaciones</button>
-  </Link>
-      <Link to="/perfil">
-        <button>Perfil</button>
-      </Link>
-      
-      <button onClick={handleLogout}>Cerrar Sesión</button>
-    </>
-  );
+        <Link to="/projects">
+          <button>Proyectos</button>
+        </Link>
+        <Link to="/chatbot">
+          <button>Chatbot IA</button>
+        </Link>
+        <Link to="/evaluations">
+          <button>Evaluaciones</button>
+        </Link>
+        <Link to="/perfil">
+          <button>Perfil</button>
+        </Link>
+
+        <button onClick={handleLogout}>Cerrar Sesión</button>
+      </>
+    );
+
+  }
 
   const toggleDrawer = (state: boolean) => () => setOpen(state);
 
