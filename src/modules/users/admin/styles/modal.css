@@ -1,4 +1,4 @@
-/* modal.css */
+/* Estilos base del modal */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  backdrop-filter: blur(2px);
 }
 
 .modal-box {
@@ -18,22 +19,31 @@
   max-width: 500px;
   padding: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .modal-box h2 {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  color: #333;
+  color: #2c3e50;
   border-bottom: 1px solid #e0e0e0;
   padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-/* Estilos específicos para coincidir con la foto */
+/* Sección de datos de usuario */
 .user-data-container {
   margin-bottom: 1.5rem;
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #eee;
 }
 
 .user-data-section {
@@ -43,8 +53,16 @@
 .user-data-section h3 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #333;
+  color: #34495e;
   margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-data-section h3::before {
+  content: "•";
+  color: #3498db;
 }
 
 .user-data-section h4 {
@@ -52,26 +70,31 @@
   font-weight: 500;
   color: #444;
   margin-bottom: 0.8rem;
-  background-color: #f5f5f5;
-  padding: 0.3rem 0.5rem;
+  background-color: #f0f7ff;
+  padding: 0.5rem;
   border-radius: 4px;
+  border-left: 3px solid #3498db;
 }
 
 .user-data-field {
   font-size: 0.9rem;
   color: #555;
   margin-bottom: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .user-data-field strong {
   font-weight: 600;
+  color: #2c3e50;
+  min-width: 120px;
 }
 
 .user-data-grid {
   display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 0.5rem;
-  margin-left: 0.5rem;
+  grid-template-columns: 120px 1fr;
+  gap: 0.8rem;
+  margin: 1rem 0;
 }
 
 .user-data-row {
@@ -80,134 +103,218 @@
 
 .user-data-row span {
   font-size: 0.9rem;
-  padding: 0.2rem 0;
+  padding: 0.4rem 0;
+  display: flex;
+  align-items: center;
 }
 
 .user-data-row span:first-child {
   font-weight: 500;
-  color: #666;
+  color: #7f8c8d;
 }
 
 .user-data-row span:last-child {
-  color: #333;
+  color: #2c3e50;
   font-weight: 400;
+  word-break: break-word;
 }
 
 .requester-section {
   margin-top: 1.5rem;
   padding-top: 1rem;
   border-top: 1px dashed #ddd;
+  background: #f5f9ff;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.requester-section p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
 }
 
 .requester-section strong {
   font-weight: 600;
-  color: #333;
+  color: #2c3e50;
+  min-width: 120px;
+  display: inline-block;
 }
 
-/* Botones */
-.modal-actions {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 1.5rem;
-  gap: 0.8rem;
-}
-
-.cancel-btn,
-.confirm-btn,
-.reject-btn {
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.cancel-btn {
-  background-color: #e0e0e0;
-  color: #333;
-}
-
-.cancel-btn:hover {
-  background-color: #d0d0d0;
-}
-
-.confirm-btn {
-  background-color: #2e7d32; /* Verde más oscuro como en la foto */
-  color: white;
-}
-
-.confirm-btn:hover {
-  background-color: #1b5e20;
-}
-
-.reject-btn {
-  background-color: #c62828; /* Rojo más oscuro */
-  color: white;
-}
-
-.reject-btn:hover {
-  background-color: #b71c1c;
-}
-
-/* Estilos específicos para el modal de materias */
-.subject-data-container {
+/* Sección de formulario para materias */
+.subject-form-container {
   margin: 1.5rem 0;
 }
 
-.subject-data-section {
-  margin-top: 1rem;
+.form-group {
+  margin-bottom: 1.2rem;
 }
 
-.subject-data-grid {
-  display: grid;
-  grid-template-rows: auto auto auto;
-  gap: 1.5rem;
-}
-
-.subject-data-row {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  align-items: start;
-  gap: 1rem;
-}
-
-.subject-data-row label {
+.form-group label {
+  display: block;
   font-weight: 500;
-  color: #555;
-  padding-top: 0.5rem;
+  color: #34495e;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
 }
 
-.subject-data-row input[type="text"],
-.subject-data-row textarea {
+.form-group input[type="text"],
+.form-group textarea {
   width: 100%;
   padding: 0.75rem;
   border: 1px solid #ddd;
   border-radius: 6px;
   font-family: inherit;
   font-size: 0.9rem;
+  transition: border 0.2s;
 }
 
-.subject-data-row textarea {
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.form-group textarea {
   resize: vertical;
   min-height: 100px;
 }
 
-.status-options {
-  display: flex;
-  gap: 1.5rem;
-  padding: 0.5rem 0;
-}
-
-.status-options label {
+.form-group-checkbox {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  cursor: pointer;
-  font-weight: normal;
+  margin-top: 1rem;
 }
 
-.status-options input[type="radio"] {
-  margin: 0;
+.form-group-checkbox label {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.form-group-checkbox input[type="checkbox"] {
+  width: auto;
+  cursor: pointer;
+}
+
+/* Botones del modal */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+  gap: 0.8rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.cancel-btn,
+.confirm-btn,
+.reject-btn {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.cancel-btn {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.cancel-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.confirm-btn {
+  background-color: #27ae60;
+  color: white;
+}
+
+.confirm-btn:hover {
+  background-color: #219653;
+}
+
+.reject-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.reject-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Efectos de hover y focus */
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .modal-box {
+    width: 95%;
+    padding: 1rem;
+  }
+  
+  .user-data-grid {
+    grid-template-columns: 100px 1fr;
+    gap: 0.5rem;
+  }
+  
+  .modal-actions {
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+  }
+  
+  .cancel-btn,
+  .confirm-btn,
+  .reject-btn {
+    width: 100%;
+  }
+}
+
+/* Animaciones */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-box {
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+/* Iconos (puedes reemplazar con tus iconos reales) */
+.modal-box h2::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Estilos específicos para el modal de confirmación */
+.confirmation-modal .modal-box {
+  max-width: 400px;
+  text-align: center;
+}
+
+.confirmation-message {
+  margin: 1.5rem 0;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
 }
