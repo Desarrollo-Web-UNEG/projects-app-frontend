@@ -1,0 +1,85 @@
+/* modal.css */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* fondo semitransparente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background-color: #ffffff;
+  width: 92%;
+  max-width: 500px;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  text-align: start;
+  font-family: inherit;
+}
+
+.modal-box h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.modal-box p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #444;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.cancel-btn,
+.confirm-btn {
+  padding: 0.6rem 1.2rem;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.cancel-btn {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.cancel-btn:hover {
+  background-color: #d4d4d4;
+}
+
+.confirm-btn {
+  background-color: #2d8f4e;
+  color: #ffffff;
+}
+
+.confirm-btn:hover {
+  background-color: #256f3d;
+}
+
+.reject-btn {
+  background-color: #dc3545; /* rojo para rechazo */
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+
+.reject-btn:hover {
+  background-color: #bb2d3b;
+}

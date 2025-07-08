@@ -5,6 +5,7 @@ import { Button, CardInfo, Search } from "../components";
 import { Book, Categ2, Language, Light, User } from "../assets";
 import "../styles/template.css";
 import { requestApi } from "@/modules/js/resquestApi";
+import Modal from "../components/Modal";
 
 const Template = () => {
   const iconMap: Record<string, string> = {
@@ -22,6 +23,10 @@ const Template = () => {
   const [pendingUsers, setPendingUsers] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Estados para modal y usuario seleccionado
+  const [selectedUser, setSelectedUser] = useState<any | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (name === "Aprobar Usuarios") {
@@ -44,9 +49,59 @@ const Template = () => {
     }
   }, [name]);
 
-  // Función para eliminar usuario aprobado/rechazado del estado
+  // Quitar usuario de la lista tras aprobar/rechazar
   const removePendingUser = (userId: string) => {
     setPendingUsers((prev) => prev.filter((user) => user.id !== userId));
+  };
+
+  // Abrir modal con usuario seleccionado
+  const handleOpenModal = (user: any) => {
+    setSelectedUser(user);
+    setIsModalOpen(true);
+  };
+
+  // Aprobar usuario
+  const handleApproveUser = () => {
+    const token = localStorage.getItem("access_token");
+    if (!selectedUser) return;
+
+    requestApi({
+      url: `https://projects-app-backend.onrender.com/people/admin/${selectedUser.id}/approve`,
+      method: "POST",
+      headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+    })
+      .then(() => {
+        removePendingUser(selectedUser.id);
+      })
+      .catch(() => {
+        alert("Error al aprobar usuario");
+      })
+      .finally(() => {
+        setIsModalOpen(false);
+        setSelectedUser(null);
+      });
+  };
+
+  // Rechazar usuario
+  const handleRejectUser = () => {
+    const token = localStorage.getItem("access_token");
+    if (!selectedUser) return;
+
+    requestApi({
+      url: `https://projects-app-backend.onrender.com/people/admin/${selectedUser.id}/reject`,
+      method: "POST",
+      headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+    })
+      .then(() => {
+        removePendingUser(selectedUser.id);
+      })
+      .catch(() => {
+        alert("Error al rechazar usuario");
+      })
+      .finally(() => {
+        setIsModalOpen(false);
+        setSelectedUser(null);
+      });
   };
 
   return (
@@ -94,8 +149,34 @@ const Template = () => {
               description={user._email || ""}
               userId={user.id}
               onActionSuccess={removePendingUser}
+              onClickApprove={() => handleOpenModal(user)}
             />
           ))}
+
+          <Modal
+            isOpen={isModalOpen}
+            title={`¿Aprobar o rechazar a ${selectedUser?.name}?`}
+            description={
+              <>
+                Estás a punto de decidir sobre el{" "}
+                <strong>
+                  {selectedUser?.user_type === "professor"
+                    ? "profesor"
+                    : "estudiante"}
+                </strong>{" "}
+                <em>
+                  {selectedUser?.name} {selectedUser?.last_name}
+                </em>
+                . ¿Qué deseas hacer?
+              </>
+            }
+            onClose={() => setIsModalOpen(false)}
+            onConfirm={handleApproveUser}
+            onReject={handleRejectUser}
+            confirmText="Sí, aprobar"
+            rejectText="Rechazar"
+            cancelText="Cancelar"
+          />
         </>
       )}
     </>

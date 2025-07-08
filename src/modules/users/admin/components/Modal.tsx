@@ -4,34 +4,50 @@ import "../styles/modal.css";
 type ModalProps = {
   isOpen: boolean;
   title: string;
-  description?: string;
+  description?: React.ReactNode;
   onClose: () => void;
   onConfirm: () => void;
+  onReject?: () => void;          // Nuevo
   confirmText?: string;
+  rejectText?: string;            // Nuevo
   cancelText?: string;
 };
 
-export const Modal: React.FC<ModalProps> = ({
+const Modal = ({
   isOpen,
   title,
   description,
   onClose,
   onConfirm,
+  onReject,
   confirmText = "Confirmar",
+  rejectText = "Rechazar",
   cancelText = "Cancelar",
-}) => {
+}: ModalProps) => {
   if (!isOpen) return null;
 
   return (
     <div className="modal-overlay">
       <div className="modal-box">
-        <h3>{title}</h3>
+        <h2>{title}</h2>
         {description && <p>{description}</p>}
         <div className="modal-actions">
-          <button onClick={onClose}>{cancelText}</button>
-          <button onClick={onConfirm}>{confirmText}</button>
+          {/* Botón rechazar solo si onReject está definido */}
+          {onReject && (
+            <button className="reject-btn" onClick={onReject}>
+              {rejectText}
+            </button>
+          )}
+          <button className="cancel-btn" onClick={onClose}>
+            {cancelText}
+          </button>
+          <button className="confirm-btn" onClick={onConfirm}>
+            {confirmText}
+          </button>
         </div>
       </div>
     </div>
   );
 };
+
+export default Modal;
