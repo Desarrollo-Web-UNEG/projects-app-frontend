@@ -155,28 +155,23 @@ const Template = () => {
 
           <Modal
             isOpen={isModalOpen}
-            title={`¿Aprobar o rechazar a ${selectedUser?.name}?`}
-            description={
-              <>
-                Estás a punto de decidir sobre el{" "}
-                <strong>
-                  {selectedUser?.user_type === "professor"
-                    ? "profesor"
-                    : "estudiante"}
-                </strong>{" "}
-                <em>
-                  {selectedUser?.name} {selectedUser?.last_name}
-                </em>
-                . ¿Qué deseas hacer?
-              </>
-            }
+            title="Confirmar acción"
+            userData={{
+              name: selectedUser?.name || "",
+              lastName: selectedUser?.last_name || "",
+              email: selectedUser?.email || "",
+              phone: selectedUser?.phone || "",
+              id: selectedUser?.id || "",
+              role: selectedUser?.user_type === "professor" ? "Profesor" : "Estudiante",
+              requestDate: new Date().toLocaleDateString(), // Puedes ajustar esto según tus datos reales
+            }}
             onClose={() => setIsModalOpen(false)}
             onConfirm={handleApproveUser}
             onReject={handleRejectUser}
-            confirmText="Sí, aprobar"
+            confirmText="Aprobar"
             rejectText="Rechazar"
             cancelText="Cancelar"
-          />
+        />
         </>
       )}
     </>
