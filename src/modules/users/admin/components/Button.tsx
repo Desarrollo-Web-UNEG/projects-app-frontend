@@ -1,5 +1,6 @@
 import { requestApi } from "@/modules/js/resquestApi";
 import "../styles/button.css"
+import React from "react";
 
 interface ButtonProps {
     name: string;
@@ -11,7 +12,6 @@ interface ButtonProps {
 }
 
 
-import React from "react";
 
 const Button: React.FC<ButtonProps> = ({ name, classComp, userId, onActionSuccess, projectId, onClick }) => {
     const actionButton = async () => {
@@ -48,36 +48,11 @@ const Button: React.FC<ButtonProps> = ({ name, classComp, userId, onActionSucces
         }
     };
 
-
-    const token = localStorage.getItem("access_token");
-    let endpoint = "";
-    if (name === "Aprobar") {
-      endpoint = `https://projects-app-backend.onrender.com/people/admin/${userId}/approve`;
-    } else if (name === "Rechazar") {
-      endpoint = `https://projects-app-backend.onrender.com/people/admin/${userId}/reject`;
-    } else {
-      return;
-    }
-
-    try {
-      await requestApi({
-        url: endpoint,
-        method: "POST",
-        headers: token ? { Authorization: `Bearer ${token}` } : undefined,
-      });
-      if (onActionSuccess && userId) {
-        onActionSuccess(userId);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  return (
-    <button className={classComp} onClick={actionButton}>
-      {name}
-    </button>
-  );
+    return (
+        <button className={classComp} onClick={actionButton}>
+            {name}
+        </button>
+    );
 };
 
 export default Button;
