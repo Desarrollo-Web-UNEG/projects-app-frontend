@@ -37,7 +37,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ messages, isLoading, send
   };
 
   return (
-    <Box className="chat-container">
+    <Box className="chat-content-center">
       <Paper className="chat-paper" elevation={3}>
         {/* Header */}
         <Box className="chat-header">

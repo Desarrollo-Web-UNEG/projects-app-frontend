@@ -42,16 +42,9 @@ const ChatSuggestions: React.FC<ChatSuggestionsProps> = ({ onSuggestionClick, is
     }
   ];
 
-  const getCategoryColor = (category: string) => {
-    const colors = {
-      programming: '#667eea',
-      database: '#11998e',
-      architecture: '#764ba2',
-      algorithms: '#f093fb',
-      web: '#4facfe'
-    };
-    return colors[category as keyof typeof colors] || '#667eea';
-  };
+  const colorClasses = [
+    "suggestion-burgundy",
+  ];
 
   return (
     <Box className="suggestions-container">
@@ -65,12 +58,7 @@ const ChatSuggestions: React.FC<ChatSuggestionsProps> = ({ onSuggestionClick, is
             label={suggestion.text}
             icon={suggestion.icon}
             onClick={() => onSuggestionClick(suggestion.text)}
-            className="suggestion-chip"
-            style={{
-              backgroundColor: getCategoryColor(suggestion.category),
-              color: 'white',
-              fontWeight: 500
-            }}
+            className={`suggestion-chip ${colorClasses[index % colorClasses.length]}`}
             clickable
             disabled={isLoading}
           />
