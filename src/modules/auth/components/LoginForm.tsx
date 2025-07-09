@@ -49,6 +49,7 @@ const LoginForm = () => {
    localStorage.setItem('user_name', response.user.name)
    localStorage.setItem('user_lastname', response.user.last_name)
    localStorage.setItem('user_usertype', response.user.user_type)
+   localStorage.setItem('user_id', response.user.id)
     console.log(response);
 
       if(response.user.user_type == 'student'){
