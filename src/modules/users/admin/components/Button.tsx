@@ -48,11 +48,36 @@ const Button: React.FC<ButtonProps> = ({ name, classComp, userId, onActionSucces
         }
     };
 
-    return (
-        <button className={classComp} onClick={actionButton}>
-            {name}
-        </button>
-    );
+
+    const token = localStorage.getItem("access_token");
+    let endpoint = "";
+    if (name === "Aprobar") {
+      endpoint = `https://projects-app-backend.onrender.com/people/admin/${userId}/approve`;
+    } else if (name === "Rechazar") {
+      endpoint = `https://projects-app-backend.onrender.com/people/admin/${userId}/reject`;
+    } else {
+      return;
+    }
+
+    try {
+      await requestApi({
+        url: endpoint,
+        method: "POST",
+        headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+      });
+      if (onActionSuccess && userId) {
+        onActionSuccess(userId);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return (
+    <button className={classComp} onClick={actionButton}>
+      {name}
+    </button>
+  );
 };
 
 export default Button;
