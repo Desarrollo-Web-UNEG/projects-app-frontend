@@ -4,6 +4,6 @@ import Button from './Button';
 import Search from './Search';
 import Modal from './Modal'
 import CreateModal from './CreateModal';
-import MateriasSection  from './sections/MateriasSection';
+import CreateCriteriaModal from './CreateCriteriaModal';
 
-export {CardControl, CardInfo, Button, Search, Modal, CreateModal, MateriasSection}
+export {CardControl, CardInfo, Button, Search, Modal, CreateModal, CreateCriteriaModal}

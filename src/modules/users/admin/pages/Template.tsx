@@ -7,7 +7,8 @@ import "../styles/template.css";
 import { requestApi } from "@/modules/js/resquestApi";
 import CreateModal from "../components/CreateModal";
 import Modal from "../components/Modal";
-import MateriasSection from "../components/sections/MateriasSection";
+import CreateCriteriaModal from "../components/CreateCriteriaModal";
+import CreateTechnologyModal from "../components/CreateTechnologyModal";
 
 const Template = () => {
   const iconMap: Record<string, string> = {
@@ -36,6 +37,10 @@ const Template = () => {
   const [selectedUser, setSelectedUser] = useState<any | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [isCreateCriteriaModalOpen, setIsCreateCriteriaModalOpen] = useState(false);
+  const [isCreateTechnologyModalOpen, setIsCreateTechnologyModalOpen] = useState(false);
+
+
 
   useEffect(() => {
     if (!name) return;
@@ -183,6 +188,46 @@ const handleCreateCategory = () => {
     .finally(() => setLoading(false));
 };
 
+const handleCreateCriteria = () => {
+  const token = localStorage.getItem("access_token");
+  setLoading(true);
+
+  requestApi({
+    url: "https://projects-app-backend.onrender.com/judgements",
+    method: "GET",
+    headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+  })
+    .then((data) => {
+      setJudgements(Array.isArray(data) ? data : []);
+      setError(null);
+    })
+    .catch(() => {
+      setError("Error al cargar los criterios");
+      setJudgements([]);
+    })
+    .finally(() => setLoading(false));
+};
+
+const handleCreateTechnology = () => {
+  const token = localStorage.getItem("access_token");
+  setLoading(true);
+
+  requestApi({
+    url: "https://projects-app-backend.onrender.com/technology",
+    method: "GET",
+    headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+  })
+    .then((data) => {
+      setTechnology(Array.isArray(data) ? data : []);
+      setError(null);
+    })
+    .catch(() => {
+      setError("Error al cargar las tecnologías");
+      setTechnology([]);
+    })
+    .finally(() => setLoading(false));
+};
+
   // Renderizar sección de Materias
   const renderMateriasSection = () => (
     <div>
@@ -225,25 +270,45 @@ const handleCreateCategory = () => {
   );
 
   // Renderizar sección de Criterios
-  const renderCriteriosSection = () => (
-    <div>
-      <div className="search-button-container">
-        <div className="inside-control-search">
-          <h2 className="st-h2">Criterios</h2>
-          <Search />
-          <Button name="Crear Criterios" classComp="btn" />
-        </div>
-      </div>
-      {judgements.map((judgement, idx) => (
-        <CardInfo
-          key={idx}
-          icon={Light}
-          title={judgement.name || judgement.title}
-          description={judgement.description}
+const renderCriteriosSection = () => (
+  <div>
+    <div className="search-button-container">
+      <div className="inside-control-search">
+        <h2 className="st-h2">Criterios</h2>
+        <Search />
+        <Button
+          name="Crear Criterios"
+          classComp="btn"
+          onClick={() => setIsCreateCriteriaModalOpen(true)}
         />
-      ))}
+      </div>
     </div>
-  );
+
+    {loading && <p>Cargando criterios...</p>}
+    {error && <p style={{ color: "red" }}>{error}</p>}
+    {!loading && !error && judgements.length === 0 && (
+      <p>No hay criterios registrados.</p>
+    )}
+
+    {judgements.map((judgement, idx) => (
+      <CardInfo
+        key={idx}
+        icon={Light}
+        title={judgement.name || judgement.title}
+        description={judgement.description}
+      />
+    ))}
+
+    {/* Modal para crear criterio */}
+    <CreateCriteriaModal
+      isOpen={isCreateCriteriaModalOpen}
+      onClose={() => setIsCreateCriteriaModalOpen(false)}
+      onSuccess={handleCreateCriteria}
+      title="Crear Nuevo Criterio"
+      endpoint="https://projects-app-backend.onrender.com/judgements"
+    />
+  </div>
+);
 
   // Renderizar sección de Categorías
   const renderCategoriasSection = () => (
@@ -287,25 +352,44 @@ const handleCreateCategory = () => {
   );
 
   // Renderizar sección de Tecnologías
-  const renderTecnologiasSection = () => (
-    <div>
-      <div className="search-button-container">
-        <div className="inside-control-search">
-          <h2 className="st-h2">Tecnologías</h2>
-          <Search />
-          <Button name="Crear Tecnologías" classComp="btn" />
-        </div>
-      </div>
-      {technology.map((tech, idx) => (
-        <CardInfo
-          key={idx}
-          icon={Language}
-          title={tech.name}
-          description={tech.description}
+const renderTecnologiasSection = () => (
+  <div>
+    <div className="search-button-container">
+      <div className="inside-control-search">
+        <h2 className="st-h2">Tecnologías</h2>
+        <Search />
+        <Button
+          name="Crear Tecnologías"
+          classComp="btn"
+          onClick={() => setIsCreateTechnologyModalOpen(true)}
         />
-      ))}
+      </div>
     </div>
-  );
+
+    {loading && <p>Cargando tecnologías...</p>}
+    {error && <p style={{ color: "red" }}>{error}</p>}
+    {!loading && !error && technology.length === 0 && (
+      <p>No hay tecnologías registradas.</p>
+    )}
+
+    {technology.map((tech, idx) => (
+      <CardInfo
+        key={idx}
+        icon={Language}
+        title={tech.name}
+      />
+    ))}
+
+    {/* Modal para crear tecnología */}
+    <CreateTechnologyModal
+      isOpen={isCreateTechnologyModalOpen}
+      onClose={() => setIsCreateTechnologyModalOpen(false)}
+      onSuccess={handleCreateTechnology}
+      title="Crear Nueva Tecnología"
+      endpoint="https://projects-app-backend.onrender.com/technology"
+    />
+  </div>
+);
 
   // Renderizar sección de Calificaciones
   const renderCalificacionesSection = () => (
