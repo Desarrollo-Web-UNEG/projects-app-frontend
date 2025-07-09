@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/modal.css"; // Asegúrate de que esta ruta sea correcta
+import "../styles/createcriteriamodal.css"; // Asegúrate de que esta ruta sea correcta
 
 interface CreateCriteriaModalProps {
   isOpen: boolean;

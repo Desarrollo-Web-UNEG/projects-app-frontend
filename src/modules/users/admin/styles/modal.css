@@ -1,261 +1,156 @@
-/* Estilos base del modal */
+/* modal.css */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(154, 147, 147, 0.64); /* Fondo semitransparente */
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   z-index: 1000;
-  backdrop-filter: blur(2px);
 }
 
 .modal-box {
-  background-color: #ffffff;
-  width: 90%;
-  max-width: 500px;
-  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 1); /* Fondo blanco puro */
   border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  max-height: 90vh;
-  overflow-y: auto;
-  animation: modalFadeIn 0.3s ease-out;
+  padding: 30px;
+  width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 34, 72, 0.2); /* Sombra con color azul oscuro */
+  font-family: Arial, sans-serif;
+  border: 1px solid rgba(0, 35, 73, 0.1); /* Borde sutil azul oscuro */
 }
 
 .modal-box h2 {
-  font-size: 1.5rem;
+  margin: 0 0 25px 0;
+  color: rgba(0, 35, 73, 1); /* Azul oscuro */
+  font-size: 1.5em;
   font-weight: 600;
-  margin-bottom: 1.5rem;
-  color: #2c3e50;
-  border-bottom: 1px solid #e0e0e0;
-  padding-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  text-align: left;
 }
 
-/* Datos de usuario */
 .user-data-container {
-  margin-bottom: 1.5rem;
-  background: #f9f9f9;
-  padding: 1rem;
+  margin-bottom: 25px;
+}
+
+.user-data-container h3 {
+  font-size: 1.3em;
+  color: rgba(0, 35, 73, 1); /* Azul oscuro */
+  margin: 0 0 20px 0;
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 35, 73, 0.2); /* Borde azul claro */
+  padding-bottom: 10px;
+}
+
+.user-data-section {
+  margin-bottom: 25px;
+  background-color: rgba(255, 254, 250, 1); /* Fondo blanco cálido */
+  padding: 20px;
   border-radius: 6px;
-  border: 1px solid #eee;
+  border: 1px solid rgba(0, 35, 73, 0.1); /* Borde sutil */
 }
 
 .user-data-section h4 {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #444;
-  margin-bottom: 0.8rem;
-  background-color: #f0f7ff;
-  padding: 0.5rem;
-  border-radius: 4px;
-  border-left: 3px solid #3498db;
+  font-size: 1.2em;
+  color: rgba(0, 35, 73, 1); /* Azul oscuro */
+  margin: 0 0 20px 0;
+  font-weight: 600;
+  text-align: left;
 }
 
 .user-data-field {
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 0.5rem;
-  display: flex;
-  gap: 0.5rem;
+  margin: 0 0 20px 0;
+  padding: 0;
+  text-align: left;
+  font-size: 1em;
+  color: rgba(0, 35, 73, 0.9); /* Azul oscuro */
+}
+
+.user-data-field strong {
+  font-weight: 600;
+  color: rgba(0, 35, 73, 1); /* Azul oscuro */
 }
 
 .user-data-grid {
   display: grid;
   grid-template-columns: 120px 1fr;
-  gap: 0.8rem;
-  margin: 1rem 0;
+  gap: 12px;
+  margin-top: 15px;
 }
 
 .user-data-row {
   display: contents;
 }
 
+.user-data-row span {
+  padding: 8px 12px;
+  font-size: 1em;
+}
+
 .user-data-row span:first-child {
-  font-weight: 500;
-  color: #7f8c8d;
+  font-weight: 600;
+  color: rgba(0, 35, 73, 1); /* Azul oscuro */
+  background-color: rgba(255, 254, 250, 1); /* Fondo blanco cálido */
 }
 
 .user-data-row span:last-child {
-  color: #2c3e50;
-  font-weight: 400;
-  word-break: break-word;
+  color: rgba(0, 35, 73, 0.9); /* Azul oscuro */
+  background-color: rgba(255, 255, 255, 1); /* Fondo blanco */
+  border-left: 1px solid rgba(0, 35, 73, 0.1); /* Borde sutil */
 }
 
-.requester-section {
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px dashed #ddd;
-  background: #f5f9ff;
-  padding: 1rem;
-  border-radius: 6px;
-}
-
-.requester-section p {
-  margin: 0.3rem 0;
-  font-size: 0.9rem;
-}
-
-.requester-section strong {
-  font-weight: 600;
-  color: #2c3e50;
-  min-width: 120px;
-  display: inline-block;
-}
-
-/* Formulario para materias */
-.subject-form-container {
-  margin: 1.5rem 0;
-}
-
-.form-group {
-  margin-bottom: 1.2rem;
-}
-
-.form-group label {
-  display: block;
-  font-weight: 500;
-  color: #34495e;
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
-}
-
-.form-group input[type="text"],
-.form-group textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-family: inherit;
-  font-size: 0.9rem;
-  transition: border 0.2s;
-}
-
-.form-group input[type="text"]:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
-}
-
-.form-group textarea {
-  resize: vertical;
-  min-height: 100px;
-}
-
-.form-group-checkbox {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-.form-group-checkbox label {
-  margin-bottom: 0;
-  cursor: pointer;
-}
-
-.form-group-checkbox input[type="checkbox"] {
-  width: auto;
-  cursor: pointer;
-}
-
-/* Botones del modal */
+/* Botones */
 .modal-actions {
   display: flex;
-  justify-content: flex-end;
-  margin-top: 1.5rem;
-  gap: 0.8rem;
-  padding-top: 1rem;
-  border-top: 1px solid #eee;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 30px;
 }
 
-.cancel-btn,
-.confirm-btn,
-.reject-btn {
-  padding: 0.6rem 1.2rem;
-  font-size: 0.9rem;
-  font-weight: 500;
+.modal-actions button {
+  padding: 12px 25px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.cancel-btn {
-  background-color: #f1f1f1;
-  color: #333;
-}
-
-.cancel-btn:hover {
-  background-color: #e0e0e0;
-}
-
-.confirm-btn {
-  background-color: #27ae60;
-  color: white;
-}
-
-.confirm-btn:hover {
-  background-color: #219653;
+  font-weight: 600;
+  font-size: 1em;
+  transition: all 0.2s;
+  flex: 1;
+  max-width: 120px;
 }
 
 .reject-btn {
-  background-color: #e74c3c;
+  background-color: rgba(141, 37, 56, 1); /* Rojo vino */
   color: white;
+  order: 1;
+}
+
+.cancel-btn {
+  background-color: rgba(255, 254, 250, 1); /* Blanco cálido */
+  color: rgba(0, 35, 73, 1); /* Azul oscuro */
+  border: 1px solid rgba(0, 35, 73, 0.3); /* Borde azul */
+  order: 2;
+}
+
+.confirm-btn {
+  background-color: rgba(7, 73, 10, 1); /* Verde oscuro */
+  color: white;
+  order: 3;
 }
 
 .reject-btn:hover {
-  background-color: #c0392b;
+  background-color: rgba(120, 30, 48, 1);
+  transform: translateY(-2px);
 }
 
-/* Efectos y responsive */
-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.5);
+.cancel-btn:hover {
+  background-color: rgba(0, 35, 73, 0.05);
+  transform: translateY(-2px);
 }
 
-@media (max-width: 480px) {
-  .modal-box {
-    width: 95%;
-    padding: 1rem;
-  }
-
-  .user-data-grid {
-    grid-template-columns: 100px 1fr;
-    gap: 0.5rem;
-  }
-
-  .modal-actions {
-    flex-direction: column-reverse;
-    gap: 0.5rem;
-  }
-
-  .cancel-btn,
-  .confirm-btn,
-  .reject-btn {
-    width: 100%;
-  }
-}
-
-/* Animación */
-@keyframes modalFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.confirm-btn:hover {
+  background-color: rgba(5, 60, 8, 1);
+  transform: translateY(-2px);
 }

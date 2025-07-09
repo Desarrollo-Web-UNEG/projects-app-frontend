@@ -11,8 +11,6 @@ type ModalProps = {
     id?: string;
     role?: string;
     requestDate?: string;
-    requesterName?: string;
-    requesterDate?: string;
   };
   onClose: () => void;
   onConfirm: () => void;
@@ -48,7 +46,7 @@ const Modal = ({
               <h4>Verifica la Solicitud de Usuario</h4>
               
               <p className="user-data-field">
-                <strong>Fecha de Solicitud:</strong> {userData.requestDate || "27/06/2026"}
+                <strong>Fecha de Solicitud:</strong> {userData.requestDate || "27/05/2025"}
               </p>
 
               <div className="user-data-grid">
@@ -59,13 +57,13 @@ const Modal = ({
                 
                 <div className="user-data-row">
                   <span>Correo:</span>
-                  <span>{userData.email || "loogg@gmail.com"}</span>
+                  <span>{userData.email || "izagg@gmail.com"}</span>
                 </div>
                 
                 <div className="user-data-row">
                   <span>Nombre:</span>
                   <span>
-                    {userData.name || "Isobelio Esterionio"} {userData.lastName || "Gonzalez García"}
+                    {userData.name || "Isobelio Estefanía"} {userData.lastName || "Gonzalez García"}
                   </span>
                 </div>
                 
@@ -80,12 +78,7 @@ const Modal = ({
                 </div>
               </div>
             </div>
-
-            <div className="requester-section">
-              <p><strong>Solicitador</strong></p>
-              <p>{userData.requesterName || "Isobelia Guadalupe Paparella Salazar"}</p>
-              <p><strong>Fecha de solicitud:</strong> {userData.requesterDate || "28/06/2026"}</p>
-            </div>
+            {/* Se eliminó la sección del soción */}
           </div>
         )}
 

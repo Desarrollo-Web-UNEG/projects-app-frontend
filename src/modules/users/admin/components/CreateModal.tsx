@@ -1,4 +1,4 @@
-import "../styles/modal.css";
+import "../styles/createmodal.css";
 import { useState } from "react";
 import { requestApi } from "@/modules/js/resquestApi";
 
@@ -6,8 +6,8 @@ type CreateModalProps = {
   isOpen: boolean;
   onClose: () => void;
   onSuccess: () => void;
-  endpoint: string; // 👈 Endpoint dinámico
-  title: string;    // 👈 Título dinámico
+  endpoint: string;
+  title: string;
 };
 
 const CreateModal = ({ isOpen, onClose, onSuccess, endpoint, title }: CreateModalProps) => {
@@ -31,7 +31,7 @@ const CreateModal = ({ isOpen, onClose, onSuccess, endpoint, title }: CreateModa
 
     try {
       await requestApi({
-        url: endpoint, // 🔁 Aquí es dinámico
+        url: endpoint,
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -64,9 +64,9 @@ const CreateModal = ({ isOpen, onClose, onSuccess, endpoint, title }: CreateModa
 
         <div className="user-data-container">
           <div className="user-data-section">
-            <h4>Información</h4>
+            <h4>Datos de la Categoría</h4>
 
-            <div className="user-data-row">
+            <div className="form-group">
               <label>Nombre:</label>
               <input
                 type="text"
@@ -76,7 +76,7 @@ const CreateModal = ({ isOpen, onClose, onSuccess, endpoint, title }: CreateModa
               />
             </div>
 
-            <div className="user-data-row">
+            <div className="form-group">
               <label>Descripción:</label>
               <textarea
                 value={form.description}
@@ -85,25 +85,47 @@ const CreateModal = ({ isOpen, onClose, onSuccess, endpoint, title }: CreateModa
               />
             </div>
 
-            <div className="user-data-row">
-              <label>
-                <input
-                  type="checkbox"
-                  checked={form.isActive}
-                  onChange={() => setForm({ ...form, isActive: !form.isActive })}
-                />
-                Activa
-              </label>
+            <div className="divider"></div>
+
+            <div className="status-section">
+              <h5>Estatus:</h5>
+              <div className="checkbox-group">
+                <label className="checkbox-label">
+                  <input
+                    type="checkbox"
+                    checked={form.isActive}
+                    onChange={() => setForm({ ...form, isActive: !form.isActive })}
+                  />
+                  <span className="checkbox-custom"></span>
+                  Activo
+                </label>
+                <label className="checkbox-label">
+                  <input
+                    type="checkbox"
+                    checked={!form.isActive}
+                    onChange={() => setForm({ ...form, isActive: !form.isActive })}
+                  />
+                  <span className="checkbox-custom"></span>
+                  Inactivo
+                </label>
+              </div>
             </div>
           </div>
         </div>
 
         <div className="modal-actions">
-          <button className="cancel-btn" onClick={onClose}>
+          <button className="cancel-btn" onClick={onClose} disabled={loading}>
             Cancelar
           </button>
           <button className="confirm-btn" onClick={handleCreate} disabled={loading}>
-            {loading ? "Creando..." : "Crear"}
+            {loading ? (
+              <span className="loading-text">
+                Creando...
+                <span className="loading-spinner"></span>
+              </span>
+            ) : (
+              "Crear"
+            )}
           </button>
         </div>
       </div>
