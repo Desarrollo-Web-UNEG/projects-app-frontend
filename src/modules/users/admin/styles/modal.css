@@ -23,6 +23,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   max-height: 90vh;
   overflow-y: auto;
+  animation: modalFadeIn 0.3s ease-out;
 }
 
 .modal-box h2 {
@@ -37,32 +38,13 @@
   gap: 0.5rem;
 }
 
-/* Sección de datos de usuario */
+/* Datos de usuario */
 .user-data-container {
   margin-bottom: 1.5rem;
   background: #f9f9f9;
   padding: 1rem;
   border-radius: 6px;
   border: 1px solid #eee;
-}
-
-.user-data-section {
-  margin-bottom: 1.2rem;
-}
-
-.user-data-section h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #34495e;
-  margin-bottom: 0.8rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.user-data-section h3::before {
-  content: "•";
-  color: #3498db;
 }
 
 .user-data-section h4 {
@@ -84,12 +66,6 @@
   gap: 0.5rem;
 }
 
-.user-data-field strong {
-  font-weight: 600;
-  color: #2c3e50;
-  min-width: 120px;
-}
-
 .user-data-grid {
   display: grid;
   grid-template-columns: 120px 1fr;
@@ -99,13 +75,6 @@
 
 .user-data-row {
   display: contents;
-}
-
-.user-data-row span {
-  font-size: 0.9rem;
-  padding: 0.4rem 0;
-  display: flex;
-  align-items: center;
 }
 
 .user-data-row span:first-child {
@@ -140,7 +109,7 @@
   display: inline-block;
 }
 
-/* Sección de formulario para materias */
+/* Formulario para materias */
 .subject-form-container {
   margin: 1.5rem 0;
 }
@@ -250,29 +219,28 @@
   background-color: #c0392b;
 }
 
-/* Efectos de hover y focus */
+/* Efectos y responsive */
 button:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.5);
 }
 
-/* Responsive */
 @media (max-width: 480px) {
   .modal-box {
     width: 95%;
     padding: 1rem;
   }
-  
+
   .user-data-grid {
     grid-template-columns: 100px 1fr;
     gap: 0.5rem;
   }
-  
+
   .modal-actions {
     flex-direction: column-reverse;
     gap: 0.5rem;
   }
-  
+
   .cancel-btn,
   .confirm-btn,
   .reject-btn {
@@ -280,7 +248,7 @@ button:focus {
   }
 }
 
-/* Animaciones */
+/* Animación */
 @keyframes modalFadeIn {
   from {
     opacity: 0;
@@ -290,31 +258,4 @@ button:focus {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.modal-box {
-  animation: modalFadeIn 0.3s ease-out;
-}
-
-/* Iconos (puedes reemplazar con tus iconos reales) */
-.modal-box h2::before {
-  content: "";
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-/* Estilos específicos para el modal de confirmación */
-.confirmation-modal .modal-box {
-  max-width: 400px;
-  text-align: center;
-}
-
-.confirmation-message {
-  margin: 1.5rem 0;
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.5;
 }

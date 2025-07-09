@@ -6,40 +6,52 @@ interface ButtonProps {
     classComp: string;
     userId?: string;
     onActionSuccess?: (userId: string) => void;
+    onClick?: () => void;  // <-- Agregado onClick externo opcional
 }
 
-const Button = ({ name, classComp, userId, onActionSuccess }: ButtonProps) => {
-    const actionButton = async () => {
-        const token = localStorage.getItem("access_token");
-        let endpoint = "";
-        if (name === "Aprobar") {
-            endpoint = `https://projects-app-backend.onrender.com/people/admin/${userId}/approve`;
-        } else if (name === "Rechazar") {
-            endpoint = `https://projects-app-backend.onrender.com/people/admin/${userId}/reject`;
-        } else {
-            return;
-        }
+const Button = ({
+  name,
+  classComp,
+  userId,
+  onActionSuccess,
+  onClick,
+}: ButtonProps) => {
 
-        try {
-            await requestApi({
-                url: endpoint,
-                method: "POST",
-                headers: token ? { Authorization: `Bearer ${token}` } : undefined,
-            });
-            // Llama a la función para actualizar el estado en el padre
-            if (onActionSuccess && userId) {
-                onActionSuccess(userId);
-            }
-        } catch (error) {
-          console.error(error);
-        }
-    };
+  const actionButton = async () => {
+    if (onClick) {
+      onClick();  // Si se pasa onClick externo, ejecutarlo y salir
+      return;
+    }
 
-    return (
-        <button className={classComp} onClick={actionButton}>
-            {name}
-        </button>
-    );
+    const token = localStorage.getItem("access_token");
+    let endpoint = "";
+    if (name === "Aprobar") {
+      endpoint = `https://projects-app-backend.onrender.com/people/admin/${userId}/approve`;
+    } else if (name === "Rechazar") {
+      endpoint = `https://projects-app-backend.onrender.com/people/admin/${userId}/reject`;
+    } else {
+      return;
+    }
+
+    try {
+      await requestApi({
+        url: endpoint,
+        method: "POST",
+        headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+      });
+      if (onActionSuccess && userId) {
+        onActionSuccess(userId);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return (
+    <button className={classComp} onClick={actionButton}>
+      {name}
+    </button>
+  );
 };
 
 export default Button;
