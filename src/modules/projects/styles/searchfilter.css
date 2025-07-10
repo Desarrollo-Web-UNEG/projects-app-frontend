@@ -7,7 +7,7 @@
   margin: 0;                /* Quitamos márgenes que separan del título */
   padding: 0;               /* Quitamos padding innecesario */
   flex-wrap: wrap;          /* Para que se apilen en móvil */
-  justify-content: flex-end; /* Alinea el filtro a la derecha */
+  justify-content: flex-start; /* Alinea el filtro a la derecha */
 }
 
 /* Input de búsqueda */
@@ -15,6 +15,11 @@
   position: relative;
   flex: 2 1 250px;          /* Más espacio para barra de búsqueda */
   max-width: 500px;         /* Un poco más ancho */
+}
+
+.search-and-button{
+  display: flex;
+  gap: 10px;
 }
 
 .search-input {
@@ -96,7 +101,7 @@
 @media (max-width: 768px) {
   .search-filter-container {
     justify-content: center;
-    gap: 0.8rem;
+    /* gap: 0.8rem; */
     margin-top: 1rem;
   }
 }
