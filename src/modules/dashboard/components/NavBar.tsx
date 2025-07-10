@@ -36,9 +36,6 @@ const NavBar = () => {
         <Link to="/evaluations">
           <button>Evaluaciones</button>
         </Link>
-        <Link to="/chatbot">
-          <button>Chatbot IA</button>
-        </Link>
         <button onClick={handleLogout}>Cerrar Sesión</button>
       </>
     );
@@ -75,9 +72,6 @@ const NavBar = () => {
 
         <Link to="/projects">
           <button>Proyectos</button>
-        </Link>
-        <Link to="/chatbot">
-          <button>Chatbot IA</button>
         </Link>
         <Link to="/evaluations">
           <button>Evaluaciones</button>
