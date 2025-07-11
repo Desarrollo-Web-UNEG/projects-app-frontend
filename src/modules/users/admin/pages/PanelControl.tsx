@@ -12,6 +12,7 @@ import {
   Technology,
 } from "../assets";
 import { CardControl } from "../components";
+import { CardControlTeacher } from "../../professor/components";
 import "../styles/card-control.css";
 import { useParams } from "react-router-dom";
 
@@ -84,15 +85,19 @@ const PanelControl = () => {
           />
 
           <div className="card-control">
-            <CardControl
+            <CardControlTeacher
               logo={students}
               altText="Cargar alumnos"
               name="Alumnos"
             />
 
-            <CardControl logo={projects} altText="Proyectos" name="Proyectos" />
+            <CardControlTeacher
+              logo={projects}
+              altText="Proyectos"
+              name="Proyectos"
+            />
 
-            <CardControl
+            <CardControlTeacher
               logo={Grade}
               altText="Calificaciones"
               name="Calificaciones"

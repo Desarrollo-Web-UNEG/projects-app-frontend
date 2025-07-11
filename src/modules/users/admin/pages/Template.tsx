@@ -37,10 +37,10 @@ const Template = () => {
   const [selectedUser, setSelectedUser] = useState<any | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-  const [isCreateCriteriaModalOpen, setIsCreateCriteriaModalOpen] = useState(false);
-  const [isCreateTechnologyModalOpen, setIsCreateTechnologyModalOpen] = useState(false);
-
-
+  const [isCreateCriteriaModalOpen, setIsCreateCriteriaModalOpen] =
+    useState(false);
+  const [isCreateTechnologyModalOpen, setIsCreateTechnologyModalOpen] =
+    useState(false);
 
   useEffect(() => {
     if (!name) return;
@@ -49,30 +49,34 @@ const Template = () => {
     const token = localStorage.getItem("access_token");
 
     const endpoints: Record<string, string> = {
-      "Aprobar Usuarios": "https://projects-app-backend.onrender.com/people/admin/pending",
-      "Materias": "https://projects-app-backend.onrender.com/subjects",
-      "Criterios": "https://projects-app-backend.onrender.com/judgements",
-      "Categorias": "https://projects-app-backend.onrender.com/categories",
-      "Tecnologias": "https://projects-app-backend.onrender.com/technology",
-      "Calificaciones": "https://projects-app-backend.onrender.com/scores",
+      "Aprobar Usuarios":
+        "https://projects-app-backend.onrender.com/people/admin/pending",
+      Materias: "https://projects-app-backend.onrender.com/subjects",
+      Criterios: "https://projects-app-backend.onrender.com/judgements",
+      Categorias: "https://projects-app-backend.onrender.com/categories",
+      Tecnologias: "https://projects-app-backend.onrender.com/technology",
+      Calificaciones: "https://projects-app-backend.onrender.com/scores",
     };
 
-    const stateSetters: Record<string, React.Dispatch<React.SetStateAction<any[]>>> = {
+    const stateSetters: Record<
+      string,
+      React.Dispatch<React.SetStateAction<any[]>>
+    > = {
       "Aprobar Usuarios": setPendingUsers,
-      "Materias": setSubjects,
-      "Criterios": setJudgements,
-      "Categorias": setCategories,
-      "Tecnologias": setTechnology,
-      "Calificaciones": setScores,
+      Materias: setSubjects,
+      Criterios: setJudgements,
+      Categorias: setCategories,
+      Tecnologias: setTechnology,
+      Calificaciones: setScores,
     };
 
     const errorMessages: Record<string, string> = {
       "Aprobar Usuarios": "Error al cargar usuarios pendientes",
-      "Materias": "Error al cargar las materias",
-      "Criterios": "Error al cargar los criterios",
-      "Categorias": "Error al cargar las categorías",
-      "Tecnologias": "Error al cargar las tecnologías",
-      "Calificaciones": "Error al cargar las calificaciones",
+      Materias: "Error al cargar las materias",
+      Criterios: "Error al cargar los criterios",
+      Categorias: "Error al cargar las categorías",
+      Tecnologias: "Error al cargar las tecnologías",
+      Calificaciones: "Error al cargar las calificaciones",
     };
 
     requestApi({
@@ -168,65 +172,65 @@ const Template = () => {
   };
 
   // Recargar categorías luego de crear una nueva
-const handleCreateCategory = () => {
-  const token = localStorage.getItem("access_token");
-  setLoading(true);
+  const handleCreateCategory = () => {
+    const token = localStorage.getItem("access_token");
+    setLoading(true);
 
-  requestApi({
-    url: "https://projects-app-backend.onrender.com/categories",
-    method: "GET",
-    headers: token ? { Authorization: `Bearer ${token}` } : undefined,
-  })
-    .then((data) => {
-      setCategories(Array.isArray(data) ? data : []);
-      setError(null);
+    requestApi({
+      url: "https://projects-app-backend.onrender.com/categories",
+      method: "GET",
+      headers: token ? { Authorization: `Bearer ${token}` } : undefined,
     })
-    .catch(() => {
-      setError("Error al cargar las categorías");
-      setCategories([]);
-    })
-    .finally(() => setLoading(false));
-};
+      .then((data) => {
+        setCategories(Array.isArray(data) ? data : []);
+        setError(null);
+      })
+      .catch(() => {
+        setError("Error al cargar las categorías");
+        setCategories([]);
+      })
+      .finally(() => setLoading(false));
+  };
 
-const handleCreateCriteria = () => {
-  const token = localStorage.getItem("access_token");
-  setLoading(true);
+  const handleCreateCriteria = () => {
+    const token = localStorage.getItem("access_token");
+    setLoading(true);
 
-  requestApi({
-    url: "https://projects-app-backend.onrender.com/judgements",
-    method: "GET",
-    headers: token ? { Authorization: `Bearer ${token}` } : undefined,
-  })
-    .then((data) => {
-      setJudgements(Array.isArray(data) ? data : []);
-      setError(null);
+    requestApi({
+      url: "https://projects-app-backend.onrender.com/judgements",
+      method: "GET",
+      headers: token ? { Authorization: `Bearer ${token}` } : undefined,
     })
-    .catch(() => {
-      setError("Error al cargar los criterios");
-      setJudgements([]);
-    })
-    .finally(() => setLoading(false));
-};
+      .then((data) => {
+        setJudgements(Array.isArray(data) ? data : []);
+        setError(null);
+      })
+      .catch(() => {
+        setError("Error al cargar los criterios");
+        setJudgements([]);
+      })
+      .finally(() => setLoading(false));
+  };
 
-const handleCreateTechnology = () => {
-  const token = localStorage.getItem("access_token");
-  setLoading(true);
+  const handleCreateTechnology = () => {
+    const token = localStorage.getItem("access_token");
+    setLoading(true);
 
-  requestApi({
-    url: "https://projects-app-backend.onrender.com/technology",
-    method: "GET",
-    headers: token ? { Authorization: `Bearer ${token}` } : undefined,
-  })
-    .then((data) => {
-      setTechnology(Array.isArray(data) ? data : []);
-      setError(null);
+    requestApi({
+      url: "https://projects-app-backend.onrender.com/technology",
+      method: "GET",
+      headers: token ? { Authorization: `Bearer ${token}` } : undefined,
     })
-    .catch(() => {
-      setError("Error al cargar las tecnologías");
-      setTechnology([]);
-    })
-    .finally(() => setLoading(false));
-};
+      .then((data) => {
+        setTechnology(Array.isArray(data) ? data : []);
+        setError(null);
+      })
+      .catch(() => {
+        setError("Error al cargar las tecnologías");
+        setTechnology([]);
+      })
+      .finally(() => setLoading(false));
+  };
 
   // Renderizar sección de Materias
   const renderMateriasSection = () => (
@@ -270,45 +274,45 @@ const handleCreateTechnology = () => {
   );
 
   // Renderizar sección de Criterios
-const renderCriteriosSection = () => (
-  <div>
-    <div className="search-button-container">
-      <div className="inside-control-search">
-        <h2 className="st-h2">Criterios</h2>
-        <Search />
-        <Button
-          name="Crear Criterios"
-          classComp="btn"
-          onClick={() => setIsCreateCriteriaModalOpen(true)}
-        />
+  const renderCriteriosSection = () => (
+    <div>
+      <div className="search-button-container">
+        <div className="inside-control-search">
+          <h2 className="st-h2">Criterios</h2>
+          <Search />
+          <Button
+            name="Crear Criterios"
+            classComp="btn"
+            onClick={() => setIsCreateCriteriaModalOpen(true)}
+          />
+        </div>
       </div>
-    </div>
 
-    {loading && <p>Cargando criterios...</p>}
-    {error && <p style={{ color: "red" }}>{error}</p>}
-    {!loading && !error && judgements.length === 0 && (
-      <p>No hay criterios registrados.</p>
-    )}
+      {loading && <p>Cargando criterios...</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      {!loading && !error && judgements.length === 0 && (
+        <p>No hay criterios registrados.</p>
+      )}
 
-    {judgements.map((judgement, idx) => (
-      <CardInfo
-        key={idx}
-        icon={Light}
-        title={judgement.name || judgement.title}
-        description={judgement.description}
+      {judgements.map((judgement, idx) => (
+        <CardInfo
+          key={idx}
+          icon={Light}
+          title={judgement.name || judgement.title}
+          description={judgement.description}
+        />
+      ))}
+
+      {/* Modal para crear criterio */}
+      <CreateCriteriaModal
+        isOpen={isCreateCriteriaModalOpen}
+        onClose={() => setIsCreateCriteriaModalOpen(false)}
+        onSuccess={handleCreateCriteria}
+        title="Crear Nuevo Criterio"
+        endpoint="https://projects-app-backend.onrender.com/judgements"
       />
-    ))}
-
-    {/* Modal para crear criterio */}
-    <CreateCriteriaModal
-      isOpen={isCreateCriteriaModalOpen}
-      onClose={() => setIsCreateCriteriaModalOpen(false)}
-      onSuccess={handleCreateCriteria}
-      title="Crear Nuevo Criterio"
-      endpoint="https://projects-app-backend.onrender.com/judgements"
-    />
-  </div>
-);
+    </div>
+  );
 
   // Renderizar sección de Categorías
   const renderCategoriasSection = () => (
@@ -352,44 +356,40 @@ const renderCriteriosSection = () => (
   );
 
   // Renderizar sección de Tecnologías
-const renderTecnologiasSection = () => (
-  <div>
-    <div className="search-button-container">
-      <div className="inside-control-search">
-        <h2 className="st-h2">Tecnologías</h2>
-        <Search />
-        <Button
-          name="Crear Tecnologías"
-          classComp="btn"
-          onClick={() => setIsCreateTechnologyModalOpen(true)}
-        />
+  const renderTecnologiasSection = () => (
+    <div>
+      <div className="search-button-container">
+        <div className="inside-control-search">
+          <h2 className="st-h2">Tecnologías</h2>
+          <Search />
+          <Button
+            name="Crear Tecnologías"
+            classComp="btn"
+            onClick={() => setIsCreateTechnologyModalOpen(true)}
+          />
+        </div>
       </div>
-    </div>
 
-    {loading && <p>Cargando tecnologías...</p>}
-    {error && <p style={{ color: "red" }}>{error}</p>}
-    {!loading && !error && technology.length === 0 && (
-      <p>No hay tecnologías registradas.</p>
-    )}
+      {loading && <p>Cargando tecnologías...</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      {!loading && !error && technology.length === 0 && (
+        <p>No hay tecnologías registradas.</p>
+      )}
 
-    {technology.map((tech, idx) => (
-      <CardInfo
-        key={idx}
-        icon={Language}
-        title={tech.name}
+      {technology.map((tech, idx) => (
+        <CardInfo key={idx} icon={Language} title={tech.name} />
+      ))}
+
+      {/* Modal para crear tecnología */}
+      <CreateTechnologyModal
+        isOpen={isCreateTechnologyModalOpen}
+        onClose={() => setIsCreateTechnologyModalOpen(false)}
+        onSuccess={handleCreateTechnology}
+        title="Crear Nueva Tecnología"
+        endpoint="https://projects-app-backend.onrender.com/technology"
       />
-    ))}
-
-    {/* Modal para crear tecnología */}
-    <CreateTechnologyModal
-      isOpen={isCreateTechnologyModalOpen}
-      onClose={() => setIsCreateTechnologyModalOpen(false)}
-      onSuccess={handleCreateTechnology}
-      title="Crear Nueva Tecnología"
-      endpoint="https://projects-app-backend.onrender.com/technology"
-    />
-  </div>
-);
+    </div>
+  );
 
   // Renderizar sección de Calificaciones
   const renderCalificacionesSection = () => (
@@ -412,42 +412,42 @@ const renderTecnologiasSection = () => (
     </div>
   );
 
-const renderAprobarUsuariosSection = () => (
-  <div>
-    <div className="search-button-container">
-      <h2 className="st-h2">Usuarios Pendientes</h2>
-    </div>
-    {pendingUsers.length === 0 && <p>No hay usuarios pendientes.</p>}
-    {pendingUsers.map((user, idx) => (
-      <CardInfo
-        key={idx}
-        icon={User}
-        title={user.name}
-        description={user.email}
-        rol_type={user.role}
-        userId={user.id}
-        isApprobated={true} // Importante para mostrar botones y detalles
-        onClickApprove={() => handleOpenModal(user)}
-        onActionSuccess={(userId) => removePendingUser(userId)}
-      />
-    ))}
+  const renderAprobarUsuariosSection = () => (
+    <div>
+      <div className="search-button-container">
+        <h2 className="st-h2">Usuarios Pendientes</h2>
+      </div>
+      {pendingUsers.length === 0 && <p>No hay usuarios pendientes.</p>}
+      {pendingUsers.map((user, idx) => (
+        <CardInfo
+          key={idx}
+          icon={User}
+          title={user.name}
+          description={user.email}
+          rol_type={user.role}
+          userId={user.id}
+          isApprobated={true} // Importante para mostrar botones y detalles
+          onClickApprove={() => handleOpenModal(user)}
+          onActionSuccess={(userId) => removePendingUser(userId)}
+        />
+      ))}
 
-    {/* Modal para aprobar/rechazar usuario */}
-    {isModalOpen && selectedUser && (
-      <Modal
-        isOpen={isModalOpen}
-        title="Aprobar Usuario"
-        userData={selectedUser}
-        onClose={() => setIsModalOpen(false)}
-        onConfirm={handleApproveUser}
-        onReject={handleRejectUser}
-        confirmText="Aprobar"
-        rejectText="Rechazar"
-        cancelText="Cancelar"
-      />
-    )}
-  </div>
-);
+      {/* Modal para aprobar/rechazar usuario */}
+      {isModalOpen && selectedUser && (
+        <Modal
+          isOpen={isModalOpen}
+          title="Aprobar Usuario"
+          userData={selectedUser}
+          onClose={() => setIsModalOpen(false)}
+          onConfirm={handleApproveUser}
+          onReject={handleRejectUser}
+          confirmText="Aprobar"
+          rejectText="Rechazar"
+          cancelText="Cancelar"
+        />
+      )}
+    </div>
+  );
 
   // Renderizar sección por defecto
   const renderDefaultSection = () => (
