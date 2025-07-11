@@ -64,6 +64,11 @@ const CardInfo = ({
               <h3>{title}</h3>
               <li>{description}</li>
             </div>
+
+              <div className="btn-align">
+          
+      
+            </div>
           </div>
         </div>
       )}

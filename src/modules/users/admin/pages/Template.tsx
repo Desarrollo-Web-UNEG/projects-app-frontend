@@ -5,6 +5,7 @@ import { Button, CardInfo, Search } from "../components";
 import { Book, Categ2, Language, Light, User } from "../assets";
 import "../styles/template.css";
 import { requestApi } from "@/modules/js/resquestApi";
+import { insertSubjectPeople } from "../services/catalogServices";
 import CreateModal from "../components/CreateModal";
 import Modal from "../components/Modal";
 import CreateCriteriaModal from "../components/CreateCriteriaModal";
@@ -33,12 +34,13 @@ const Template = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Estados para modal y usuario seleccionado
+  // Estados para modal, usuario seleccionado y materias seleccionadas
   const [selectedUser, setSelectedUser] = useState<any | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isCreateCriteriaModalOpen, setIsCreateCriteriaModalOpen] = useState(false);
   const [isCreateTechnologyModalOpen, setIsCreateTechnologyModalOpen] = useState(false);
+  const [selectedMaterias, setSelectedMaterias] = useState<string[]>([]);
 
 
 
@@ -99,15 +101,17 @@ const Template = () => {
   // Abrir modal con usuario seleccionado
   const handleOpenModal = (user: any) => {
     setSelectedUser(user);
+    setSelectedMaterias([]); // Limpiar materias seleccionadas al abrir modal
     setIsModalOpen(true);
   };
 
-  // Aprobar usuario
-  const handleApproveUser = () => {
+  // Aprobar usuario (ahora recibe materias seleccionadas)
+  const handleApproveUser = async (materiasSeleccionadas: string[]) => {
     const token = localStorage.getItem("access_token");
     if (!selectedUser) return;
 
-    requestApi({
+    // Aprobar usuario estudiante o profesor
+     requestApi({
       url: `https://projects-app-backend.onrender.com/people/admin/${selectedUser.id}/approve`,
       method: "POST",
       headers: token ? { Authorization: `Bearer ${token}` } : undefined,
@@ -122,6 +126,28 @@ const Template = () => {
         setIsModalOpen(false);
         setSelectedUser(null);
       });
+
+
+    //  Si es un profesor, asignar materias seleccionadas
+    if (materiasSeleccionadas.length > 0) {
+      try {
+        await Promise.all(
+          materiasSeleccionadas.map(subjectId =>
+            insertSubjectPeople({
+              peopleid: selectedUser.id,
+              subjectid: subjectId,
+              approved: true,
+              mark: 0
+            }, token || "")
+          )
+        );
+        // Puedes mostrar un mensaje de éxito o refrescar la lista aquí si lo deseas
+      } catch (error) {
+        alert("Error al asignar materias al usuario");
+      }
+    }else{
+      console.log("Es estudiante")
+    }
   };
 
   // Rechazar usuario
@@ -249,6 +275,7 @@ const handleCreateTechnology = () => {
         <p>No hay materias registradas.</p>
       )}
 
+      
       {subjects.map((subject, idx) => (
         <CardInfo
           key={idx}
@@ -422,9 +449,9 @@ const renderAprobarUsuariosSection = () => (
       <CardInfo
         key={idx}
         icon={User}
-        title={user.name}
-        description={user.email}
-        rol_type={user.role}
+        title={user.name + " " + user.last_name}
+        description={user._email}
+        rol_type={user.user_type}
         userId={user.id}
         isApprobated={true} // Importante para mostrar botones y detalles
         onClickApprove={() => handleOpenModal(user)}
@@ -444,6 +471,8 @@ const renderAprobarUsuariosSection = () => (
         confirmText="Aprobar"
         rejectText="Rechazar"
         cancelText="Cancelar"
+        selectedMaterias={selectedMaterias}
+        setSelectedMaterias={setSelectedMaterias}
       />
     )}
   </div>
