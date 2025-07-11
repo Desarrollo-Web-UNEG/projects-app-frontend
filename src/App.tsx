@@ -33,7 +33,11 @@ const App = () => {
 
         <Route path="prueba" element={<Comunicacion />} />
         <Route path="projects" element={<Projects />} />
-        <Route path="chatbot" element={<ChatPage />} />
+        <Route path="chatbot" element={
+          <ProtectedRoute allowedRoles={["student"]}>
+            <ChatPage/>
+          </ProtectedRoute>
+        } />
         <Route path="template/:name" element={<Template />} />
       </Routes>
     </>
