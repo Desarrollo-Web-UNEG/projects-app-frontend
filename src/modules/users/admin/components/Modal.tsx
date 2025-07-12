@@ -91,22 +91,22 @@ const Modal = ({
                   <span>Nro. Cédula:</span>
                   <span>{userData.id_number || "10.123.145"}</span>
                 </div>
-                
+                {console.log(userData)}
                 <div className="user-data-row">
                   <span>Correo:</span>
-                  <span>{userData.email || "izagg@gmail.com"}</span>
+                  <span>{userData._email || "izagg@gmail.com"}</span>
                 </div>
                 
                 <div className="user-data-row">
                   <span>Nombre:</span>
                   <span>
-                    {userData.name || "Isobelio Estefanía"} {userData.lastName || "Gonzalez García"}
+                    {userData.name} {userData.last_name}
                   </span>
                 </div>
                 
                 <div className="user-data-row">
                   <span>Teléfono:</span>
-                  <span>{userData.phone || "0412-1478-965"}</span>
+                  <span>{userData.phone_number}</span>
                 </div>
                 
                 <div className="user-data-row">
