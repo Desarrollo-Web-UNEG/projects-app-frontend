@@ -1,7 +1,7 @@
 
 import { Button } from "@/modules/users/admin/components"
 import "../styles/cardproject.css"
-import React, { useState } from "react";
+import { useState } from "react";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
 
 interface CardProps {
@@ -17,7 +17,8 @@ interface CardProps {
 
 
 
-const CardProject = ({ title, description, projectId, categoryId, subjectId, technologyIds, onEdit, onDelete }: CardProps) => {
+// const CardProject = ({ title, description, projectId, categoryId, subjectId, technologyIds, onEdit, onDelete }: CardProps) => {
+const CardProject = ({ title, description, projectId, onEdit, onDelete }: CardProps) => {
     const [showConfirm, setShowConfirm] = useState(false);
     return (
        <>

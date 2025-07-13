@@ -3,11 +3,11 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 250px);
-    grid-template-rows: repeat(2, auto);
+    grid-template-rows: repeat(1, auto);
     gap: 30px;
     justify-content: center;
     align-items: center;
-    margin-bottom: 40px;
+    margin: 40px 0;
 }
 
 .button-control{

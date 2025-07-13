@@ -51,11 +51,11 @@ const PanelControl = () => {
               name="Materias"
             />
 
-            <CardControl
+            {/* <CardControl
               logo={Criterion}
               altText="Gestionar Criterios"
               name="Criterios"
-            />
+            /> */}
 
             <CardControl
               logo={Category}
@@ -69,11 +69,11 @@ const PanelControl = () => {
               name="Tecnologias"
             />
 
-            <CardControl
+            {/* <CardControl
               logo={Grade}
               altText="Gestion de Calificación"
               name="Calificaciones"
-            />
+            /> */}
           </div>
         </>
       ) : (
