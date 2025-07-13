@@ -27,7 +27,7 @@ const NavBar = () => {
   if (userType === "professor") {
     menuButtons = (
       <>
-        <Link to="/dashboard">
+        <Link to={`/panel-control-professor/${userType}`}>
           <button>Inicio</button>
         </Link>
         <Link to="/projects">
@@ -39,6 +39,11 @@ const NavBar = () => {
         <Link to="/chatbot">
           <button>Chatbot IA</button>
         </Link>
+        <Link to="/profile">
+          <button>Perfil</button>
+        </Link>
+
+  
         <button onClick={handleLogout}>Cerrar Sesión</button>
       </>
     );
@@ -58,6 +63,10 @@ const NavBar = () => {
         <Link to="/chatbot">
           <button>Chatbot IA</button>
         </Link>
+        <Link to="/profile">
+          <button>Perfil</button>
+        </Link>
+
         <button onClick={handleLogout}>Cerrar Sesión</button>
       </>
     );
@@ -65,13 +74,13 @@ const NavBar = () => {
 
     menuButtons = (
       <>
-        <Link to="/dashboard">
+        <Link to={`/panel-control/${userType}`}>
           <button>Inicio</button>
         </Link>
 
-        <button>Crear</button>
+        {/* <button>Crear</button> */}
 
-        <button>Usuarios</button>
+        {/* <button>Usuarios</button> */}
 
         <Link to="/projects">
           <button>Proyectos</button>
@@ -79,10 +88,10 @@ const NavBar = () => {
         <Link to="/chatbot">
           <button>Chatbot IA</button>
         </Link>
-        <Link to="/evaluations">
+        {/* <Link to="/evaluations">
           <button>Evaluaciones</button>
-        </Link>
-        <Link to="/perfil">
+        </Link> */}
+        <Link to="/profile">
           <button>Perfil</button>
         </Link>
 

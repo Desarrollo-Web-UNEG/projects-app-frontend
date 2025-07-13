@@ -1,10 +1,14 @@
+import { useEffect, useState } from "react";
+import EditSubjectModal from "../components/EditSubjectModal";
+import { updateSubject, updateTecnologies } from "../services/catalogServices";
 import { NavBar } from "@/modules/dashboard/components";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { Button, CardInfo, Search } from "../components";
+
+import { Button, CardInfo, Search, ConfirmDeleteModal } from "../components";
 import { Book, Categ2, Language, Light, User } from "../assets";
 import "../styles/template.css";
 import { requestApi } from "@/modules/js/resquestApi";
+import { insertSubjectPeople, deleteSubject, updateCategory } from "../services/catalogServices";
 import CreateModal from "../components/CreateModal";
 import Modal from "../components/Modal";
 import CreateCriteriaModal from "../components/CreateCriteriaModal";
@@ -33,12 +37,13 @@ const Template = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Estados para modal y usuario seleccionado
+  // Estados para modal, usuario seleccionado y materias seleccionadas
   const [selectedUser, setSelectedUser] = useState<any | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isCreateCriteriaModalOpen, setIsCreateCriteriaModalOpen] = useState(false);
   const [isCreateTechnologyModalOpen, setIsCreateTechnologyModalOpen] = useState(false);
+  const [selectedMaterias, setSelectedMaterias] = useState<string[]>([]);
 
 
 
@@ -99,14 +104,16 @@ const Template = () => {
   // Abrir modal con usuario seleccionado
   const handleOpenModal = (user: any) => {
     setSelectedUser(user);
+    setSelectedMaterias([]); // Limpiar materias seleccionadas al abrir modal
     setIsModalOpen(true);
   };
 
-  // Aprobar usuario
-  const handleApproveUser = () => {
+  // Aprobar usuario (ahora recibe materias seleccionadas)
+  const handleApproveUser = async (materiasSeleccionadas: string[]) => {
     const token = localStorage.getItem("access_token");
     if (!selectedUser) return;
 
+    // Aprobar usuario estudiante o profesor
     requestApi({
       url: `https://projects-app-backend.onrender.com/people/admin/${selectedUser.id}/approve`,
       method: "POST",
@@ -122,6 +129,28 @@ const Template = () => {
         setIsModalOpen(false);
         setSelectedUser(null);
       });
+
+
+    //  Si es un profesor, asignar materias seleccionadas
+    if (materiasSeleccionadas.length > 0) {
+      try {
+        await Promise.all(
+          materiasSeleccionadas.map(subjectId =>
+            insertSubjectPeople({
+              peopleid: selectedUser.id,
+              subjectid: subjectId,
+              approved: true,
+              mark: 0
+            }, token || "")
+          )
+        );
+        // Puedes mostrar un mensaje de éxito o refrescar la lista aquí si lo deseas
+      } catch (error) {
+        alert("Error al asignar materias al usuario");
+      }
+    }else{
+      console.log("Es estudiante")
+    }
   };
 
   // Rechazar usuario
@@ -228,6 +257,117 @@ const handleCreateTechnology = () => {
     .finally(() => setLoading(false));
 };
 
+
+  // Estado para modal de editar materia
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [subjectToEdit, setSubjectToEdit] = useState<any | null>(null);
+  const [categoryToEdit, setCategoryToEdit] = useState<any | null>(null);
+  const [technologyToEdit, setTechnologyToEdit] = useState<any | null>(null);
+
+  // Estado para modal de eliminar materia
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [subjectToDelete, setSubjectToDelete] = useState<any | null>(null);
+  // Función para abrir el modal de edición con la materia seleccionada
+  const handleEditSubject = (subject: any) => {
+    setSubjectToEdit(subject);
+    setEditModalOpen(true);
+  };
+
+  const handleEditCategory = (category: any) => {
+    setCategoryToEdit(category);
+    setEditModalOpen(true);
+  };
+
+  const handleEditTecnologies = (tech: any) => {
+    setTechnologyToEdit(tech);
+    setEditModalOpen(true);
+  };
+
+  // Función para guardar los cambios de la materia editada
+  const handleSaveEditSubject = async (updatedSubject: any) => {
+    const token = localStorage.getItem("access_token") || "";
+    try {
+      await updateSubject(updatedSubject.id, updatedSubject, token);
+      // Refresca la lista de materias
+      const refreshed = await requestApi({
+        url: "https://projects-app-backend.onrender.com/subjects",
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setSubjects(Array.isArray(refreshed) ? refreshed : []);
+      setEditModalOpen(false);
+      setSubjectToEdit(null);
+    } catch (err) {
+      alert("Error al actualizar la materia");
+    }
+  };
+
+
+  const handleSaveEditCategory = async (updatedCategory: any) => {
+    const token = localStorage.getItem("access_token") || "";
+
+    console.log("Actualizando categoría:", updatedCategory);
+    try {
+      await updateCategory(updatedCategory.id, updatedCategory, token);
+      // Refresca la lista de materias
+      const refreshed = await requestApi({
+        url: "https://projects-app-backend.onrender.com/categories",
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setCategories(Array.isArray(refreshed) ? refreshed : []);
+      setEditModalOpen(false);
+      setCategoryToEdit(null);
+    } catch (err) {
+      alert("Error al actualizar la categoría");
+    }
+  };
+
+
+   const handleSaveEditTechnology = async (updatedTecnologies: any) => {
+    const token = localStorage.getItem("access_token") || "";
+
+    console.log("Actualizando tecnología:", updatedTecnologies);
+    try {
+      await updateTecnologies(updatedTecnologies.id, updatedTecnologies, token);
+      // Refresca la lista de materias
+      const refreshed = await requestApi({
+        url: "https://projects-app-backend.onrender.com/technology",
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setTechnology(Array.isArray(refreshed) ? refreshed : []);
+      setEditModalOpen(false);
+      setTechnologyToEdit(null);
+    } catch (err) {
+      alert("Error al actualizar la tecnología");
+    }
+  };
+
+
+  // Eliminar materia
+  const handleDeleteSubject = async () => {
+    if (!subjectToDelete) return;
+    const token = localStorage.getItem("access_token") || "";
+    setLoading(true);
+    try {
+      await deleteSubject(subjectToDelete.id, token);
+      // Refresca la lista desde el backend para asegurar que realmente se eliminó
+      const updated = await requestApi({
+        url: "https://projects-app-backend.onrender.com/subjects",
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setSubjects(Array.isArray(updated) ? updated : []);
+      setDeleteModalOpen(false);
+      setSubjectToDelete(null);
+    } catch (err) {
+      alert("Error al eliminar la materia");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // Renderizar sección de Materias
   const renderMateriasSection = () => (
     <div>
@@ -249,14 +389,40 @@ const handleCreateTechnology = () => {
         <p>No hay materias registradas.</p>
       )}
 
-      {subjects.map((subject, idx) => (
-        <CardInfo
-          key={idx}
-          icon={Book}
-          title={subject.name}
-          description={subject.description}
+      <div className="subjects-list">
+        {subjects.map((subject, idx) => (
+          <div key={idx} style={{ marginBottom: '1rem' }}>
+            <CardInfo
+              icon={Book}
+              title={subject.name}
+              description={subject.description}
+              showEditButton={true}
+              onEdit={() => handleEditSubject(subject)}
+            />
+          </div>
+        ))}
+      </div>
+        {console.log(subjects)}
+      {/* Modal de edición de materia */}
+      {editModalOpen && subjectToEdit && (
+        <EditSubjectModal
+          isOpen={editModalOpen}
+          onClose={() => { setEditModalOpen(false); setSubjectToEdit(null); }}
+          onSave={handleSaveEditSubject}
+          subject={subjectToEdit}
         />
-      ))}
+      )}
+
+      {/* Modal de confirmación de borrado */}
+      <ConfirmDeleteModal
+        open={deleteModalOpen}
+        subjectName={subjectToDelete?.name}
+        onConfirm={handleDeleteSubject}
+        onCancel={() => {
+          setDeleteModalOpen(false);
+          setSubjectToDelete(null);
+        }}
+      />
 
       {/* Modal para crear materia */}
       <CreateModal
@@ -337,8 +503,21 @@ const renderCriteriosSection = () => (
           icon={Categ2}
           title={category.name}
           description={category.description}
+          showEditButton={true}
+          onEdit={() => handleEditCategory(category)}
         />
       ))}
+
+         {editModalOpen && categoryToEdit && (
+        <EditSubjectModal
+          isOpen={editModalOpen}
+          onClose={() => { setEditModalOpen(false); setCategoryToEdit(null); }}
+          onSave={handleSaveEditCategory}
+          subject={categoryToEdit}
+        />
+      )}
+
+
 
       {/* Modal para crear categoría */}
       <CreateModal
@@ -377,8 +556,22 @@ const renderTecnologiasSection = () => (
         key={idx}
         icon={Language}
         title={tech.name}
+        showEditButton={true}
+        onEdit={() => handleEditTecnologies(tech)}
       />
     ))}
+
+       {editModalOpen && technologyToEdit && (
+        <EditSubjectModal
+          isOpen={editModalOpen}
+          onClose={() => { setEditModalOpen(false); setTechnologyToEdit(null); }}
+          onSave={handleSaveEditTechnology}
+          subject={technologyToEdit}
+        />
+      )}
+
+
+
 
     {/* Modal para crear tecnología */}
     <CreateTechnologyModal
@@ -419,12 +612,13 @@ const renderAprobarUsuariosSection = () => (
     </div>
     {pendingUsers.length === 0 && <p>No hay usuarios pendientes.</p>}
     {pendingUsers.map((user, idx) => (
+      // console.log(pendingUsers),
       <CardInfo
         key={idx}
         icon={User}
-        title={user.name}
-        description={user.email}
-        rol_type={user.role}
+        title={user.name + " " + user.last_name}
+        description={user._email}
+        rol_type={user.user_type}
         userId={user.id}
         isApprobated={true} // Importante para mostrar botones y detalles
         onClickApprove={() => handleOpenModal(user)}
@@ -444,6 +638,8 @@ const renderAprobarUsuariosSection = () => (
         confirmText="Aprobar"
         rejectText="Rechazar"
         cancelText="Cancelar"
+        selectedMaterias={selectedMaterias}
+        setSelectedMaterias={setSelectedMaterias}
       />
     )}
   </div>

@@ -15,6 +15,7 @@ import { CardControl } from "../components";
 import "../styles/card-control.css";
 import { useParams } from "react-router-dom";
 
+
 const PanelControl = () => {
   const { user_type } = useParams();
 
@@ -22,6 +23,7 @@ const PanelControl = () => {
     localStorage.getItem("user_name") +
     " " +
     localStorage.getItem("user_lastname");
+
 
   return (
     <>
@@ -49,11 +51,11 @@ const PanelControl = () => {
               name="Materias"
             />
 
-            <CardControl
+            {/* <CardControl
               logo={Criterion}
               altText="Gestionar Criterios"
               name="Criterios"
-            />
+            /> */}
 
             <CardControl
               logo={Category}
@@ -67,11 +69,11 @@ const PanelControl = () => {
               name="Tecnologias"
             />
 
-            <CardControl
+            {/* <CardControl
               logo={Grade}
               altText="Gestion de Calificación"
               name="Calificaciones"
-            />
+            /> */}
           </div>
         </>
       ) : (
