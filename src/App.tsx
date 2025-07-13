@@ -84,6 +84,7 @@ const App = () => {
 
         {/* Ruta de prueba (opcional, puedes protegerla si es necesario) */}
         <Route path="prueba" element={<Comunicacion />} />
+
       </Routes>
     </>
   );

@@ -32,6 +32,7 @@
   cursor: pointer !important;
   border: none !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 .suggestion-chip:hover {
@@ -49,6 +50,13 @@
   white-space: normal !important;
   word-wrap: break-word !important;
 }
+
+.suggestion-sub  { background: #d2d2d1 !important; color: #0c2241 !important; }
+
+.suggestions-title, .suggestions-container, .suggestions-grid {
+  font-family: 'Poppins', sans-serif !important;
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
