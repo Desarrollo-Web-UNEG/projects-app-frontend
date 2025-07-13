@@ -3,7 +3,6 @@ import {
   Approval,
   BannerAdmin,
   Category,
-  Criterion,
   Grade,
   professordash,
   projects,
