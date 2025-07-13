@@ -10,29 +10,22 @@ import { requestApi } from "@/modules/js/resquestApi";
 
 const TemplateTeacher = () => {
   const { name } = useParams();
+  const userId = localStorage.getItem("user_id");
   const [subjects, setSubjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!name) return;
-
+    if (!name || !userId) {
+      // Opcional: navegar al login o mostrar error
+      return;
+    }
     setLoading(true);
+
     const token = localStorage.getItem("access_token");
-
     const endpoints: Record<string, string> = {
-      Alumnos: "https://projects-app-backend.onrender.com/subjects",
-    };
-
-    const stateSetters: Record<
-      string,
-      React.Dispatch<React.SetStateAction<any[]>>
-    > = {
-      Alumnos: setSubjects,
-    };
-
-    const errorMessages: Record<string, string> = {
-      Alumnos: "Error al cargar las Alumnos",
+      Alumnos: `https://projects-app-backend.onrender.com/subject-people/${userId}/subjects`,
+      // Si más secciones requieren userId, agrégalas aquí
     };
 
     requestApi({
@@ -41,15 +34,21 @@ const TemplateTeacher = () => {
       headers: token ? { Authorization: `Bearer ${token}` } : undefined,
     })
       .then((data) => {
-        stateSetters[name](Array.isArray(data) ? data : []);
+        const materias = Array.isArray(data)
+          ? data.map((item) => ({
+              name: item.subject.name,
+              description: item.subject.description,
+            }))
+          : [];
+        setSubjects(materias);
         setError(null);
       })
       .catch(() => {
-        setError(errorMessages[name]);
-        stateSetters[name]([]);
+        setError(`Error al cargar ${name}`);
+        setSubjects([]);
       })
       .finally(() => setLoading(false));
-  }, [name]);
+  }, [name, userId]);
 
   const renderAlumnosSection = () => (
     <div>

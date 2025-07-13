@@ -6,14 +6,20 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useState } from "react";
 import "../styles/login-form.css";
-import {requestApi} from "@/modules/js/resquestApi"
-
-
+import { requestApi } from "@/modules/js/resquestApi";
 
 const adornemet = {
-  email: ( <InputAdornment position="start"><EmailIcon /></InputAdornment>),
-  password: ( <InputAdornment position="start"><LockIcon /></InputAdornment>),
-}
+  email: (
+    <InputAdornment position="start">
+      <EmailIcon />
+    </InputAdornment>
+  ),
+  password: (
+    <InputAdornment position="start">
+      <LockIcon />
+    </InputAdornment>
+  ),
+};
 
 const LoginForm = () => {
   // Estados para email, password, error y loading
@@ -31,35 +37,33 @@ const LoginForm = () => {
     setLoading(true);
 
     const backendUrl = import.meta.env.PROD
-        ? "https://projects-app-backend.onrender.com/auth/login"
-        : "/api/auth/login";
+      ? "https://projects-app-backend.onrender.com/auth/login"
+      : "/api/auth/login";
 
     try {
-
-    // Solicitud a la api
-     const response = await requestApi({
-      url: backendUrl,
-      method: "POST",
-      data: { email, password },
-      headers: { 'Content-Type': 'application/json' }
+      // Solicitud a la api
+      const response = await requestApi({
+        url: backendUrl,
+        method: "POST",
+        data: { email, password },
+        headers: { "Content-Type": "application/json" },
       });
-      
-    // Guarda el token,nombre,apellido y rol en localStorage
-   localStorage.setItem('access_token', response.access_token);
-   localStorage.setItem('user_name', response.user.name)
-   localStorage.setItem('user_lastname', response.user.last_name)
-   localStorage.setItem('user_usertype', response.user.user_type)
-   localStorage.setItem('user_id', response.user.id)
-    console.log(response);
 
-      if(response.user.user_type == 'student'){
+      // Guarda el token,nombre,apellido y rol en localStorage
+      localStorage.setItem("access_token", response.access_token);
+      localStorage.setItem("user_name", response.user.name);
+      localStorage.setItem("user_lastname", response.user.last_name);
+      localStorage.setItem("user_usertype", response.user.user_type);
+      localStorage.setItem("user_id", response.user.id);
+      console.log(response);
+
+      if (response.user.user_type == "student") {
         navigate("/dashboard");
-      }else if(response.user.user_type =='admin'){
+      } else if (response.user.user_type == "admin") {
         navigate(`/panel-control/${response.user.user_type}`);
-      }else{
-        navigate(`/panel-control-professor/:${response.user.user_type}`)
+      } else {
+        navigate(`/panel-control-professor/:${response.user.user_type}`);
       }
-
     } catch (err: any) {
       setError(err.response?.data?.message || "Error de autenticación");
     } finally {
@@ -81,8 +85,8 @@ const LoginForm = () => {
           required
           className="email-field"
           value={email}
-          onChange={e => setEmail(e.target.value)}
-          slotProps={{ input: { startAdornment: adornemet.email }}}
+          onChange={(e) => setEmail(e.target.value)}
+          slotProps={{ input: { startAdornment: adornemet.email } }}
         />
         <TextField
           placeholder="Contraseña"
@@ -93,14 +97,19 @@ const LoginForm = () => {
           className="password-field"
           required
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
           InputProps={{
             startAdornment: adornemet.password,
             endAdornment: (
               <InputAdornment position="end">
                 <button
                   type="button"
-                  style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: 0,
+                  }}
                   onClick={() => setShowPassword((show) => !show)}
                   tabIndex={-1}
                 >
@@ -116,7 +125,12 @@ const LoginForm = () => {
             Solicitar registro
           </Link>
         </div>
-        <Button variant="contained" type="submit" className="submit-btn" disabled={loading}>
+        <Button
+          variant="contained"
+          type="submit"
+          className="submit-btn"
+          disabled={loading}
+        >
           {loading ? "Cargando..." : "Iniciar Sesión"}
         </Button>
       </form>

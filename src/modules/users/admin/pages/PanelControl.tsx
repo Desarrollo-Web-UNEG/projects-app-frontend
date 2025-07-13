@@ -16,7 +16,6 @@ import { CardControlTeacher } from "../../professor/components";
 import "../styles/card-control.css";
 import { useParams } from "react-router-dom";
 
-
 const PanelControl = () => {
   const { user_type } = useParams();
 
@@ -24,7 +23,6 @@ const PanelControl = () => {
     localStorage.getItem("user_name") +
     " " +
     localStorage.getItem("user_lastname");
-
 
   return (
     <>
