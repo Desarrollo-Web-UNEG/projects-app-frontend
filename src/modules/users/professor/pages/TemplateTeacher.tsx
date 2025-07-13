@@ -13,7 +13,6 @@ const TemplateTeacher = () => {
   const [subjects, setSubjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [pendingUsers, setPendingUsers] = useState<any[]>([]);
 
   useEffect(() => {
     if (!name) return;
@@ -22,22 +21,22 @@ const TemplateTeacher = () => {
     const token = localStorage.getItem("access_token");
 
     const endpoints: Record<string, string> = {
-      Materias: "https://projects-app-backend.onrender.com/subjects",
+      Alumnos: "https://projects-app-backend.onrender.com/subjects",
     };
 
     const stateSetters: Record<
       string,
       React.Dispatch<React.SetStateAction<any[]>>
     > = {
-      Materias: setSubjects,
+      Alumnos: setSubjects,
     };
 
     const errorMessages: Record<string, string> = {
-      Materias: "Error al cargar las materias",
+      Alumnos: "Error al cargar las Alumnos",
     };
 
     requestApi({
-      url: "https://projects-app-backend.onrender.com/subjects",
+      url: endpoints[name],
       method: "GET",
       headers: token ? { Authorization: `Bearer ${token}` } : undefined,
     })
@@ -74,7 +73,7 @@ const TemplateTeacher = () => {
               icon={Book}
               title={subject.name}
               description={subject.description}
-              showEditButton={true}
+              showAsignButton={true}
             />
           </div>
         ))}
