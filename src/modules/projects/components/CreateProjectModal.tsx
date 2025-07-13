@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { getSubjects, getCategories, getTechnologies } from "../services/catalogService";
+import { getSubjetcsByStudent, getCategories, getTechnologies } from "../services/catalogService";
 import { createProject } from "../services/projectService";
 import "../styles/createprojectmodal.css";
 import ModalDetails from "./ModalDetails";
+
 
 interface CreateProjectModalProps {
   onClose: () => void;
@@ -19,6 +20,9 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ onClose, onProj
   const [loading, setLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+    
+  // Id del usuario
+    const userId = localStorage.getItem('user_id') || '';
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,12 +30,13 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ onClose, onProj
      
       try {
         const [subjectsRes, categoriesRes, technologiesRes] = await Promise.all([
-          getSubjects(token),
+          getSubjetcsByStudent(token, userId),
           getCategories(token),
           getTechnologies(token),
         
         ]);
-        setSubjects(subjectsRes || []);
+        console.log("🚀 ~ fetchData ~ subjectsRes:", subjectsRes)
+        setSubjects(subjectsRes.map((s: any) => s.subject) || []);
         setCategories(categoriesRes|| []);
         setTechnologies(technologiesRes || []);
         
@@ -54,9 +59,6 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ onClose, onProj
         : [...prev, techId]
     );
   };
-
-  // Id del usuario
-  const userId = localStorage.getItem('user_id') || '';
 
   // Manejo del submit del formulario
   const handleSubmit = async (e: React.FormEvent) => {
