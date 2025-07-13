@@ -11,6 +11,7 @@ import ProtectedRoute from "@auth/components/ProtectedRoute";
 import { PanelControl } from "./modules/users/admin/pages";
 import Template from "./modules/users/admin/pages/Template";
 import { PanelControlTeacher } from "./modules/users/professor/pages";
+import { TemplateTeacher } from "./modules/users/professor/pages";
 
 const App = () => {
   return (
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="projects" element={<Projects />} />
         <Route path="chatbot" element={<ChatPage />} />
         <Route path="template/:name" element={<Template />} />
+        <Route path="template-teacher/:name" element={<TemplateTeacher />} />
       </Routes>
     </>
   );

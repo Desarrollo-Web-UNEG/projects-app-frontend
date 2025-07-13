@@ -1,0 +1,19 @@
+.search-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  /* background-color: red; */
+}
+
+.inside-control-search {
+  width: 92%;
+  text-align: start;
+  /* background-color: white; */
+}
+
+.st-h2 {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}

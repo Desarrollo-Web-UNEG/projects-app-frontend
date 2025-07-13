@@ -3,11 +3,21 @@ import React, { useState } from "react";
 interface EditSubjectModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (data: { id: number; name: string; description: string; isActive: boolean }) => void;
+  onSave: (data: {
+    id: number;
+    name: string;
+    description: string;
+    isActive: boolean;
+  }) => void;
   subject: { id: number; name: string; description: string; isActive: boolean };
 }
 
-const EditSubjectModal: React.FC<EditSubjectModalProps> = ({ isOpen, onClose, onSave, subject }) => {
+const EditSubjectModal: React.FC<EditSubjectModalProps> = ({
+  isOpen,
+  onClose,
+  onSave,
+  subject,
+}) => {
   const [name, setName] = useState(subject.name);
   const [description, setDescription] = useState(subject.description);
   const [isActive, setIsActive] = useState(subject.isActive);
@@ -22,52 +32,75 @@ const EditSubjectModal: React.FC<EditSubjectModalProps> = ({ isOpen, onClose, on
   return (
     <div className="modal-overlay">
       <div className="modal-content edit-subject-modal">
-        <h2 style={{ textAlign: 'center', marginBottom: 24 }}>Modo Edicion</h2>
-        <form onSubmit={handleSubmit} style={{ maxWidth: 600, margin: '0 auto' }}>
+        <h2 style={{ textAlign: "center", marginBottom: 24 }}>Modo Edicion</h2>
+        <form
+          onSubmit={handleSubmit}
+          style={{ maxWidth: 600, margin: "0 auto" }}
+        >
           <div className="form-row">
             <label>Nombre:</label>
             <input
               type="text"
               value={name}
-              onChange={e => setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
               required
               className="input-text"
             />
           </div>
 
           {description !== undefined && (
-          <div className="form-row">
-            <label>Descripción:</label>
-            <textarea
-              value={description}
-              onChange={e => setDescription(e.target.value)}
-              required
-              className="input-textarea"
-              rows={3}
-            />
-          </div>
-
-
-          )}
-       
-
-          {isActive !== undefined &&(
-             <div className="form-row" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginBottom: 24 }}>
-            <label style={{ marginRight: 8, fontWeight: 500 }}>
-              <input
-                type="checkbox"
-                checked={isActive}
-                onChange={e => setIsActive(e.target.checked)}
-                style={{ marginRight: 4 }}
+            <div className="form-row">
+              <label>Descripción:</label>
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+                className="input-textarea"
+                rows={3}
               />
-              Activo
-            </label>
-          </div>
+            </div>
           )}
-         
-          <div style={{ display: "flex", gap: 16, justifyContent: 'center', marginTop: 24 }}>
-            <button type="submit" className="btn btn-primary">Guardar</button>
-            <button type="button" className="btn btn-secondary" onClick={onClose}>Cancelar</button>
+
+          {isActive !== undefined && (
+            <div
+              className="form-row"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-end",
+                marginBottom: 24,
+              }}
+            >
+              <label style={{ marginRight: 8, fontWeight: 500 }}>
+                <input
+                  type="checkbox"
+                  checked={isActive}
+                  onChange={(e) => setIsActive(e.target.checked)}
+                  style={{ marginRight: 4 }}
+                />
+                Activo
+              </label>
+            </div>
+          )}
+
+          <div
+            style={{
+              display: "flex",
+              gap: 16,
+              justifyContent: "center",
+              marginTop: 24,
+            }}
+          >
+            <button type="submit" className="btn btn-primary">
+              Guardar
+            </button>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={onClose}
+            >
+              Cancelar
+            </button>
           </div>
         </form>
       </div>

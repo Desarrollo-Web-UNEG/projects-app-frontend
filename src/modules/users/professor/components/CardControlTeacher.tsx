@@ -17,7 +17,7 @@ const CardControlTeacher = ({
 
   const handleClick = () => {
     if (menu.includes(name)) {
-      navigate(`/template/${name}`);
+      navigate(`/template-teacher/${name}`);
     }
   };
 
