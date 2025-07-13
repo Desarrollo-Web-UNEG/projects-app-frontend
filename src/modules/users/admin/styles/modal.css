@@ -1,0 +1,156 @@
+/* modal.css */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(154, 147, 147, 0.64); /* Fondo semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background-color: rgba(255, 255, 255, 1); /* Fondo blanco puro */
+  border-radius: 8px;
+  padding: 30px;
+  width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 34, 72, 0.2); /* Sombra con color azul oscuro */
+  font-family: Arial, sans-serif;
+  border: 1px solid rgba(0, 35, 73, 0.1); /* Borde sutil azul oscuro */
+}
+
+.modal-box h2 {
+  margin: 0 0 25px 0;
+  color: rgba(0, 35, 73, 1); /* Azul oscuro */
+  font-size: 1.5em;
+  font-weight: 600;
+  text-align: left;
+}
+
+.user-data-container {
+  margin-bottom: 25px;
+}
+
+.user-data-container h3 {
+  font-size: 1.3em;
+  color: rgba(0, 35, 73, 1); /* Azul oscuro */
+  margin: 0 0 20px 0;
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 35, 73, 0.2); /* Borde azul claro */
+  padding-bottom: 10px;
+}
+
+.user-data-section {
+  margin-bottom: 25px;
+  background-color: rgba(255, 254, 250, 1); /* Fondo blanco cálido */
+  padding: 20px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 35, 73, 0.1); /* Borde sutil */
+}
+
+.user-data-section h4 {
+  font-size: 1.2em;
+  color: rgba(0, 35, 73, 1); /* Azul oscuro */
+  margin: 0 0 20px 0;
+  font-weight: 600;
+  text-align: left;
+}
+
+.user-data-field {
+  margin: 0 0 20px 0;
+  padding: 0;
+  text-align: left;
+  font-size: 1em;
+  color: rgba(0, 35, 73, 0.9); /* Azul oscuro */
+}
+
+.user-data-field strong {
+  font-weight: 600;
+  color: rgba(0, 35, 73, 1); /* Azul oscuro */
+}
+
+.user-data-grid {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.user-data-row {
+  display: contents;
+}
+
+.user-data-row span {
+  padding: 8px 12px;
+  font-size: 1em;
+}
+
+.user-data-row span:first-child {
+  font-weight: 600;
+  color: rgba(0, 35, 73, 1); /* Azul oscuro */
+  background-color: rgba(255, 254, 250, 1); /* Fondo blanco cálido */
+}
+
+.user-data-row span:last-child {
+  color: rgba(0, 35, 73, 0.9); /* Azul oscuro */
+  background-color: rgba(255, 255, 255, 1); /* Fondo blanco */
+  border-left: 1px solid rgba(0, 35, 73, 0.1); /* Borde sutil */
+}
+
+/* Botones */
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.modal-actions button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1em;
+  transition: all 0.2s;
+  flex: 1;
+  max-width: 120px;
+}
+
+.reject-btn {
+  background-color: rgba(141, 37, 56, 1); /* Rojo vino */
+  color: white;
+  order: 1;
+}
+
+.cancel-btn {
+  background-color: rgba(255, 254, 250, 1); /* Blanco cálido */
+  color: rgba(0, 35, 73, 1); /* Azul oscuro */
+  border: 1px solid rgba(0, 35, 73, 0.3); /* Borde azul */
+  order: 2;
+}
+
+.confirm-btn {
+  background-color: rgba(7, 73, 10, 1); /* Verde oscuro */
+  color: white;
+  order: 3;
+}
+
+.reject-btn:hover {
+  background-color: rgba(120, 30, 48, 1);
+  transform: translateY(-2px);
+}
+
+.cancel-btn:hover {
+  background-color: rgba(0, 35, 73, 0.05);
+  transform: translateY(-2px);
+}
+
+.confirm-btn:hover {
+  background-color: rgba(5, 60, 8, 1);
+  transform: translateY(-2px);
+}

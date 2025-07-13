@@ -50,6 +50,8 @@ const RegisterForm = () => {
     const now = new Date();
     const yearOfCreation = now.toISOString().split("T")[0];
 
+   
+
     try {
       // Solicitud a la api
       await requestApi({

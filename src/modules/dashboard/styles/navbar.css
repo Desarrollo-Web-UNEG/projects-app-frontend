@@ -46,6 +46,7 @@ nav button {
   padding: 2rem;
   min-width: 180px;
   gap: 1.5rem;
+  align-items: start;
 }
 
 .drawer-content button {
