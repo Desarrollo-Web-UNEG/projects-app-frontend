@@ -111,6 +111,13 @@ const LoginForm = () => {
           }}
         />
         {error && <div className="login-error">{error}</div>}
+
+        <div className="register-btn-container">
+        <Link to="/recovery" className="register-btn">
+            Recuperar Contraseña
+          </Link>
+        </div>
+        
         <div className="register-btn-container">
           <Link to="/register" className="register-btn">
             Solicitar registro

@@ -18,7 +18,9 @@ export default defineConfig({
     allowedHosts: ["projects-app-frontend.onrender.com"],
     proxy: {
       "/api": {
-        target: "https://projects-app-backend.onrender.com",
+        target: process.env.NODE_ENV === "production"
+          ? "https://projects-app-backend.onrender.com"
+          : "http://localhost:3000",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
