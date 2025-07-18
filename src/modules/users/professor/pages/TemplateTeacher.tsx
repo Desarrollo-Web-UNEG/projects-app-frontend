@@ -14,6 +14,11 @@ const TemplateTeacher = () => {
   const [subjects, setSubjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [currentSubject, setCurrentSubject] = useState<any | null>(null);
+  const [approvedStudents, setApprovedStudents] = useState<any[]>([]);
+  const [loadingStudents, setLoadingStudents] = useState(false);
+  const [errorStudents, setErrorStudents] = useState<string | null>(null);
 
   useEffect(() => {
     if (!name || !userId) {
@@ -50,6 +55,33 @@ const TemplateTeacher = () => {
       .finally(() => setLoading(false));
   }, [name, userId]);
 
+  useEffect(() => {
+    if (!editModalOpen) return;
+
+    setLoadingStudents(true);
+    setErrorStudents(null);
+
+    const token = localStorage.getItem("access_token");
+    requestApi({
+      url: "https://projects-app-backend.onrender.com/people/profile/approved",
+      method: "GET",
+      headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+    })
+      .then((data) => {
+        setApprovedStudents(Array.isArray(data) ? data : []);
+      })
+      .catch(() => {
+        setErrorStudents("Error al cargar la lista de estudiantes");
+        setApprovedStudents([]);
+      })
+      .finally(() => setLoadingStudents(false));
+  }, [editModalOpen]);
+
+  const handleOpenAsignModal = (subject: any) => {
+    setCurrentSubject(subject);
+    setEditModalOpen(true);
+  };
+
   const renderAlumnosSection = () => (
     <div>
       <div className="search-button-container">
@@ -73,10 +105,37 @@ const TemplateTeacher = () => {
               title={subject.name}
               description={subject.description}
               showAsignButton={true}
+              onEdit={() => handleOpenAsignModal(subject)}
             />
           </div>
         ))}
       </div>
+
+      {editModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3>Añadir estudiantes a: {currentSubject?.name}</h3>
+
+            {loadingStudents && <p>Cargando estudiantes...</p>}
+            {errorStudents && <p style={{ color: "red" }}>{errorStudents}</p>}
+
+            {!loadingStudents && !errorStudents && (
+              <ul className="student-list">
+                {approvedStudents.map(({ id, name, last_name, id_number }) => (
+                  <li key={id} className="student-item">
+                    <span>
+                      {name} {last_name}
+                    </span>
+                    <span> ({id_number})</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            <button onClick={() => setEditModalOpen(false)}>Cerrar</button>
+          </div>
+        </div>
+      )}
     </div>
   );
   const renderProyectosSection = () => <div></div>;
