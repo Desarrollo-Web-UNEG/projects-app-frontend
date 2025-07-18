@@ -15,10 +15,10 @@ export default defineConfig({
   },
   server: {
     host: true,
-    allowedHosts: ["projects-app-frontend.onrender.com"],
+    allowedHosts: ["https://projects-app-frontend-xjg5.onrender.com"],
     proxy: {
       "/api": {
-        target: "https://projects-app-backend.onrender.com",
+        target: "https://projects-app-backend-8elg.onrender.com",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
