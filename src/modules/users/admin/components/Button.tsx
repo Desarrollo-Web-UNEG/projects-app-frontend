@@ -18,9 +18,9 @@ const Button: React.FC<ButtonProps> = ({ name, classComp, userId, onActionSucces
         const token = localStorage.getItem("access_token");
         let endpoint = "";
         if (name === "Aprobar") {
-            endpoint = `https://projects-app-backend.onrender.com/people/admin/${userId}/approve`;
+            endpoint = `https://projects-app-backend-8elg.onrender.com/people/admin/${userId}/approve`;
         } else if (name === "Rechazar") {
-            endpoint = `https://projects-app-backend.onrender.com/people/admin/${userId}/reject`;
+            endpoint = `https://projects-app-backend-8elg.onrender.com/people/admin/${userId}/reject`;
         } else if (projectId) {
             // Future: handle project actions
         }

@@ -1,6 +1,6 @@
 import { requestApi } from "@/modules/js/resquestApi";
 
-const API = "https://projects-app-backend.onrender.com"
+const API = "https://projects-app-backend-8elg.onrender.com"
 
 export const getSubjetcsByStudent = async (token: string, studentId: string) => {
   return requestApi({
