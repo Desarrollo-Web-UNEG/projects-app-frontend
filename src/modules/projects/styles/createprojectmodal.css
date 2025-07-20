@@ -339,12 +339,11 @@
 }
 
 .modal-upload-label {
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
+  font-size: 1.13rem;
+  font-weight: 500;
+  color: #1a2a4a;
+  margin-bottom: 4px;
+  display: block;
 }
 
 .modal-file-input,

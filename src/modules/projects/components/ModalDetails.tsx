@@ -87,44 +87,44 @@ const ModalDetails: React.FC<ModalDetailsProps> = ({
       </div>
     )}
 
-    <div className="modal-row-selects">
-      <div className="modal-select-group">
-        <label htmlFor="materia">Materia</label>
-        <select
-          name="materia"
-          id="materia"
-          className="modal-select"
-          value={selectedSubject}
-          onChange={(e) => setSelectedSubject(e.target.value)}
-        >
-          <option value="">Selecciona una materia</option>
-          {subjects.map((subject: any) => (
-            <option key={subject.id} value={subject.id}>
-              {subject.name || subject.nombre || subject.title}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className="modal-select-group">
-        <label htmlFor="categoria">Categoría</label>
-        <select
-          name="categoria"
-          id="categoria"
-          className="modal-select"
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-        >
-          <option value="">Selecciona una categoría</option>
-          {categories.map((cat: any) => (
-            <option key={cat.id} value={cat.id}>
-              {cat.name || cat.nombre || cat.title}
-            </option>
-          ))}
-        </select>
-      </div>
-    </div>
+<div className="modal-upload-group">
+  <div className="modal-upload-item">
+    <label htmlFor="materia" className="modal-upload-label">Materia</label>
+    <select
+      name="materia"
+      id="materia"
+      className="modal-select"
+      value={selectedSubject}
+      onChange={(e) => setSelectedSubject(e.target.value)}
+    >
+      <option value="">Selecciona una materia</option>
+      {subjects.map((subject: any) => (
+        <option key={subject.id} value={subject.id}>
+          {subject.name || subject.nombre || subject.title}
+        </option>
+      ))}
+    </select>
+  </div>
+  <div className="modal-upload-item">
+    <label htmlFor="categoria" className="modal-upload-label">Categoría</label>
+    <select
+      name="categoria"
+      id="categoria"
+      className="modal-select"
+      value={selectedCategory}
+      onChange={(e) => setSelectedCategory(e.target.value)}
+    >
+      <option value="">Selecciona una categoría</option>
+      {categories.map((cat: any) => (
+        <option key={cat.id} value={cat.id}>
+          {cat.name || cat.nombre || cat.title}
+        </option>
+      ))}
+    </select>
+  </div>
+</div>
 
-    <label htmlFor="">Tecnologías</label>
+    <label htmlFor="" className="modal-upload-label">Tecnologías</label>
     <div className="modal-formats-list">
       {technologies.map((tech: any) => (
         <label
