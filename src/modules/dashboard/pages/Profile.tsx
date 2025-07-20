@@ -92,7 +92,18 @@ useEffect(() => {
           </div>
           <div className="summary-item">
             <span className="summary-label">Tipo de Usuario</span>
-            <span className="summary-value">{profile.user_type === 'student' ? 'Estudiante' : 'Profesor'}</span>
+            <span className="summary-value">
+              {
+                (() => {
+                  switch (profile.user_type) {
+                    case 'student': return 'Estudiante';
+                    case 'professor': return 'Profesor';
+                    case 'admin': return 'Administrador';
+                    default: return 'Desconocido';
+                  }
+                })()
+              }
+            </span>
           </div>
           <div className="summary-item">
             <span className="summary-label">Dirección</span>
