@@ -43,7 +43,7 @@ const RegisterForm = () => {
     }
 
     const backendUrl = import.meta.env.PROD
-      ? "https://projects-app-backend.onrender.com/people/auth/register"
+      ? "https://projects-app-backend-8elg.onrender.com/people/auth/register"
       : "/api/people/auth/register";
 
     // Obtener fecha actual del equipo en formato YYYY-MM-DD

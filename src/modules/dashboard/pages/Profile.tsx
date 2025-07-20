@@ -64,7 +64,7 @@ useEffect(() => {
       <div className="profile-header">
         <Banner
             line1="Perfil de Usuario,"
-            line2={profile.name + " " + profile.last_name ?? ""}
+            line2={profile.name + " " + (profile.lastName || "")}
             subtitle="Revisa tus datos de perfil."
             image={BannerAdmin}
           />
@@ -76,7 +76,7 @@ useEffect(() => {
         <div className="summary-card">
           <div className="summary-item">
             <span className="summary-label">Nombre y Apellido</span>
-            <span className="summary-value">{profile.name + " " + profile.last_name ?? ""}</span>
+            <span className="summary-value">{profile.name + " " + (profile.lastName || "")}</span>
           </div>
           <div className="summary-item">
             <span className="summary-label">Proyecto Carrera</span>
@@ -88,7 +88,7 @@ useEffect(() => {
           </div>
           <div className="summary-item">
             <span className="summary-label">Correo electrónico</span>
-            <span className="summary-value">{profile._email ?? ""}</span>
+            <span className="summary-value">{profile.email ?? ""}</span>
           </div>
           <div className="summary-item">
             <span className="summary-label">Tipo de Usuario</span>
@@ -100,7 +100,7 @@ useEffect(() => {
           </div>
           <div className="summary-item">
             <span className="summary-label">Teléfono</span>
-            <span className="summary-value">{profile.phone_number ?? ""}</span>
+            <span className="summary-value">{profile.phone ?? ""}</span>
           </div>
           <div className="summary-item">
             <span className="summary-label">Fecha de Nacimiento</span>

@@ -3,6 +3,7 @@ import { Navigate, useLocation } from "react-router-dom";
 
 interface ProtectedRouteProps {
   children: ReactNode;
+
   allowedRoles?: string[]; // ['admin', 'professor', 'student']
 }
 
@@ -13,6 +14,7 @@ const ProtectedRoute = ({ children, allowedRoles }: ProtectedRouteProps) => {
   const userType = localStorage.getItem("user_usertype");
 
   // Si no tiene token de acceso, redirige a la página de inicio de login
+
   if (!token) {
     return <Navigate to="/" state={{ from: location }} replace />;
   }
@@ -30,6 +32,7 @@ const ProtectedRoute = ({ children, allowedRoles }: ProtectedRouteProps) => {
     default:
       return <Navigate to="/dashboard" replace />;
   }
+
 };
 
 

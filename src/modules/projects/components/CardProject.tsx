@@ -15,8 +15,6 @@ interface CardProps {
     onDelete?: (id: string) => void;
 }
 
-
-
 // const CardProject = ({ title, description, projectId, categoryId, subjectId, technologyIds, onEdit, onDelete }: CardProps) => {
 const CardProject = ({ title, description, projectId, onEdit, onDelete }: CardProps) => {
     const [showConfirm, setShowConfirm] = useState(false);

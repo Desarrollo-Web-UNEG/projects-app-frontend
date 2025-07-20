@@ -10,6 +10,8 @@ import { PanelControl } from "./modules/users/admin/pages";
 import Template from "./modules/users/admin/pages/Template";
 import { PanelControlTeacher } from "./modules/users/professor/pages";
 import { Evaluations } from "./modules/evaluation/pages";
+import RecoveryForm from "@/modules/auth/components/RecoveryForm";
+
 
 const App = () => {
   return (
@@ -18,6 +20,7 @@ const App = () => {
         {/* Rutas públicas */}
         <Route path="/" element={<Login />} />
         <Route path="register" element={<Register />} />
+        <Route path="recovery" element={<RecoveryForm />} />
 
         {/* Rutas protegidas */}
         <Route
@@ -93,6 +96,7 @@ const App = () => {
 
         {/* Ruta de prueba (opcional, puedes protegerla si es necesario) */}
         <Route path="prueba" element={<Comunicacion />} />
+
       </Routes>
     </>
   );
