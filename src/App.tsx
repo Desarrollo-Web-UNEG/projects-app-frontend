@@ -50,8 +50,8 @@ const App = () => {
           }
         />
 
-                <Route
-          path="evaluation-teacher/:user_type"
+        <Route
+          path="evaluation/:user_type"
           element={
             <Evaluations />
           }

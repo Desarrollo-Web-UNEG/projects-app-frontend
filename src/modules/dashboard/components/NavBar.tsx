@@ -33,7 +33,7 @@ const NavBar = () => {
         <Link to="/projects">
           <button>Proyectos</button>
         </Link>
-        <Link to="/evaluations">
+        <Link to={`/evaluation/${userType}`}>
           <button>Evaluaciones</button>
         </Link>
 
@@ -59,7 +59,7 @@ const NavBar = () => {
         <Link to="/projects">
           <button>Proyectos</button>
         </Link>
-        <Link to="/evaluations">
+        <Link to={`/evaluation/${userType}`}>
           <button>Evaluaciones</button>
         </Link>
         <Link to="/chatbot">
