@@ -78,7 +78,7 @@ const Projects = () => {
               const token = localStorage.getItem("access_token") || "";
               try {
                 await deleteProject(id, token);
-                setProjects((prev: any[]) => prev.filter(p => String(p.id) !== String(id)));
+                setProjects((prev: any[]) => prev.filter(p => p.id != id));
               } catch (err) {
                 alert('Error al eliminar el proyecto.');
               }

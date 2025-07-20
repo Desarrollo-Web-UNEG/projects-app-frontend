@@ -33,6 +33,8 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
   const [selectedAcademicPeriod, setSelectedAcademicPeriod] = useState("");
 
   const [projectFile, setProjectFile] = useState<File | null>(null);
+  const [projectLink, setProjectLink] = useState<string>("");
+
 
   const [loading, setLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
@@ -171,6 +173,8 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
               setSelectedAcademicPeriod={setSelectedAcademicPeriod}
               projectFile={projectFile}
               setProjectFile={setProjectFile}
+              projectLink={projectLink}
+              setProjectLink={setProjectLink}
             />
 
             <div style={{ marginTop: 12 }}>
