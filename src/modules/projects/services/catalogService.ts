@@ -1,9 +1,21 @@
 import { requestApi } from "@/modules/js/resquestApi";
 
-// Obtener materias
+
+const API = "https://projects-app-backend-8elg.onrender.com"
+
+export const getSubjetcsByStudent = async (token: string, studentId: string) => {
+  return requestApi({
+    url: `${API}/subject-people/${studentId}/subjects`,
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+}
+
 export const getSubjects = async (token: string) => {
   return requestApi({
-    url: "https://projects-app-backend.onrender.com/subjects",
+    url: `${API}/subjects`,
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -14,7 +26,7 @@ export const getSubjects = async (token: string) => {
 // Obtener categorías
 export const getCategories = async (token: string) => {
   return requestApi({
-    url: "https://projects-app-backend.onrender.com/categories",
+    url: `${API}/categories`,
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -25,7 +37,7 @@ export const getCategories = async (token: string) => {
 // Obtener tecnologías
 export const getTechnologies = async (token: string) => {
   return requestApi({
-    url: "https://projects-app-backend.onrender.com/technology",
+    url: `${API}/technology`,
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
