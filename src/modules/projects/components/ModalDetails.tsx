@@ -15,6 +15,8 @@ interface ModalDetailsProps {
   selectedCategory: string;
   setSelectedCategory: (v: string) => void;
   selectedTechnologies: string[];
+  projectLink?: string;
+  setProjectLink?: (link: string) => void;
 
   academicPeriods?: any[];
   selectedAcademicPeriod?: string;
@@ -46,6 +48,8 @@ const ModalDetails: React.FC<ModalDetailsProps> = ({
 
   projectFile,
   setProjectFile,
+  projectLink,
+  setProjectLink,
 }) => (
   <>
     <input
@@ -142,28 +146,45 @@ const ModalDetails: React.FC<ModalDetailsProps> = ({
       ))}
     </div>
 
-    {/* INPUT DE ARCHIVO */}
-    {setProjectFile && (
-      <>
-        <label htmlFor="project-file" className="modal-upload-label">
-          Adjuntar archivo del proyecto
-        </label>
-        <input
-          type="file"
-          id="project-file"
-          accept=".pdf,.doc,.docx,.zip,.rar"
-          onChange={(e) => {
-            const file = e.target.files?.[0];
-            if (file) setProjectFile(file);
-            else setProjectFile(null);
-          }}
-          className="modal-file-input"
-        />
-        {projectFile && (
-          <div className="modal-file-name">{projectFile.name}</div>
-        )}
-      </>
-    )}
+<div className="modal-upload-group">
+  {setProjectFile && (
+    <div className="modal-upload-item">
+      <label htmlFor="project-file" className="modal-upload-label">
+        📎 Archivo del proyecto
+      </label>
+      <input
+        type="file"
+        id="project-file"
+        accept=".pdf,.doc,.docx,.zip,.rar,.jpg,.png"
+        onChange={(e) => {
+          const file = e.target.files?.[0];
+          if (file) setProjectFile(file);
+          else setProjectFile(null);
+        }}
+        className="modal-file-input"
+      />
+      {projectFile && (
+        <div className="modal-file-name">{projectFile.name}</div>
+      )}
+    </div>
+  )}
+
+  {setProjectLink && (
+    <div className="modal-upload-item">
+      <label htmlFor="project-link" className="modal-upload-label">
+        🔗 Enlace del proyecto
+      </label>
+      <input
+        type="url"
+        id="project-link"
+        className="modal-link-input"
+        placeholder="https://github.com/usuario/repositorio"
+        value={projectLink}
+        onChange={(e) => setProjectLink(e.target.value)}
+      />
+    </div>
+  )}
+</div>
   </>
 );
 

@@ -323,3 +323,48 @@
   font-style: normal;
   user-select: text;
 }
+.modal-upload-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: start; /* para que los labels e inputs queden alineados arriba */
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.modal-upload-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-upload-label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.modal-file-input,
+.modal-link-input {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  height: 40px; /* altura fija para igualar ambos inputs */
+}
+
+.modal-file-name {
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+/* Responsive: en pantallas chicas, pasa a una sola columna */
+@media (max-width: 600px) {
+  .modal-upload-group {
+    grid-template-columns: 1fr;
+  }
+}
