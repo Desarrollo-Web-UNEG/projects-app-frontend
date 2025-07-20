@@ -13,7 +13,6 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import "../styles/register-form.css";
 
 const RegisterForm = () => {
-
   // Estados para cada campo del formulario
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -43,14 +42,12 @@ const RegisterForm = () => {
     }
 
     const backendUrl = import.meta.env.PROD
-      ? "https://projects-app-backend.onrender.com/people/auth/register"
+      ? "https://projects-app-backend-8elg.onrender.com/people/auth/register"
       : "/api/people/auth/register";
 
     // Obtener fecha actual del equipo en formato YYYY-MM-DD
     const now = new Date();
     const yearOfCreation = now.toISOString().split("T")[0];
-
-   
 
     try {
       // Solicitud a la api

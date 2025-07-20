@@ -37,7 +37,7 @@ const LoginForm = () => {
     setLoading(true);
 
     const backendUrl = import.meta.env.PROD
-      ? "https://projects-app-backend.onrender.com/auth/login"
+      ? "https://projects-app-backend-8elg.onrender.com/auth/login"
       : "/api/auth/login";
 
     try {

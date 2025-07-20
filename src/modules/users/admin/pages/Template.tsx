@@ -59,12 +59,12 @@ const Template = () => {
 
     const endpoints: Record<string, string> = {
       "Aprobar Usuarios":
-        "https://projects-app-backend.onrender.com/people/admin/pending",
-      Materias: "https://projects-app-backend.onrender.com/subjects",
-      Criterios: "https://projects-app-backend.onrender.com/judgements",
-      Categorias: "https://projects-app-backend.onrender.com/categories",
-      Tecnologias: "https://projects-app-backend.onrender.com/technology",
-      Calificaciones: "https://projects-app-backend.onrender.com/scores",
+        "https://projects-app-backend-8elg.onrender.com/people/admin/pending",
+      Materias: "https://projects-app-backend-8elg.onrender.com/subjects",
+      Criterios: "https://projects-app-backend-8elg.onrender.com/judgements",
+      Categorias: "https://projects-app-backend-8elg.onrender.com/categories",
+      Tecnologias: "https://projects-app-backend-8elg.onrender.com/technology",
+      Calificaciones: "https://projects-app-backend-8elg.onrender.com/scores",
     };
 
     const stateSetters: Record<
@@ -123,7 +123,7 @@ const Template = () => {
 
     // Aprobar usuario estudiante o profesor
     requestApi({
-      url: `https://projects-app-backend.onrender.com/people/admin/${selectedUser.id}/approve`,
+      url: `https://projects-app-backend-8elg.onrender.com/people/admin/${selectedUser.id}/approve`,
       method: "POST",
       headers: token ? { Authorization: `Bearer ${token}` } : undefined,
     })
@@ -169,7 +169,7 @@ const Template = () => {
     if (!selectedUser) return;
 
     requestApi({
-      url: `https://projects-app-backend.onrender.com/people/admin/${selectedUser.id}/reject`,
+      url: `https://projects-app-backend-8elg.onrender.com/people/admin/${selectedUser.id}/reject`,
       method: "POST",
       headers: token ? { Authorization: `Bearer ${token}` } : undefined,
     })
@@ -191,7 +191,7 @@ const Template = () => {
     setLoading(true);
 
     requestApi({
-      url: "https://projects-app-backend.onrender.com/subjects",
+      url: "https://projects-app-backend-8elg.onrender.com/subjects",
       method: "GET",
       headers: token ? { Authorization: `Bearer ${token}` } : undefined,
     })
@@ -212,7 +212,7 @@ const Template = () => {
     setLoading(true);
 
     requestApi({
-      url: "https://projects-app-backend.onrender.com/categories",
+      url: "https://projects-app-backend-8elg.onrender.com/categories",
       method: "GET",
       headers: token ? { Authorization: `Bearer ${token}` } : undefined,
     })
@@ -232,7 +232,7 @@ const Template = () => {
     setLoading(true);
 
     requestApi({
-      url: "https://projects-app-backend.onrender.com/judgements",
+      url: "https://projects-app-backend-8elg.onrender.com/judgements",
       method: "GET",
       headers: token ? { Authorization: `Bearer ${token}` } : undefined,
     })
@@ -252,7 +252,7 @@ const Template = () => {
     setLoading(true);
 
     requestApi({
-      url: "https://projects-app-backend.onrender.com/technology",
+      url: "https://projects-app-backend-8elg.onrender.com/technology",
       method: "GET",
       headers: token ? { Authorization: `Bearer ${token}` } : undefined,
     })
@@ -299,7 +299,7 @@ const Template = () => {
       await updateSubject(updatedSubject.id, updatedSubject, token);
       // Refresca la lista de materias
       const refreshed = await requestApi({
-        url: "https://projects-app-backend.onrender.com/subjects",
+        url: "https://projects-app-backend-8elg.onrender.com/subjects",
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -319,7 +319,7 @@ const Template = () => {
       await updateCategory(updatedCategory.id, updatedCategory, token);
       // Refresca la lista de materias
       const refreshed = await requestApi({
-        url: "https://projects-app-backend.onrender.com/categories",
+        url: "https://projects-app-backend-8elg.onrender.com/categories",
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -339,7 +339,7 @@ const Template = () => {
       await updateTecnologies(updatedTecnologies.id, updatedTecnologies, token);
       // Refresca la lista de materias
       const refreshed = await requestApi({
-        url: "https://projects-app-backend.onrender.com/technology",
+        url: "https://projects-app-backend-8elg.onrender.com/technology",
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -360,7 +360,7 @@ const Template = () => {
       await deleteSubject(subjectToDelete.id, token);
       // Refresca la lista desde el backend para asegurar que realmente se eliminó
       const updated = await requestApi({
-        url: "https://projects-app-backend.onrender.com/subjects",
+        url: "https://projects-app-backend-8elg.onrender.com/subjects",
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -439,7 +439,7 @@ const Template = () => {
         onClose={() => setIsCreateModalOpen(false)}
         onSuccess={handleCreateSubject}
         title="Crear Nueva Materia"
-        endpoint="https://projects-app-backend.onrender.com/subjects"
+        endpoint="https://projects-app-backend-8elg.onrender.com/subjects"
       />
     </div>
   );
@@ -480,7 +480,7 @@ const Template = () => {
         onClose={() => setIsCreateCriteriaModalOpen(false)}
         onSuccess={handleCreateCriteria}
         title="Crear Nuevo Criterio"
-        endpoint="https://projects-app-backend.onrender.com/judgements"
+        endpoint="https://projects-app-backend-8elg.onrender.com/judgements"
       />
     </div>
   );
@@ -535,7 +535,7 @@ const Template = () => {
         onClose={() => setIsCreateModalOpen(false)}
         onSuccess={handleCreateCategory}
         title="Crear Nueva Categoría"
-        endpoint="https://projects-app-backend.onrender.com/categories"
+        endpoint="https://projects-app-backend-8elg.onrender.com/categories"
       />
     </div>
   );
@@ -589,7 +589,7 @@ const Template = () => {
         onClose={() => setIsCreateTechnologyModalOpen(false)}
         onSuccess={handleCreateTechnology}
         title="Crear Nueva Tecnología"
-        endpoint="https://projects-app-backend.onrender.com/technology"
+        endpoint="https://projects-app-backend-8elg.onrender.com/technology"
       />
     </div>
   );

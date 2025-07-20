@@ -29,7 +29,7 @@ const TemplateTeacher = () => {
 
     const token = localStorage.getItem("access_token");
     const endpoints: Record<string, string> = {
-      Alumnos: `https://projects-app-backend.onrender.com/subject-people/${userId}/subjects`,
+      Alumnos: `https://projects-app-backend-8elg.onrender.com/subject-people/${userId}/subjects`,
       // Si más secciones requieren userId, agrégalas aquí
     };
 
@@ -63,7 +63,7 @@ const TemplateTeacher = () => {
 
     const token = localStorage.getItem("access_token");
     requestApi({
-      url: "https://projects-app-backend.onrender.com/people/profile/approved",
+      url: "https://projects-app-backend-8elg.onrender.com/people/profile/approved",
       method: "GET",
       headers: token ? { Authorization: `Bearer ${token}` } : undefined,
     })
