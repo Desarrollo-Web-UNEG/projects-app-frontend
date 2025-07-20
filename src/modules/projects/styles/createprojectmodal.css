@@ -1,20 +1,24 @@
 /* Fila para selects de materia y categoría en ModalDetails */
 .modal-row-selects {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap; /* permite que los items bajen a nueva fila si no caben */
   gap: 10px;
   margin: 10px 0 20px 0;
 }
+
 .modal-select-group {
+  flex: 1 1 220px; /* crecer, encoger, base mínimo ancho */
   display: flex;
   flex-direction: column;
-  flex: 1;
+  min-width: 0; /* para evitar overflow en flex */
 }
+
 .modal-select-group label {
   font-size: 1.13rem;
   font-weight: 500;
   margin-bottom: 4px;
 }
+
 .modal-select {
   padding: 10px;
   font-size: 1.13rem;
@@ -23,10 +27,14 @@
   background: #fcfbf8;
   outline: none;
   transition: border 0.2s;
+  width: 100%; /* que siempre llene el contenedor */
+  box-sizing: border-box;
 }
+
 .modal-select:focus {
   border: 1.5px solid #8a2d3c;
 }
+
 /* Estilos para los checkboxes circulares de formatos permitidos */
 .modal-format-option {
   display: flex;
@@ -42,7 +50,7 @@
   border: 2px solid transparent;
 }
 
-.modal-formats-list{
+.modal-formats-list {
   display: flex;
   overflow-x: auto;
   gap: 8px;
@@ -57,6 +65,7 @@
   border: 2px solid #8a2d3c;
   background: #f8f6f2;
 }
+
 .modal-format-checkbox {
   appearance: none;
   width: 22px;
@@ -71,10 +80,12 @@
   transition: border 0.2s, box-shadow 0.2s;
   vertical-align: middle;
 }
+
 .modal-format-checkbox:checked {
   border: 2px solid #8a2d3c;
   background: #8a2d3c;
 }
+
 .modal-format-checkbox:checked::after {
   content: '';
   display: block;
@@ -86,12 +97,14 @@
   top: 4px;
   left: 4px;
 }
+
 .modal-format-label {
   font-size: 1rem;
   color: #1a2a4a;
   font-weight: 500;
   user-select: none;
 }
+
 .modal-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -113,6 +126,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  box-sizing: border-box;
 }
 
 .close-btn {
@@ -132,6 +146,7 @@
   gap: 0.5rem;
   margin-bottom: 0.5rem;
 }
+
 .tab {
   flex: 1;
   background: #eaeaea;
@@ -144,6 +159,7 @@
   cursor: pointer;
   transition: background 0.2s;
 }
+
 .tab.active {
   background: #f8f6f2;
   border-bottom: 2px solid #f8f6f2;
@@ -164,30 +180,32 @@
   font-size: 1.5rem;
   border: 1px solid #d1d1d1;
   border-radius: 8px;
-  padding: 15px 0;
+  padding: 15px 10px;
   font-weight: 500;
   color: #6a6a6a;
   background: #fcfbf8;
+  box-sizing: border-box;
 }
 
-.modal-deadline-input{
+.modal-deadline-input {
   width: 200px;
   border: none;
   border: 2px solid gray;
   border-radius: 20px;
   padding: 10px;
+  box-sizing: border-box;
 }
 
 .modal-description-input {
   width: 100%;
-  /* min-height: 90px; */
   border: 1px solid #d1d1d1;
   border-radius: 8px;
-  padding: 15px 0;
+  padding: 15px 10px;
   font-size: 1rem;
   color: #6a6a6a;
   background: #fcfbf8;
   resize: vertical;
+  box-sizing: border-box;
 }
 
 .modal-upload-label {
@@ -211,6 +229,7 @@
   margin-bottom: 0.5rem;
   transition: border 0.2s;
 }
+
 .modal-upload-area:hover {
   border-color: #bdbdbd;
 }
@@ -221,6 +240,7 @@
   gap: 0.7rem;
   margin-bottom: 0.5rem;
 }
+
 .modal-file-item {
   display: flex;
   align-items: center;
@@ -231,15 +251,18 @@
   box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   gap: 0.5rem;
 }
+
 .file-icon {
   font-size: 1.3rem;
 }
+
 .file-name {
   max-width: 120px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .remove-file-btn {
   background: none;
   border: none;
@@ -254,6 +277,7 @@
   justify-content: flex-end;
   margin-top: 0.5rem;
 }
+
 .modal-next-btn {
   background: #8a2d3c;
   color: #fff;
@@ -265,13 +289,14 @@
   cursor: pointer;
   transition: background 0.2s;
 }
+
 .modal-next-btn:hover {
   background: #a13a4b;
 }
 
 @media (max-width: 600px) {
   .modal-content {
-    padding: 1rem 0.3rem 1rem 0.3rem;
+    padding: 1rem 0.5rem 1rem 0.5rem;
     max-width: 99vw;
   }
   .modal-title-input {
@@ -290,7 +315,18 @@
     padding: 0.6rem 1.2rem;
     font-size: 1rem;
   }
+
+  /* Apilar materia y categoría en móvil */
+  .modal-row-selects {
+    flex-direction: column;
+  }
+
+  .modal-select-group {
+    min-width: 100%;
+  }
 }
+
+/* === SECCIÓN ARCHIVO Y ENLACE - SIN CAMBIOS === */
 .modal-upload-label {
   font-weight: 600;
   color: #1a2a4a;
@@ -317,12 +353,11 @@
 }
 
 .modal-file-name {
-  margin-top: 4px;
-  font-size: 1rem;
-  color: #555;
-  font-style: normal;
-  user-select: text;
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  color: #444;
 }
+
 .modal-upload-group {
   display: grid;
   grid-template-columns: 1fr 1fr;
