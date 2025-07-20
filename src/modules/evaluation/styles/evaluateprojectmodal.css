@@ -1,0 +1,141 @@
+/* Fondo oscuro de fondo para el modal */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenedor principal del modal */
+.modal-content {
+  background: #f8f6f2;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  width: 95vw;
+  max-width: 600px;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Botón de cerrar (X) */
+.close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #888;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Contenedor de campos */
+.modal-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  text-align: left;
+}
+
+/* Etiquetas */
+.modal-upload-label {
+  font-weight: 600;
+  color: #1a2a4a;
+  font-size: 1.05rem;
+  margin-bottom: 0.2rem;
+}
+
+/* Input para puntaje */
+.modal-title-input {
+  font-size: 1.15rem;
+  padding: 0.8rem;
+  border: 1.5px solid #bdbdbd;
+  border-radius: 8px;
+  background: #fcfbf8;
+  outline: none;
+  transition: border 0.2s;
+}
+.modal-title-input:focus {
+  border-color: #8a2d3c;
+}
+
+/* Textarea para retroalimentación */
+.modal-description-input {
+  font-size: 1rem;
+  padding: 0.8rem;
+  border: 1.5px solid #bdbdbd;
+  border-radius: 8px;
+  background: #fcfbf8;
+  outline: none;
+  resize: vertical;
+  transition: border 0.2s;
+}
+.modal-description-input:focus {
+  border-color: #8a2d3c;
+}
+
+/* Footer con botón de acción */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+/* Botón de guardar evaluación */
+.modal-next-btn {
+  background: #8a2d3c;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 0.7rem 2.2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.modal-next-btn:hover {
+  background: #a13a4b;
+}
+
+/* Botón de corregir (mismo estilo que modal-next-btn) */
+.modal-correct-btn {
+  background: #8a2d3c;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 0.7rem 2.2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.modal-correct-btn:hover {
+  background: #a13a4b;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .modal-content {
+    padding: 1rem 0.8rem;
+    max-width: 95vw;
+  }
+
+  .modal-title-input,
+  .modal-description-input {
+    font-size: 1rem;
+    padding: 0.7rem;
+  }
+
+  .modal-next-btn,
+  .modal-correct-btn {
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
+  }
+}
