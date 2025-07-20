@@ -68,6 +68,8 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 
         setTechnologies(technologiesRes || []);
         setAcademicPeriods(periodsRes || []);
+        console.log("🚀 ~ technologiesRes:", technologiesRes)
+console.log("🚀 ~ periodsRes:", periodsRes)
       } catch (err) {
         console.error("Error fetching data:", err);
       }
