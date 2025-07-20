@@ -3,7 +3,7 @@ import { requestApi } from "@/modules/js/resquestApi";
 
 export const getSubjetcsByStudent = async (token: string, studentId: string) => {
   return requestApi({
-    url: `https://projects-app-backend.onrender.com/subject-people/${studentId}/subjects`,
+    url: `https://projects-app-backend-8elg.onrender.com/subject-people/${studentId}/subjects`,
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`
@@ -13,7 +13,7 @@ export const getSubjetcsByStudent = async (token: string, studentId: string) => 
 
 export const getSubjects = async (token: string) => {
   return requestApi({
-    url: `https://projects-app-backend.onrender.com/subjects`,
+    url: `https://projects-app-backend-8elg.onrender.com/subjects`,
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -24,7 +24,7 @@ export const getSubjects = async (token: string) => {
 // Obtener categorías
 export const getCategories = async (token: string) => {
   return requestApi({
-    url: `https://projects-app-backend.onrender.com/categories`,
+    url: `https://projects-app-backend-8elg.onrender.com/categories`,
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -35,7 +35,7 @@ export const getCategories = async (token: string) => {
 // Obtener tecnologías
 export const getTechnologies = async (token: string) => {
   return requestApi({
-    url: `https://projects-app-backend.onrender.com/technology`,
+    url: `https://projects-app-backend-8elg.onrender.com/technology`,
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -46,7 +46,7 @@ export const getTechnologies = async (token: string) => {
 // Obtener periodos académicos
 export const getAcademicPeriods = async (token: string) => {
   return requestApi({
-    url: "https://projects-app-backend.onrender.com/academic-periods",
+    url: "https://projects-app-backend-8elg.onrender.com/academic-periods",
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -70,7 +70,7 @@ export const uploadProjectFile = async (
   if (title) formData.append("title", title);
 
   return requestApi({
-    url: "https://projects-app-backend.onrender.com/student/file/upload",
+    url: "https://projects-app-backend-8elg.onrender.com/student/file/upload",
     method: "POST",
     data: formData,
     headers: {
