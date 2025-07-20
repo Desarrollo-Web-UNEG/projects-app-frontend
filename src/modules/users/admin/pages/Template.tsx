@@ -58,13 +58,12 @@ const Template = () => {
     const token = localStorage.getItem("access_token");
 
     const endpoints: Record<string, string> = {
-      "Aprobar Usuarios":
-        "https://projects-app-backend-8elg.onrender.com/people/admin/pending",
-      Materias: "https://projects-app-backend-8elg.onrender.com/subjects",
-      Criterios: "https://projects-app-backend-8elg.onrender.com/judgements",
-      Categorias: "https://projects-app-backend-8elg.onrender.com/categories",
-      Tecnologias: "https://projects-app-backend-8elg.onrender.com/technology",
-      Calificaciones: "https://projects-app-backend-8elg.onrender.com/scores",
+      "Aprobar Usuarios": "https://projects-app-backend-8elg.onrender.com/people/admin/pending",
+      "Materias": "https://projects-app-backend-8elg.onrender.com/subjects",
+      "Criterios": "https://projects-app-backend-8elg.onrender.com/judgements",
+      "Categorias": "https://projects-app-backend-8elg.onrender.com/categories",
+      "Tecnologias": "https://projects-app-backend-8elg.onrender.com/technology",
+      "Calificaciones": "https://projects-app-backend-8elg.onrender.com/scores",
     };
 
     const stateSetters: Record<
@@ -211,61 +210,62 @@ const Template = () => {
     const token = localStorage.getItem("access_token");
     setLoading(true);
 
-    requestApi({
-      url: "https://projects-app-backend-8elg.onrender.com/categories",
-      method: "GET",
-      headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+  requestApi({
+    url: "https://projects-app-backend-8elg.onrender.com/categories",
+    method: "GET",
+    headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+  })
+    .then((data) => {
+      setCategories(Array.isArray(data) ? data : []);
+      setError(null);
     })
-      .then((data) => {
-        setCategories(Array.isArray(data) ? data : []);
-        setError(null);
-      })
-      .catch(() => {
-        setError("Error al cargar las categorías");
-        setCategories([]);
-      })
-      .finally(() => setLoading(false));
-  };
+    .catch(() => {
+      setError("Error al cargar las categorías");
+      setCategories([]);
+    })
+    .finally(() => setLoading(false));
+};
 
   const handleCreateCriteria = () => {
     const token = localStorage.getItem("access_token");
     setLoading(true);
 
-    requestApi({
-      url: "https://projects-app-backend-8elg.onrender.com/judgements",
-      method: "GET",
-      headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+  requestApi({
+    url: "https://projects-app-backend-8elg.onrender.com/judgements",
+    method: "GET",
+    headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+  })
+    .then((data) => {
+      setJudgements(Array.isArray(data) ? data : []);
+      setError(null);
     })
-      .then((data) => {
-        setJudgements(Array.isArray(data) ? data : []);
-        setError(null);
-      })
-      .catch(() => {
-        setError("Error al cargar los criterios");
-        setJudgements([]);
-      })
-      .finally(() => setLoading(false));
-  };
+    .catch(() => {
+      setError("Error al cargar los criterios");
+      setJudgements([]);
+    })
+    .finally(() => setLoading(false));
+};
 
   const handleCreateTechnology = () => {
     const token = localStorage.getItem("access_token");
     setLoading(true);
 
-    requestApi({
-      url: "https://projects-app-backend-8elg.onrender.com/technology",
-      method: "GET",
-      headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+  requestApi({
+    url: "https://projects-app-backend-8elg.onrender.com/technology",
+    method: "GET",
+    headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+  })
+    .then((data) => {
+      setTechnology(Array.isArray(data) ? data : []);
+      setError(null);
     })
-      .then((data) => {
-        setTechnology(Array.isArray(data) ? data : []);
-        setError(null);
-      })
-      .catch(() => {
-        setError("Error al cargar las tecnologías");
-        setTechnology([]);
-      })
-      .finally(() => setLoading(false));
-  };
+    .catch(() => {
+      setError("Error al cargar las tecnologías");
+      setTechnology([]);
+    })
+    .finally(() => setLoading(false));
+};
+
 
   // Estado para modal de editar materia
   const [editModalOpen, setEditModalOpen] = useState(false);
@@ -474,16 +474,16 @@ const Template = () => {
         />
       ))}
 
-      {/* Modal para crear criterio */}
-      <CreateCriteriaModal
-        isOpen={isCreateCriteriaModalOpen}
-        onClose={() => setIsCreateCriteriaModalOpen(false)}
-        onSuccess={handleCreateCriteria}
-        title="Crear Nuevo Criterio"
-        endpoint="https://projects-app-backend-8elg.onrender.com/judgements"
-      />
-    </div>
-  );
+    {/* Modal para crear criterio */}
+    <CreateCriteriaModal
+      isOpen={isCreateCriteriaModalOpen}
+      onClose={() => setIsCreateCriteriaModalOpen(false)}
+      onSuccess={handleCreateCriteria}
+      title="Crear Nuevo Criterio"
+      endpoint="https://projects-app-backend-8elg.onrender.com/judgements"
+    />
+  </div>
+);
 
   // Renderizar sección de Categorías
   const renderCategoriasSection = () => (
@@ -583,16 +583,19 @@ const Template = () => {
         />
       )}
 
-      {/* Modal para crear tecnología */}
-      <CreateTechnologyModal
-        isOpen={isCreateTechnologyModalOpen}
-        onClose={() => setIsCreateTechnologyModalOpen(false)}
-        onSuccess={handleCreateTechnology}
-        title="Crear Nueva Tecnología"
-        endpoint="https://projects-app-backend-8elg.onrender.com/technology"
-      />
-    </div>
-  );
+
+
+
+    {/* Modal para crear tecnología */}
+    <CreateTechnologyModal
+      isOpen={isCreateTechnologyModalOpen}
+      onClose={() => setIsCreateTechnologyModalOpen(false)}
+      onSuccess={handleCreateTechnology}
+      title="Crear Nueva Tecnología"
+      endpoint="https://projects-app-backend-8elg.onrender.com/technology"
+    />
+  </div>
+);
 
   // Renderizar sección de Calificaciones
   const renderCalificacionesSection = () => (

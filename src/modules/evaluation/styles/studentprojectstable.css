@@ -1,0 +1,81 @@
+.table-responsive {
+  overflow-x: auto;
+  margin: 40px auto;         /* centrado horizontal con espacio vertical */
+  padding: 20px 24px;
+  max-width: 1200px;         /* mantiene el máximo ancho */
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  width: 95%;                /* ocupa casi todo el ancho disponible */
+}
+
+.student-projects-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  color: #333;
+  min-width: 600px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+}
+
+.student-projects-table thead tr {
+  background-color: #f7f9fc;
+}
+
+.student-projects-table th,
+.student-projects-table td {
+  padding: 8px 12px;
+  border: 1.5px solid #ccc;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 600;
+  user-select: none;
+}
+
+.student-projects-table thead th {
+  background-color: #e2e8f0;
+  font-weight: 700;
+  color: #555;
+}
+
+.student-projects-table thead th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.student-projects-table thead th:last-child {
+  border-top-right-radius: 8px;
+}
+
+.student-projects-table tbody tr {
+  background-color: white;
+  transition: background-color 0.3s ease;
+  cursor: default;
+}
+
+.student-projects-table tbody tr:hover {
+  background-color: #f0f7ff;
+}
+
+.score-passed {
+  color: #22c55e;
+  font-weight: 700;
+  text-align: center;
+  min-width: 60px;
+}
+
+.score-failed {
+  color: #ef4444;
+  font-weight: 700;
+  text-align: center;
+  min-width: 60px;
+}
+
+.empty-message {
+  color: #8a2d3c;
+  padding: 16px;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+}

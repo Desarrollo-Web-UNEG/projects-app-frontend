@@ -37,8 +37,8 @@ const LoginForm = () => {
     setLoading(true);
 
     const backendUrl = import.meta.env.PROD
-      ? "https://projects-app-backend-8elg.onrender.com/auth/login"
-      : "/api/auth/login";
+        ? "https://projects-app-backend-8elg.onrender.com/auth/login"
+        : "/api/auth/login";
 
     try {
       // Solicitud a la api
@@ -120,6 +120,13 @@ const LoginForm = () => {
           }}
         />
         {error && <div className="login-error">{error}</div>}
+
+        <div className="register-btn-container">
+        <Link to="/recovery" className="register-btn">
+            Recuperar Contraseña
+          </Link>
+        </div>
+        
         <div className="register-btn-container">
           <Link to="/register" className="register-btn">
             Solicitar registro

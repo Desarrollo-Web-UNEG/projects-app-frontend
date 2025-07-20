@@ -1,7 +1,8 @@
 import "@dashboard/styles/dashboard.css";
 import { NavBar } from "@dashboard/components";
 import { Banner } from "@dashboard/components";
-import { CardProject, SearchFilter } from "@/modules/projects/components";
+// import { CardProject, SearchFilter } from "@/modules/projects/components";
+import { CardProject } from "@/modules/projects/components";
 import CreateProjectModal from "../components/CreateProjectModal";
 import { BannerProjects } from "@/modules/projects/assets";
 import '../styles/cardproject.css'
@@ -77,7 +78,7 @@ const Projects = () => {
               const token = localStorage.getItem("access_token") || "";
               try {
                 await deleteProject(id, token);
-                setProjects((prev: any[]) => prev.filter(p => String(p.id) !== String(id)));
+                setProjects((prev: any[]) => prev.filter(p => p.id != id));
               } catch (err) {
                 alert('Error al eliminar el proyecto.');
               }

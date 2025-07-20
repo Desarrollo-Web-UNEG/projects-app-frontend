@@ -1,0 +1,222 @@
+/* Modal de confirmación de borrado */
+.confirm-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.18);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.confirm-modal-content {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+  min-width: 320px;
+  max-width: 90vw;
+  text-align: center;
+}
+.confirm-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+.card-btn-delete {
+  background: #c0392b !important;
+  color: #fff !important;
+  font-weight: 600;
+  border-radius: 2rem;
+  padding: 0.5rem 2.2rem;
+  font-size: 1.08rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 1px 4px rgba(192,57,43,0.08);
+}
+.card-btn-delete:hover {
+  background: #a93226 !important;
+}
+.card-btn-cancel {
+  background: #e5e5e5;
+  color: #841C38;
+  font-weight: 600;
+  border-radius: 2rem;
+  padding: 0.5rem 2.2rem;
+  font-size: 1.08rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.card-btn-cancel:hover {
+  background: #d1cfcc;
+  color: #6d162e;
+}
+/* Responsive styles for projects-header and children */
+.projects-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;
+}
+.containt-header {
+  width: 86%;
+  /* max-width: 1200px; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.projects-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #183153;
+  margin: 0;
+}
+.search-and-button {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .containt-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .search-and-button {
+    width: 100%;
+    flex-direction: column;
+    /* align-items: stretch; */
+    gap: 0.7rem;
+  }
+  .projects-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-header {
+    padding: 0 0.3rem;
+  }
+  .containt-header {
+    max-width: 100vw;
+    padding: 0;
+  }
+  .projects-title {
+    font-size: 1.15rem;
+  }
+}
+.card-project-container {
+  text-align: start;
+  border-radius: 4px;
+  flex-wrap: wrap;
+  width: 100%;
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 30px;
+}
+
+.cardCont{
+    background-color: #ededed;
+    padding: 20px;
+    width: 40%;
+    box-shadow: 0px 4px 4px 3px rgba(0, 0, 0,0.2);
+}
+
+.card-project-title {
+  color: #183153;
+  font-size: 1.5rem;
+  font-weight: 600;
+  /* margin-bottom: 0.25rem; */
+}
+
+.card-project-desc {
+  color: #42526B;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  margin-left: 20px;
+}
+
+.card-project-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.card-btn-edit {
+  background: #841C38;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 2rem;
+  padding: 0.5rem 3rem;
+  font-size: 1.125rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.card-btn-edit:hover {
+  background: #6d162e;
+}
+
+.card-btn-rubric {
+  background: #D1CFCC;
+  color: #183153;
+  font-weight: 600;
+  border-radius: 2rem;
+  padding: 0.5rem 2rem;
+  font-size: 1.125rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.card-btn-rubric:hover {
+  background: #bdbbb8;
+}
+
+
+@media(max-width: 600px){
+  .cardCont{
+    width: 80%;
+  }
+}
+
+.card-btn-evaluate {
+  background-color: #5b8def;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-weight: 500;
+  margin-left: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.card-btn-evaluate:hover {
+  background-color: #467cd4;
+}
+.card-btn-correct {
+  background: #2f80ed; /* Azul primario */
+  color: #fff;
+  font-weight: 600;
+  border-radius: 2rem;
+  padding: 0.5rem 3rem;
+  font-size: 1.125rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 1px 4px rgba(47, 128, 237, 0.1);
+}
+
+.card-btn-correct:hover {
+  background: #1c6dd0; /* Azul más oscuro al pasar el cursor */
+}

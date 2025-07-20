@@ -1,3 +1,5 @@
+import { requestApi } from "@/modules/js/resquestApi";
+
 export const deleteProject = async (projectId: string, token: string) => {
   return requestApi({
     url: `https://projects-app-backend-8elg.onrender.com/projects/${projectId}`,
@@ -8,7 +10,6 @@ export const deleteProject = async (projectId: string, token: string) => {
     },
   });
 };
-import { requestApi } from "@/modules/js/resquestApi";
 
 export const updateProject = async (
   projectId: string,

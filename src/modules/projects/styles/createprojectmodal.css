@@ -4,6 +4,7 @@
   flex-direction: row;
   gap: 10px;
   margin: 10px 0 20px 0;
+  flex-wrap: wrap;
 }
 .modal-select-group {
   display: flex;
@@ -44,6 +45,13 @@
 
 .modal-formats-list{
   display: flex;
+  overflow-x: auto;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid #d1d1d1;
+  border-radius: 8px;
+  background-color: #fcfbf8;
+  white-space: nowrap;
 }
 
 .modal-format-option.selected {
@@ -282,5 +290,92 @@
   .modal-next-btn {
     padding: 0.6rem 1.2rem;
     font-size: 1rem;
+  }
+}
+.modal-upload-label {
+  font-weight: 600;
+  color: #1a2a4a;
+  margin-bottom: 6px;
+  display: block;
+  font-size: 1.13rem;
+}
+
+.modal-file-input {
+  width: 100%;
+  font-size: 1.13rem;
+  padding: 8px 12px;
+  border: 1.5px solid #bdbdbd;
+  border-radius: 8px;
+  background: #fcfbf8;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  margin-bottom: 8px;
+}
+
+.modal-file-input:focus {
+  border-color: #8a2d3c;
+}
+
+.modal-file-name {
+  margin-top: 4px;
+  font-size: 1rem;
+  color: #555;
+  font-style: normal;
+  user-select: text;
+}
+.modal-upload-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: start; /* para que los labels e inputs queden alineados arriba */
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.modal-upload-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-upload-label {
+  font-size: 1.13rem;
+  font-weight: 500;
+  color: #1a2a4a;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.modal-file-input,
+.modal-link-input {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  height: 40px; /* altura fija para igualar ambos inputs */
+}
+
+.modal-file-name {
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+/* Responsive: en pantallas chicas, pasa a una sola columna */
+@media (max-width: 600px) {
+  .modal-upload-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal-row-selects {
+    flex-direction: column !important;
+  }
+}
+@media (max-width: 600px) {
+  .modal-select-group {
+    width: 100%;
   }
 }
