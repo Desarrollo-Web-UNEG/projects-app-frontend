@@ -48,8 +48,6 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
   const [description, setDescription] = useState("");
   // const [objetives, setObjetives] = useState("");
 
-  const userId = localStorage.getItem("user_id") || "";
-
   useEffect(() => {
     const fetchData = async () => {
       const token = localStorage.getItem("access_token") || "";
@@ -66,8 +64,6 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 
         setSubjects(subjectsRes || []);
         setCategories(categoriesRes || [])
-        console.log("🚀 ~ fetchData ~ subjectsRes:", subjectsRes)
-
         setTechnologies(technologiesRes || []);
         setAcademicPeriods(periodsRes || []);
       } catch (err) {

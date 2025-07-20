@@ -1,11 +1,9 @@
 import { requestApi } from "@/modules/js/resquestApi";
-
-
-const API = "https://projects-app-backend-8elg.onrender.com"
+ 
 
 export const getSubjetcsByStudent = async (token: string, studentId: string) => {
   return requestApi({
-    url: `${API}/subject-people/${studentId}/subjects`,
+    url: `https://projects-app-backend.onrender.com/subject-people/${studentId}/subjects`,
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`
@@ -15,7 +13,7 @@ export const getSubjetcsByStudent = async (token: string, studentId: string) => 
 
 export const getSubjects = async (token: string) => {
   return requestApi({
-    url: `${API}/subjects`,
+    url: `https://projects-app-backend.onrender.com/subjects`,
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -26,7 +24,7 @@ export const getSubjects = async (token: string) => {
 // Obtener categorías
 export const getCategories = async (token: string) => {
   return requestApi({
-    url: `${API}/categories`,
+    url: `https://projects-app-backend.onrender.com/categories`,
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -37,7 +35,7 @@ export const getCategories = async (token: string) => {
 // Obtener tecnologías
 export const getTechnologies = async (token: string) => {
   return requestApi({
-    url: `${API}/technology`,
+    url: `https://projects-app-backend.onrender.com/technology`,
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -74,10 +72,9 @@ export const uploadProjectFile = async (
   return requestApi({
     url: "https://projects-app-backend.onrender.com/student/file/upload",
     method: "POST",
-    data: formData, // ✅ Axios espera "data" aquí
+    data: formData,
     headers: {
       Authorization: `Bearer ${token}`,
-      // No incluir manualmente Content-Type con FormData
     },
   });
 };

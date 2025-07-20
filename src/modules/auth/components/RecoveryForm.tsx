@@ -27,7 +27,7 @@ const RecoveryForm = () => {
     setSuccess("");
     try {
       const backendUrl = import.meta.env.PROD
-        ? "https://projects-app-backend.onrender.com/people/profile/security-question"
+        ? "https://projects-app-backend-8elg.onrender.com/people/profile/security-question"
         : "/api/people/profile/security-question";
       const response = await requestApi({
         url: backendUrl,
@@ -52,7 +52,7 @@ const RecoveryForm = () => {
     setSuccess("");
     try {
       const backendUrl = import.meta.env.PROD
-        ? "https://projects-app-backend.onrender.com/people/profile/reset-password"
+        ? "https://projects-app-backend-8elg.onrender.com/people/profile/reset-password"
         : "/api/people/profile/reset-password";
       await requestApi({
         url: backendUrl,

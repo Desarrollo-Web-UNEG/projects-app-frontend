@@ -44,6 +44,13 @@
 
 .modal-formats-list{
   display: flex;
+  overflow-x: auto;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid #d1d1d1;
+  border-radius: 8px;
+  background-color: #fcfbf8;
+  white-space: nowrap;
 }
 
 .modal-format-option.selected {
