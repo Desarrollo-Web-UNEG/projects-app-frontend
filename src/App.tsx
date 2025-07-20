@@ -9,7 +9,9 @@ import ProtectedRoute from "@auth/components/ProtectedRoute";
 import { PanelControl } from "./modules/users/admin/pages";
 import Template from "./modules/users/admin/pages/Template";
 import { PanelControlTeacher } from "./modules/users/professor/pages";
+import { Evaluations } from "./modules/evaluation/pages";
 import RecoveryForm from "@/modules/auth/components/RecoveryForm";
+
 
 const App = () => {
   return (
@@ -80,6 +82,14 @@ const App = () => {
           element={
             <ProtectedRoute allowedRoles={['admin']}>
               <Template />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="evaluation-teacher/:user_type"
+          element={
+            <ProtectedRoute allowedRoles={['professor']}>
+              <Evaluations />
             </ProtectedRoute>
           }
         />
