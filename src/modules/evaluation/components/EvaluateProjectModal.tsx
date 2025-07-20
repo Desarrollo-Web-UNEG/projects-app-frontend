@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import "../styles/evaluateprojectmodal.css"; // estilos definidos
+import "../styles/evaluateprojectmodal.css";
 
 type EvaluateProjectModalProps = {
-  projectTitle: string;
+  project: any;
   onClose: () => void;
   onSubmit: (score: number, feedback: string) => void;
 };
 
 const EvaluateProjectModal: React.FC<EvaluateProjectModalProps> = ({
-  projectTitle,
+  project,
   onClose,
   onSubmit,
 }) => {
@@ -27,35 +27,100 @@ const EvaluateProjectModal: React.FC<EvaluateProjectModalProps> = ({
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <button className="close-btn" onClick={onClose}>
+        <button className="close-btn" onClick={onClose} aria-label="Cerrar modal">
           &times;
         </button>
 
-        <h2>Evaluar Proyecto: {projectTitle}</h2>
+        <h2 className="modal-title">Evaluar Proyecto: {project.title}</h2>
 
-        <div className="modal-section">
-          <label className="modal-upload-label">Puntaje (0-100):</label>
+        {/* Vista previa del proyecto */}
+        <div className="preview-grid">
+          <div className="preview-card">
+            <h3>📌 Información General</h3>
+            <p><strong>Título:</strong> {project.title}</p>
+            <p><strong>Descripción:</strong> {project.description || "No proporcionada"}</p>
+            {project.academicPeriod?.description && (
+              <p><strong>Periodo Académico:</strong> {project.academicPeriod.description}</p>
+            )}
+            {project.subject?.name && (
+              <p><strong>Materia:</strong> {project.subject.name}</p>
+            )}
+            {project.category?.name && (
+              <p><strong>Categoría:</strong> {project.category.name}</p>
+            )}
+          </div>
+
+          <div className="preview-card">
+            <h3>🛠 Tecnologías</h3>
+            {project.technologies?.length > 0 ? (
+              <ul>
+                {project.technologies.map((t: any, i: number) => (
+                  <li key={i}>{t.name}</li>
+                ))}
+              </ul>
+            ) : (
+              <p>No especificadas</p>
+            )}
+          </div>
+
+          <div className="preview-card">
+            <h3>🔗 Recursos</h3>
+            {project.projectLink ? (
+              <p>
+                <strong>Enlace:</strong>{" "}
+                <a href={project.projectLink} target="_blank" rel="noopener noreferrer" className="project-link">
+                  {project.projectLink}
+                </a>
+              </p>
+            ) : (
+              <p>No hay enlace disponible</p>
+            )}
+            {project.projectFile ? (
+              <p>
+                <strong>Archivo:</strong>{" "}
+                <a
+                  href={`https://api.ejemplo.com/uploads/${project.projectFile}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                >
+                  Ver archivo adjunto
+                </a>
+              </p>
+            ) : (
+              <p>No hay archivo adjunto</p>
+            )}
+          </div>
+        </div>
+
+        {/* Evaluación */}
+        <div className="evaluation-section">
+          <label htmlFor="score-input" className="modal-label">Puntaje (0-100):</label>
           <input
+            id="score-input"
             type="number"
             value={score}
-            className="modal-title-input"
             onChange={(e) => setScore(Number(e.target.value))}
+            min={0}
+            max={100}
+            className="modal-input"
+            placeholder="Ej: 85"
           />
 
-          <label className="modal-upload-label">Retroalimentación:</label>
+          <label htmlFor="feedback-textarea" className="modal-label">Retroalimentación:</label>
           <textarea
+            id="feedback-textarea"
             value={feedback}
-            className="modal-description-input"
             onChange={(e) => setFeedback(e.target.value)}
+            placeholder="Escribe comentarios para el estudiante..."
+            className="modal-textarea"
           />
         </div>
 
         <div className="modal-footer">
-          <button className="modal-correct-btn" onClick={handleSubmit}>
+          <button className="btn-cancel" onClick={onClose}>Cancelar</button>
+          <button className="btn-submit" onClick={handleSubmit} disabled={score < 0 || score > 100}>
             Guardar Evaluación
-          </button>
-          <button className="modal-next-btn" onClick={onClose}>
-            Cancelar
           </button>
         </div>
       </div>
