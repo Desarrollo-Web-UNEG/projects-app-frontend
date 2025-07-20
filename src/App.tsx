@@ -9,7 +9,7 @@ import ProtectedRoute from "@auth/components/ProtectedRoute";
 import { PanelControl } from "./modules/users/admin/pages";
 import Template from "./modules/users/admin/pages/Template";
 import { PanelControlTeacher } from "./modules/users/professor/pages";
-import { Evaluations } from "./modules/evaluation/pages";
+//import { Evaluations } from "./modules/evaluation/pages";
 import RecoveryForm from "@/modules/auth/components/RecoveryForm";
 
 
@@ -87,11 +87,7 @@ const App = () => {
         />
         <Route
           path="evaluation-teacher/:user_type"
-          element={
-            <ProtectedRoute allowedRoles={['professor']}>
-              <Evaluations />
-            </ProtectedRoute>
-          }
+
         />
 
         {/* Ruta de prueba (opcional, puedes protegerla si es necesario) */}
