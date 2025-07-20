@@ -4,6 +4,7 @@
   flex-direction: row;
   gap: 10px;
   margin: 10px 0 20px 0;
+  flex-wrap: wrap;
 }
 .modal-select-group {
   display: flex;
@@ -371,6 +372,11 @@
 
 @media (max-width: 600px) {
   .modal-row-selects {
-    flex-direction: column;
+    flex-direction: column !important;
+  }
+}
+@media (max-width: 600px) {
+  .modal-select-group {
+    width: 100%;
   }
 }
