@@ -5,8 +5,6 @@ interface ModalDetailsProps {
   setTitle: (v: string) => void;
   description: string;
   setDescription: (v: string) => void;
-  // objetives: string;
-  // setObjetives: (v: string) => void;
   userId: string;
   handleFormatToggle: (f: string) => void;
   subjects: any[];
@@ -17,6 +15,14 @@ interface ModalDetailsProps {
   selectedCategory: string;
   setSelectedCategory: (v: string) => void;
   selectedTechnologies: string[];
+
+  academicPeriods?: any[];
+  selectedAcademicPeriod?: string;
+  setSelectedAcademicPeriod?: (v: string) => void;
+
+  // NUEVAS props para el archivo
+  projectFile?: File | null;
+  setProjectFile?: (file: File | null) => void;
 }
 
 const ModalDetails: React.FC<ModalDetailsProps> = ({
@@ -24,8 +30,6 @@ const ModalDetails: React.FC<ModalDetailsProps> = ({
   setTitle,
   description,
   setDescription,
-  // objetives,
-  // setObjetives,
   userId,
   handleFormatToggle,
   subjects,
@@ -36,6 +40,12 @@ const ModalDetails: React.FC<ModalDetailsProps> = ({
   selectedCategory,
   setSelectedCategory,
   selectedTechnologies,
+  academicPeriods = [],
+  selectedAcademicPeriod = "",
+  setSelectedAcademicPeriod = () => {},
+
+  projectFile,
+  setProjectFile,
 }) => (
   <>
     <input
@@ -43,42 +53,68 @@ const ModalDetails: React.FC<ModalDetailsProps> = ({
       type="text"
       placeholder="Título del proyecto o tarea..."
       value={title}
-      onChange={e => setTitle(e.target.value)}
+      onChange={(e) => setTitle(e.target.value)}
     />
     <textarea
       className="modal-description-input"
       placeholder="Descripción del proyecto o tarea..."
       value={description}
-      onChange={e => setDescription(e.target.value)}
+      onChange={(e) => setDescription(e.target.value)}
     />
 
-    {/* <label htmlFor="">Objetivos</label>
-    <textarea
-      className="modal-description-input"
-      placeholder="Descripción de los objetivos..."
-      // value={objetives}
-      // onChange={e => setObjetives(e.target.value)}
-    /> */}
-
     <input type="text" value={userId} readOnly hidden />
+
+    {academicPeriods.length > 0 && (
+      <div className="modal-select-group">
+        <label htmlFor="academic-period">Periodo Académico</label>
+        <select
+          id="academic-period"
+          className="modal-select"
+          value={selectedAcademicPeriod}
+          onChange={(e) => setSelectedAcademicPeriod(e.target.value)}
+        >
+          <option value="">Selecciona un periodo</option>
+          {academicPeriods.map((period: any) => (
+            <option key={period.id} value={period.id}>
+              {period.description}
+            </option>
+          ))}
+        </select>
+      </div>
+    )}
 
     <div className="modal-row-selects">
       <div className="modal-select-group">
         <label htmlFor="materia">Materia</label>
-        <select name="materia" id="materia" className="modal-select" value={selectedSubject} onChange={e => setSelectedSubject(e.target.value)}>
+        <select
+          name="materia"
+          id="materia"
+          className="modal-select"
+          value={selectedSubject}
+          onChange={(e) => setSelectedSubject(e.target.value)}
+        >
           <option value="">Selecciona una materia</option>
           {subjects.map((subject: any) => (
-            <option key={subject.id} value={subject.id}>{subject.name || subject.nombre || subject.title}</option>
+            <option key={subject.id} value={subject.id}>
+              {subject.name || subject.nombre || subject.title}
+            </option>
           ))}
         </select>
       </div>
       <div className="modal-select-group">
         <label htmlFor="categoria">Categoría</label>
-        <select name="categoria" id="categoria" className="modal-select" value={selectedCategory} onChange={e => setSelectedCategory(e.target.value)}>
+        <select
+          name="categoria"
+          id="categoria"
+          className="modal-select"
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+        >
           <option value="">Selecciona una categoría</option>
           {categories.map((cat: any) => (
-            
-            <option key={cat.id} value={cat.id}>{cat.name || cat.nombre || cat.title}</option>
+            <option key={cat.id} value={cat.id}>
+              {cat.name || cat.nombre || cat.title}
+            </option>
           ))}
         </select>
       </div>
@@ -87,18 +123,47 @@ const ModalDetails: React.FC<ModalDetailsProps> = ({
     <label htmlFor="">Tecnologías</label>
     <div className="modal-formats-list">
       {technologies.map((tech: any) => (
-        <label key={tech.id} className={`modal-format-option${selectedTechnologies.includes(tech.id) ? " selected" : ""}`}>
+        <label
+          key={tech.id}
+          className={`modal-format-option${
+            selectedTechnologies.includes(tech.id) ? " selected" : ""
+          }`}
+        >
           <input
             type="checkbox"
             checked={selectedTechnologies.includes(tech.id)}
             onChange={() => handleFormatToggle(tech.id)}
             className="modal-format-checkbox"
           />
-          <span className="modal-format-label">{tech.name || tech.nombre || tech.title}</span>
+          <span className="modal-format-label">
+            {tech.name || tech.nombre || tech.title}
+          </span>
         </label>
       ))}
     </div>
-    
+
+    {/* INPUT DE ARCHIVO */}
+    {setProjectFile && (
+      <>
+        <label htmlFor="project-file" className="modal-upload-label">
+          Adjuntar archivo del proyecto
+        </label>
+        <input
+          type="file"
+          id="project-file"
+          accept=".pdf,.doc,.docx,.zip,.rar"
+          onChange={(e) => {
+            const file = e.target.files?.[0];
+            if (file) setProjectFile(file);
+            else setProjectFile(null);
+          }}
+          className="modal-file-input"
+        />
+        {projectFile && (
+          <div className="modal-file-name">{projectFile.name}</div>
+        )}
+      </>
+    )}
   </>
 );
 

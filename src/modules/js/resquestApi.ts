@@ -3,7 +3,7 @@ import axios, { Method } from "axios";
 interface RequestApiParams {
   url: string;
   method?: Method;
-  data?: any;
+  data?: any; // Aquí se envía tanto JSON como FormData
   headers?: Record<string, string>;
 }
 
@@ -17,7 +17,7 @@ export const requestApi = async ({
     const config = {
       url,
       method,
-      data,
+      data, // Axios usa esto como body
       ...(headers && { headers }),
     };
 

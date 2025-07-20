@@ -284,3 +284,35 @@
     font-size: 1rem;
   }
 }
+.modal-upload-label {
+  font-weight: 600;
+  color: #1a2a4a;
+  margin-bottom: 6px;
+  display: block;
+  font-size: 1.13rem;
+}
+
+.modal-file-input {
+  width: 100%;
+  font-size: 1.13rem;
+  padding: 8px 12px;
+  border: 1.5px solid #bdbdbd;
+  border-radius: 8px;
+  background: #fcfbf8;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  margin-bottom: 8px;
+}
+
+.modal-file-input:focus {
+  border-color: #8a2d3c;
+}
+
+.modal-file-name {
+  margin-top: 4px;
+  font-size: 1rem;
+  color: #555;
+  font-style: normal;
+  user-select: text;
+}
