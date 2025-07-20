@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { NavBar } from "@/modules/dashboard/components";
 import { Search } from "../../admin/components";
 import { CardInfo } from "../../admin/components";
@@ -24,6 +24,7 @@ interface Student {
 const TemplateTeacher: React.FC = () => {
   const { name } = useParams<{ name: string }>();
   const userId = localStorage.getItem("user_id");
+  const navigate = useNavigate();
 
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [loading, setLoading] = useState(false);
@@ -39,20 +40,29 @@ const TemplateTeacher: React.FC = () => {
   const [assignLoading, setAssignLoading] = useState(false);
   const [assignError, setAssignError] = useState<string | null>(null);
 
-  // 1. Carga de materias según sección
+  // 🔁 Redirección automática para Proyectos y Calificaciones
   useEffect(() => {
-    if (!name || !userId) return;
+    if (name === "Proyectos") {
+      navigate("/projects");
+    }
+
+    if (name === "Calificaciones") {
+      navigate("/evaluation/teacher"); // ← redirección forzada
+    }
+  }, [name, navigate]);
+
+  // 1. Carga de materias solo si name === "Alumnos"
+  useEffect(() => {
+    if (name !== "Alumnos" || !userId) return;
+
     setLoading(true);
     setError(null);
 
     const token = localStorage.getItem("access_token");
-    const endpoints: Record<string, string> = {
-      Alumnos: `https://projects-app-backend-8elg.onrender.com/subject-people/${userId}/subjects`,
-      // agrega más si necesitas Proyectos, Calificaciones…
-    };
+    const endpoint = `https://projects-app-backend-8elg.onrender.com/subject-people/${userId}/subjects`;
 
     requestApi({
-      url: endpoints[name] || "",
+      url: endpoint,
       method: "GET",
       headers: token ? { Authorization: `Bearer ${token}` } : undefined,
     })
@@ -67,14 +77,15 @@ const TemplateTeacher: React.FC = () => {
         setSubjects(materias);
       })
       .catch(() => {
-        setError(`Error al cargar ${name}`);
+        setError("Error al cargar materias");
       })
       .finally(() => setLoading(false));
   }, [name, userId]);
 
-  // 2. Carga de estudiantes aprobados sólo al abrir el modal
+  // 2. Carga de estudiantes aprobados al abrir modal
   useEffect(() => {
     if (!editModalOpen) return;
+
     setLoadingStudents(true);
     setErrorStudents(null);
 
@@ -101,13 +112,11 @@ const TemplateTeacher: React.FC = () => {
       .finally(() => setLoadingStudents(false));
   }, [editModalOpen]);
 
-  // 3. Abrir modal y guardar la materia actual
   const handleOpenAsignModal = (subject: Subject) => {
     setCurrentSubject(subject);
     setEditModalOpen(true);
   };
 
-  // 4. Asignar estudiante a la materia
   const handleAssignStudent = async (studentId: string) => {
     if (!currentSubject) return;
 
@@ -131,10 +140,8 @@ const TemplateTeacher: React.FC = () => {
         }
       );
 
-      // Si no es 2xx, extraigo el JSON de error
       if (!res.ok) {
         const errPayload = await res.json().catch(() => null);
-        console.error("Error response:", errPayload || res.statusText);
         setAssignError(
           errPayload?.message ||
             errPayload?.error ||
@@ -143,17 +150,15 @@ const TemplateTeacher: React.FC = () => {
         return;
       }
 
-      // Éxito → cierro modal o recargo lista de materias si quieres
       setEditModalOpen(false);
     } catch (err: any) {
-      console.error("Fetch error:", err);
       setAssignError("Error de conexión al asignar estudiante");
     } finally {
       setAssignLoading(false);
     }
   };
 
-  // 5. Sección de Alumnos
+  // Renderiza Alumnos
   const renderAlumnosSection = () => (
     <div>
       <div className="search-button-container">
@@ -185,15 +190,11 @@ const TemplateTeacher: React.FC = () => {
     </div>
   );
 
-  const renderProyectosSection = () => <div></div>;
-  const renderCalificacionesSection = () => <div></div>;
-
   return (
     <>
       <NavBar />
+
       {name === "Alumnos" && renderAlumnosSection()}
-      {name === "Proyectos" && renderProyectosSection()}
-      {name === "Calificaciones" && renderCalificacionesSection()}
 
       {editModalOpen && (
         <div className="modal-overlay">

@@ -92,10 +92,6 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="evaluation-teacher/:user_type"
-
-        />
 
         {/* Ruta de prueba (opcional, puedes protegerla si es necesario) */}
         <Route
